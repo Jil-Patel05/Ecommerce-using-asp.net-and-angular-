@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.DTO;
+using API.Models;
 using API.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,14 +16,19 @@ namespace API.Controllers
         }
 
          [HttpGet("getAllProducts")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>>  getProducts(){
-            IEnumerable<ProductDTO> pr = await _product.getProducts();
+        public async Task<ActionResult<IEnumerable<Product>>>  GetProducts(){
+            IEnumerable<Product> pr = await _product.GetProductsAsync();
             return pr.ToList();
         }
         [HttpGet("getProduct/{id}")]
-        public async Task<ActionResult<ProductDTO>> getProduct(int id){
-            ProductDTO pr =await _product.getProduct(id);
+        public async Task<ActionResult<Product>> GetProduct(int id){
+            Product pr =await _product.GetProductByIdAsync(id);
             return pr;
+        }
+        [HttpGet("getProductEnumData")]
+        public async Task<ActionResult<enumProductDataDTO>> enumProduct(){
+            enumProductDataDTO e = await _product.GetProductEnumData();
+            return e;
         }
     }
 }

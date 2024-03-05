@@ -1,6 +1,6 @@
 api.http
 appsettings.json
-appsettings.Developement.json
+appsettings.Development.json
 DatingApp.sln
 bin
 obj
