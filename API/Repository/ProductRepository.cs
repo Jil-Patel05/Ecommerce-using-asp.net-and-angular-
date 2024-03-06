@@ -1,7 +1,6 @@
 using API.DTO;
 using API.Models;
 using Dapper;
-using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 
 namespace API.Repository
@@ -18,10 +17,14 @@ namespace API.Repository
         public async Task<Product> GetProductByIdAsync(int id)
         {
             string singleProduct = "select p.productID,p.productName,p.productDescription,p.price,et.typeName,p.productTypeID,eb.brandName,p.productBrandID from productinfo as p inner join enumproductbrand as eb on p.productBrandID=eb.productBrandID inner join enumproducttype as et on p.productTypeID=et.productTypeID where p.productID=@id";
-            Product pr = await _conn.QueryFirstAsync<Product>(singleProduct, new { id = id });
+            Product? pr = await _conn.QueryFirstOrDefaultAsync<Product>(singleProduct, new { id = id });
+
+            if(pr==null){
+                return null;
+            }
 
             string productsUrl = "select productID,productUrl from producturls where productID=@id";
-            List<ProductsUrls> url = await _conn.QueryAsync<ProductsUrls>(productsUrl, new { id = id }) as List<ProductsUrls>;
+            List<ProductsUrls>? url = await _conn.QueryAsync<ProductsUrls>(productsUrl, new { id = id }) as List<ProductsUrls>;
 
             pr.productUrl = [];
 

@@ -29,9 +29,5 @@ namespace API.Models
         public int productBrandID{ get; set; }
 
     }
-    public class ProductUrl{
-        public string url { get; set; }
-    }
-
     
 }

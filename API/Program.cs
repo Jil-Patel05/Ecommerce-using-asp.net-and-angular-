@@ -1,4 +1,7 @@
+using API.Errors;
+using API.Middleware;
 using API.Repository;
+using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+  options.InvalidModelStateResponseFactory = actionContext =>
+  {
+    var errors = actionContext.ModelState.Where(e => e.Value.Errors.Count > 0)
+                  .SelectMany(x => x.Value.Errors).Select(x => x.ErrorMessage).ToArray();
+    var errorReponse = new ApiValidationError
+    {
+      Errors = errors
+    };
+    return new BadRequestObjectResult(errorReponse);
+  };
+});
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient(x =>
   new MySqlConnection(builder.Configuration.GetConnectionString("Default")));
@@ -18,31 +34,23 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.MapControllers();
+app.UseMiddleware<ExceptionMiddleware>();
+// learning thing
+app.UseStatusCodePagesWithRedirects("/errors/{0}");
 
-// app.MapGet("/weatherforecast", () =>
-// {
-//     var forecast =  Enumerable.Range(1, 5).Select(index =>
-//         new WeatherForecast
-//         (
-//             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-//             Random.Shared.Next(-20, 55),
-//             summaries[Random.Shared.Next(summaries.Length)]
-//         ))
-//         .ToArray();
-//     return forecast;
-// })
-// .WithName("GetWeatherForecast")
-// .WithOpenApi();
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseStaticFiles();
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 
-// record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-// {
-//     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-// }

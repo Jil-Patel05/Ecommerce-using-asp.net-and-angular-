@@ -9,6 +9,10 @@ namespace API.DTO
     {
         public int productID { get; set; }
         public string productName { get; set; }
-
+        public string productDescription { get; set; }
+        public decimal price { get; set; }
+        public List<string>? productUrl { get; set; }
+        public string typeName { get; set; }
+        public string brandName { get; set; }
     }
 }
