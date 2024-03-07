@@ -1,0 +1,41 @@
+
+.navLogo {
+  margin-right: auto;
+  height: 2.8rem;
+  width: 10rem;
+}
+.navItems {
+  a {
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+}
+.loginSign {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+  .cartBtn {
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+    .cartNumber {
+      position: absolute;
+      min-width: 18px;
+      max-height: 18px;
+      border-radius: 50%;
+      color: white;
+      background-color: orangered;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -6px;
+      right: -6px;
+    }
+  }
+  .lsBtn {
+    margin-right: 1rem;
+  }
+}

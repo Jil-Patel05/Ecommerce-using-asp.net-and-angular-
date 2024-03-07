@@ -1,0 +1,70 @@
+.contain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.shopContent{
+    width: 90%;
+}
+.searchAndResults {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  .search {
+    width: 80%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
+    input {
+      background-color: white;
+      border: none;
+      color: rgba(0, 0, 0, 0.637);
+      padding: 0.8vmax 2vmax;
+      width: 80%;
+      outline: none;
+      border-radius: 0%;
+      font: 300 1.4vmax normal;
+      box-sizing: border-box;
+      height: 2.5rem;
+    }
+    button {
+      border-radius: 0%;
+      background-color: tomato;
+      border: none;
+      width: 20%;
+      font: 300 1.4vmax "Roboto";
+      cursor: pointer;
+      color: white;
+      transition: all 0.5s;
+      height: 2.5rem;
+    }
+    button:hover {
+      background-color: rgb(55, 97, 214);
+    }
+    margin-bottom: 1.5rem;
+  }
+}
+.cardContent{
+    display: flex;
+    flex-wrap: wrap;
+}
+// .mainFilter{
+//     width: 30%;
+// }
+// .mainContent{
+//     width: 70%;
+// }
+@media only screen and (max-width: 768px) {
+  .searchAndResults {
+    .search {
+      width: 100%;
+      input {
+        height: 2rem;
+      }
+      button {
+        height: 2rem;
+      }
+    }
+  }
+  .shopContent {
+    display: flex;
+  }
+}
