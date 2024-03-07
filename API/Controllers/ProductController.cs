@@ -16,9 +16,9 @@ namespace API.Controllers
         }
 
         [HttpGet("getAllProducts")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts(string? sort,int? brandID,int? typeID,int? take,int? skip)
         {
-            IEnumerable<Product> pr = await _product.GetProductsAsync();
+            IEnumerable<Product> pr = await _product.GetProductsAsync(sort,brandID,typeID,take,skip);
 
             // you can store images in your server than use this images to send it to frontend
             // if you store images in your server then path is images/products/photos

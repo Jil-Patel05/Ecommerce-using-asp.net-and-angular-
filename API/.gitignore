@@ -1,7 +1,0 @@
-api.http
-appsettings.json
-appsettings.Development.json
-DatingApp.sln
-bin
-obj
-.gitignore
