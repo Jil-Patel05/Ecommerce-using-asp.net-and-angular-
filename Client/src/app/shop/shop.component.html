@@ -22,6 +22,8 @@
           class="listHover list-group-item"
           *ngFor="let brand of enums.enumBrand"
           [ngClass]="{ BackColor: brand.productBrandID === this.brandID }"
+          [ngClass]="{ DefaultColor: this.brandID === null && brand.productBrandID===0 }"
+
           (click)="onSelectBrand(brand.productBrandID)"
         >
           {{ brand.brandName }}
@@ -37,6 +39,8 @@
           class="listHover list-group-item"
           *ngFor="let type of enums.enumType"
           [ngClass]="{ BackColor: type.productTypeID == this.typeID }"
+          [ngClass]="{ DefaultColor: this.typeID === null && type.productTypeID===0 }"
+
           (click)="onSelectType(type.productTypeID)"
         >
           {{ type.typeName }}

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ShopService } from '../shop.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/shared/Models/product';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-product-details',
@@ -11,6 +12,7 @@ import { Product } from 'src/app/shared/Models/product';
 export class ProductDetailsComponent implements OnInit {
   shopService: ShopService = inject(ShopService);
   active: ActivatedRoute = inject(ActivatedRoute);
+  bService: BreadcrumbService = inject(BreadcrumbService);
   productID: number;
   product: Product;
   cnt: number = 0;
@@ -25,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe((res: Product) => {
         this.product = res;
         this.numberOfProduct = this.product.numberOfProduct;
+        this.bService.set('@productDetails', this.product.productName);
       });
   }
   decreaseQuantity() {

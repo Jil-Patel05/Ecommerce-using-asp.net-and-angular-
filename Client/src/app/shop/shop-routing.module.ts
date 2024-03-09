@@ -7,7 +7,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 
 const route: Routes = [
   {path:'',component:ShopComponent,pathMatch:'full'},
-  {path: ':id', component: ProductDetailsComponent, pathMatch: 'full' },
+  {path: ':id', component: ProductDetailsComponent, pathMatch: 'full',data: { breadcrumb:{alias:'productDetails'} } },
 ]
 
 @NgModule({

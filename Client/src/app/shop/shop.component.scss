@@ -46,14 +46,18 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.DefaultColor{
+  background-color: tomato;
+  border: none;
+  color: white;
+}
 .BackColor {
   background-color: tomato;
   border: none;
   color: white;
 }
 .listHover:hover {
-  background-color: tomato;
+  background-color: #ff6347bd;
   border: none;
   color: white;
 }

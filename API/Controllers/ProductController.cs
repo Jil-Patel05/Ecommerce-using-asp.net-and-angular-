@@ -52,6 +52,8 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiException), 500)]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id)
         {
+            // return NotFound(new ApiResponses(404));
+
             Product pr = await _product.GetProductByIdAsync(id);
             if (pr == null)
             {

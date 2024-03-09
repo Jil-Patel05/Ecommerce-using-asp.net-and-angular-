@@ -1,3 +1,4 @@
+
 .ProductDetails {
     background-color: rgb(255, 255, 255);
     width: 100vw;
@@ -23,8 +24,20 @@
   .CarouselImage {
     width: 28vmax;
   }
+
+  .ProductDetails .imgTab{
+    width: 50%;
+  }
+  .ProductDetails .detailsTab{
+    width: 50%;
+    // overflow: hidden;
+  }
+  .detailsBlock-1{
+    // overflow: hidden;
+  }
   
   .detailsBlock-1 > h2 {
+    width: auto;
     color: rgb(54, 54, 54);
     font: 600 1.6vmax "Roboto";
   }
@@ -34,8 +47,7 @@
     font: 200 1.4vmax cursive;
   }
   // .price{
-  //   font: 200 0.5vmax cursive;
-  // }
+
   
   .detailsBlock-2 {
     display: flex;
