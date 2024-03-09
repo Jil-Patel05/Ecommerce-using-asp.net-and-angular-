@@ -1,0 +1,43 @@
+.cardDetails {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
+  border-radius: 0.5rem;
+}
+.cardDetails:hover {
+  scale: 1.03;
+  transition: all 0.3s;
+}
+.img {
+  width: 100%;
+  img {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    height: 12rem;
+    width: 100%;
+  }
+}
+.card-body {
+  padding: 0.5rem;
+  .card-text {
+    color: #ac420a;
+    font-size: 1rem;
+  }
+  p {
+    margin-bottom: 0rem;
+    font-size: 0.8rem;
+  }
+  .btns {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      width: 5rem;
+      background-color: white;
+      border: 1px solid #6c757d;
+      border-radius: 0.2rem;
+    }
+    button:hover {
+      background-color: #6c757d;
+      color: white;
+    }
+  }
+}

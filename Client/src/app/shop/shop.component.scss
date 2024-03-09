@@ -1,13 +1,13 @@
 .contain {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
 }
-.shopContent{
-    width: 90%;
+.shopContent {
+  width: 90%;
 }
 .searchAndResults {
-  margin-top: 1rem;
+  margin-top: 1.8rem;
   margin-bottom: 0.5rem;
   width: 100%;
   .search {
@@ -42,16 +42,22 @@
     margin-bottom: 1.5rem;
   }
 }
-.cardContent{
-    display: flex;
-    flex-wrap: wrap;
+.cardContent {
+  display: flex;
+  flex-wrap: wrap;
 }
-// .mainFilter{
-//     width: 30%;
-// }
-// .mainContent{
-//     width: 70%;
-// }
+
+.BackColor {
+  background-color: tomato;
+  border: none;
+  color: white;
+}
+.listHover:hover {
+  background-color: tomato;
+  border: none;
+  color: white;
+}
+
 @media only screen and (max-width: 768px) {
   .searchAndResults {
     .search {

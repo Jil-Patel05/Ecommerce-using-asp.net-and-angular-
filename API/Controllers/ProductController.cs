@@ -16,9 +16,10 @@ namespace API.Controllers
         }
 
         [HttpGet("getAllProducts")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts(string? sort,int? brandID,int? typeID,int? take,int? skip)
+        public async Task<ActionResult<productWithPageDTO>> GetProducts(string? sort, int? brandID, int? typeID,string? search, int pageNumber = 1, int pageSize = 1)
         {
-            IEnumerable<Product> pr = await _product.GetProductsAsync(sort,brandID,typeID,take,skip);
+            productWithPageDTO pr = await _product.GetProductsAsync(sort, brandID, typeID,search, pageNumber, pageSize);
+
 
             // you can store images in your server than use this images to send it to frontend
             // if you store images in your server then path is images/products/photos
@@ -26,27 +27,34 @@ namespace API.Controllers
 
 
             // I can use auto mapper here to auto map following property
-            return pr.Select(a => new ProductDTO
-            {
-                productID = a.productID,
-                productName = a.ProductName,
-                productDescription = a.productDescription,
-                price = a.price,
-                productUrl = a.productUrl,
-                typeName = a.typeName,
-                brandName = a.brandName
-            }).ToList();
+            // productWithPageDTO prp = new productWithPageDTO()
+            // {
+            //     pageNumber = pageNumber,
+            //     pageSize = pageSize,
+            //     products = pr.Select(a => new ProductDTO
+            //     {
+            //         productID = a.productID,
+            //         productName = a.ProductName,
+            //         productDescription = a.productDescription,
+            //         price = a.price,
+            //         productUrl = a.productUrl,
+            //         typeName = a.typeName,
+            //         brandName = a.brandName
+            //     }).ToList()
+            // };
+            return pr;
 
         }
         [HttpGet("getProduct/{id}")]
         [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(ApiResponses),400)]
-        [ProducesResponseType(typeof(ApiResponses),404)]
-        [ProducesResponseType(typeof(ApiException),500)]
+        [ProducesResponseType(typeof(ApiResponses), 400)]
+        [ProducesResponseType(typeof(ApiResponses), 404)]
+        [ProducesResponseType(typeof(ApiException), 500)]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id)
         {
             Product pr = await _product.GetProductByIdAsync(id);
-            if(pr==null){
+            if (pr == null)
+            {
                 return NotFound(new ApiResponses(404));
             }
             return new ProductDTO()
@@ -55,6 +63,7 @@ namespace API.Controllers
                 productName = pr.ProductName,
                 productDescription = pr.productDescription,
                 price = pr.price,
+                numberOfProduct=pr.numberOfProduct,
                 productUrl = pr.productUrl,
                 typeName = pr.typeName,
                 brandName = pr.brandName

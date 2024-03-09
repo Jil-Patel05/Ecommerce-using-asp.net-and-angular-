@@ -18,6 +18,8 @@ namespace API.Models
         public string productDescription { get; set; }
         [Required]
         public decimal price { get; set; }
+        [Required]
+        public int numberOfProduct { get; set; }
         public List<string>? productUrl { get; set; }
         [Required]
         public string typeName { get; set; }

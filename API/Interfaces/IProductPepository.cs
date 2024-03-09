@@ -9,7 +9,7 @@ namespace API.Repository
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetProductsAsync(string sort,int? brandID,int? typeID,int? take,int? skip);
+        Task<productWithPageDTO> GetProductsAsync(string? sort,int? brandID,int? typeID,string? search,int pageNumber,int pageSize);
         Task<Product> GetProductByIdAsync(int id);
         Task<enumProductDataDTO> GetProductEnumData();
     }

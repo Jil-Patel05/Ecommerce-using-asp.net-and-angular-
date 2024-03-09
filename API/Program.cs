@@ -37,12 +37,12 @@ if (app.Environment.IsDevelopment())
   app.UseSwagger();
   app.UseSwaggerUI();
 }
+
+// app.UseMiddleware<ExceptionMiddleware>();
+// // learning thing
+// app.UseStatusCodePagesWithRedirects("/errors/{0}");
+
 app.UseCors(optinons => optinons.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
-
-app.UseMiddleware<ExceptionMiddleware>();
-// learning thing
-app.UseStatusCodePagesWithRedirects("/errors/{0}");
-
 
 app.UseHttpsRedirection();
 

@@ -1,0 +1,20 @@
+<div class="cardDetails card h-100 shadow-sm">
+  <div class="img">
+    <img src="{{ product.productUrl[0] }}" alt="" />
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      {{ product.productName }}
+    </p>
+    <p>
+      {{ product.price | currency:"INR" }}
+    </p>
+    <div class="btn-group btns">
+      <button
+        type="button"
+        class="btn-outline-secondary fa fa-shopping-cart mr-2"
+      ></button>
+      <button type="button" routerLink="/shop/{{product.productID}}" routerLinkActive="router-link-active"  routerLinkActive="router-link-active"  class="btn-outline-secondary">View</button>
+    </div>
+  </div>
+</div>
