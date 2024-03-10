@@ -1,7 +1,7 @@
 <div class="contain">
   <div class="row shopContent">
-    <section class="col-md-4 col-lg-3 mainFilter">
-      <h5 class="ml-3" style="color: tomato">Sort</h5>
+    <section class="col-md-4 col-lg-3 mainFilter" *ngIf="enums">
+      <h5 class="ml-3" style="color: orange">Sort</h5>
       <select
         class="form-select"
         style="margin-bottom: 1rem; cursor: pointer"
@@ -12,7 +12,7 @@
         <option value="2">Price: High to Low</option>
         <option value="3">Price: Low to High</option>
       </select>
-      <h5 class="ml-3" style="color: tomato">Brands</h5>
+      <h5 class="ml-3" style="color: orange">Brands</h5>
       <ul
         class="list-group my-3"
         style="cursor: pointer"
@@ -29,7 +29,7 @@
           {{ brand.brandName }}
         </li>
       </ul>
-      <h5 class="ml-3" style="color: tomato">Types</h5>
+      <h5 class="ml-3" style="color: orange">Types</h5>
       <ul
         class="list-group my-3"
         style="cursor: pointer"
@@ -47,7 +47,7 @@
         </li>
       </ul>
     </section>
-    <section class="col-md-8 col-lg-9 mainContent">
+    <section class="col-md-8 col-lg-9 mainContent" *ngIf="products">
       <div class="searchAndResults">
         <div class="search">
           <input type="text" placeholder="Search" #search (keyup)="searchItem()" />
@@ -72,7 +72,7 @@
         aria-label="Page navigation example"
         *ngIf="products !== undefined && count>0"
         style="
-          margin-top: 5rem;
+          margin-top: 2rem;
           display: flex;
           justify-content: center;
           align-items: center;

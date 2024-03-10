@@ -22,7 +22,11 @@
   }
   
   .CarouselImage {
-    width: 28vmax;
+    img{
+      border-radius: 0.4rem;
+      width: 34vmax;
+      height: 25vmax;
+    }
   }
 
   .ProductDetails .imgTab{

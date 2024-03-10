@@ -5,6 +5,9 @@ import { ProductItemsComponent } from './product-items/product-items.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ShopRoutingModule } from './shop-routing.module';
+import { RatingModule } from "primeng/rating"; 
+import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 
@@ -17,7 +20,10 @@ import { ShopRoutingModule } from './shop-routing.module';
   ],
   imports: [
     CommonModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    RatingModule,
+    FormsModule,
+    CarouselModule.forRoot()
   ],
 })
 export class ShopModule { }

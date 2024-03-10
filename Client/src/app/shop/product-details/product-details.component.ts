@@ -17,6 +17,9 @@ export class ProductDetailsComponent implements OnInit {
   product: Product;
   cnt: number = 0;
   numberOfProduct: number = 0;
+  constructor() {
+    this.bService.set('@productDetails', '');
+  }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((res) => {
