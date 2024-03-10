@@ -1,8 +1,10 @@
 using API.Errors;
+using API.Interfaces;
 using API.Middleware;
 using API.Repository;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient(x =>
   new MySqlConnection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IBasketRepository,BasketRepository>();
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
+  var config = builder.Configuration.GetConnectionString("Redis");
+  return ConnectionMultiplexer.Connect(config);
+});
 
 var app = builder.Build();
 
