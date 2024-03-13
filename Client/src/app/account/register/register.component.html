@@ -1,0 +1,92 @@
+<div class="signUp">
+  <div class="signUpForm">
+    <div class="title">
+      <p>REGISTER</p>
+    </div>
+    <form action="" class="signUpFormcontent" [formGroup]="form">
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatingFirstName"
+          autocomplete="off"
+          placeholder="First name"
+          formControlName="firstName"
+        />
+        <label for="floatingFirstName">First name*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatinglastName"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="lastName"
+        />
+        <label for="floatinglastName">last name*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatingmobileNumber"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="mobileNumber"
+        />
+        <label for="floatingmobileNumber">mobile Number*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingInput"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="floatingInput">Email address*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="password"
+          required
+          class="form-control"
+          id="floatingPassword"
+          autocomplete="off"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="floatingPassword">Password*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="password"
+          required
+          class="form-control"
+          id="floatingCPassword"
+          autocomplete="off"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+        <label for="floatingCPassword">Confirm password*</label>
+      </div>
+      <div class="inp">
+        <p>Select profile Image</p>
+        <input
+          type="file"
+          class="form-control"
+          id="floatingFile"
+          autocomplete="off"
+          placeholder="Confirm Password"
+        />
+      </div>
+      <button (click)="onRegister()">REGISTER</button>
+    </form>
+  </div>
+</div>

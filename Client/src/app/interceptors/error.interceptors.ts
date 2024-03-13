@@ -29,16 +29,17 @@ export class errorInterceptors implements HttpInterceptor {
       finalize(() => {return this.busy.idle()}),
       catchError((error) => {
         if (error.error.statusCode === 400) {
-          this.toast.error(error.error.statusCode, error.error.errorMessagge);
+          // this.toast.error(error.error.statusCode, error.error.errorMessagge);
         }
         if (error.error.statusCode === 401) {
-          this.toast.error(error.error.statusCode, error.error.errorMessagge);
+          // this.toast.error(error.error.statusCode, error.error.errorMessagge);
         }
         if (error.error.statusCode === 500) {
-          this.route.navigateByUrl('/server-error');
+          // console.log(error.error);
+          // this.route.navigateByUrl('/server-error');
         }
         if (error.error.statusCode === 404) {
-          this.route.navigateByUrl('/not-found-error');
+          // this.route.navigateByUrl('/not-found-error');
         }
         this.busy.idle();
         return throwError(() => error);

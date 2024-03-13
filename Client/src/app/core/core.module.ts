@@ -6,7 +6,7 @@ import { ServerErrorComponent } from './server-error/server-error.component';
 import { NotFoundErrorComponent } from './not-found-error/not-found-error.component';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -15,7 +15,8 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
   imports: [
     CommonModule,
     RouterModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    BsDropdownModule
   ],
   exports:[NavBarComponent,SectionHeaderComponent]
 })

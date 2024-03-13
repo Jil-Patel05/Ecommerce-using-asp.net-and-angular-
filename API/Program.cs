@@ -1,8 +1,11 @@
+using System.Text;
 using API.Errors;
 using API.Interfaces;
 using API.Middleware;
 using API.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using StackExchange.Redis;
 
@@ -31,10 +34,28 @@ builder.Services.AddTransient(x =>
   new MySqlConnection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IBasketRepository,BasketRepository>();
+builder.Services.AddSingleton<IUserRepository,UserRepository>();
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
   var config = builder.Configuration.GetConnectionString("Redis");
   return ConnectionMultiplexer.Connect(config);
+});
+
+builder.Services.AddAuthentication(options => {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters() {
+
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("JWTSecretKey")))
+    };
+
 });
 
 var app = builder.Build();
@@ -51,12 +72,14 @@ app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors(optinons => optinons.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseStaticFiles();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

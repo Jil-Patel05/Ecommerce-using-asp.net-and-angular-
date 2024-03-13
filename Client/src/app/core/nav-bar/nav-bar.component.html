@@ -37,12 +37,29 @@
     >
   </nav>
   <div class="loginSign">
-    <a href="" class="position-relative cartBtn">
+    <a  routerLink="/basket" class="position-relative cartBtn">
       <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"> </i>
-      <div class="cartNumber">5</div>
+      <div class="cartNumber" *ngIf="(basket$ | async) as basket">{{basket.items.length}}</div>
     </a>
-    <a class="btn btn-outline-secondary lsBtn" href="#">Log in</a>
-    <a class="btn btn-outline-secondary lsBtn" href="#">Sign up</a>
+    <div *ngIf="userData===undefined || userData===null">
+      <a class="btn btn-outline-secondary lsBtn" routerLink='/account/login'>Log in</a>
+      <a class="btn btn-outline-secondary lsBtn" routerLink='/account/register'>Sign up</a>
+  </div>
+  <div *ngIf="userData!==undefined && userData!==null">
+    <div class="btn-group" dropdown placement="bottom right">
+      <button id="button-alignment" dropdownToggle type="button"  style="font-weight: bold;"
+              class="dropdown-toggle headerName" aria-controls="dropdown-alignment">
+              Welcome {{firstName}} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+          role="menu" aria-labelledby="button-alignment">
+          <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">My orderes</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Log out</a>
+      </ul>
+    </div>
+  </div>
   </div>
 </div>
 

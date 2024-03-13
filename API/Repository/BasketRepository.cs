@@ -30,8 +30,9 @@ namespace API.Repository
 
         public async Task<CustomerBasket> updateBasketAsync(CustomerBasket basket)
         {
+            Console.WriteLine(basket);
             var data = await _database.StringSetAsync(basket.Id, JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
-
+            
             if (!data) return null;
 
             return await getBasketAsync(basket.Id);

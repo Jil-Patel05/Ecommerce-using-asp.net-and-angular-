@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { BasketService } from 'src/app/basket/basket.service';
 import { Product } from 'src/app/shared/Models/product';
 
 @Component({
@@ -7,12 +8,13 @@ import { Product } from 'src/app/shared/Models/product';
   styleUrls: ['./product-items.component.scss']
 })
 export class ProductItemsComponent implements OnInit {
-  p: any[] = [1, 2, 3, 4, 5, 6, 7, 8];
   @Input() product: Product;
-  nm: string;
-  value: number = 4;
+  basketService: BasketService = inject(BasketService);
   
   ngOnInit(): void {
-    this.nm = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+  }
+
+  addItem() {
+    this.basketService.AddItemToBasket(this.product);
   }
 }
