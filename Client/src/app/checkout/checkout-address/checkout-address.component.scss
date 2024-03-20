@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap');
+.checkoutAddress {
+  width: 95%;
+  .title {
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: tomato;
+    height: 3rem;
+    p {
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-family: "Quicksand", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      margin-bottom: 0rem;
+      margin-top: 0rem;
+      color: white;
+    }
+  }
+  .userAddress {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    .user {
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0rem;
+      }
+    }
+    .defaultAddress {
+      margin-left: auto;
+      margin-right: 1rem;
+      button {
+        border-radius: 0.4rem;
+        border: 1px solid green;
+        outline: none;
+        background-color: white;
+        color: green;
+        min-height: 2.5rem;
+      }
+      button:hover{
+        background-color:green;
+        color: white;
+        transition: all 0.3s;
+      }
+    }
+  }
+  .addressContent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .inp{
+      width: 45%;
+      margin-right: 1.5rem;
+    margin-top:1rem;
+      input{
+        width: 100%;
+      }
+    }
+}
+.checkOut {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    button {
+      font-size: 1.1rem;
+      border: none;
+      outline: none;
+      background-color: tomato;
+      border-radius: 0.5rem;
+      width: 10rem;
+      height: 2.5rem;
+      cursor: pointer;
+        color: white;
+    }
+    button:hover {
+      background-color: #f5f5f5;
+        color: tomato;
+      transition: all 0.2s;
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+    .cartPage {
+      display: flex;
+      flex-direction: column;
+      .content {
+        width: 100%
+      }
+      .cost {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .costDetails{
+          width: 50%;
+        }
+      }
+    }
+    .costDetails {
+      margin-top: 2rem;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .checkoutAddress {
+        width: 98%;
+        .addressContent{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          flex-wrap:wrap;
+          .inp{
+            width: 90%;
+          }
+      }
+    }
+    .checkOut {
+        display: flex;
+        justify-content: center;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .checkoutAddress {
+      width: 95%;
+      .title {
+        p {
+          font-size: 1rem;
+        }
+      }
+      .userAddress {
+        .user {
+          p {
+            font-size: 1rem;
+          }
+        }
+        .defaultAddress {
+          button {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .cartPage {
+      display: flex;
+      flex-direction: column;
+      .content {
+        width: 100%
+      }
+      .cost {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .costDetails{
+          width: 80%;
+        }
+      }
+    }
+    
+  }
+  

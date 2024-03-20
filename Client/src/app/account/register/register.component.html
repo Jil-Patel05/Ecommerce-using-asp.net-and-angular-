@@ -6,6 +6,13 @@
     <form action="" class="signUpFormcontent" [formGroup]="form">
       <div class="form-floating inp">
         <input
+          [ngClass]="
+            testInput1('firstName')
+              ? testInput2('firstName')
+                ? 'is-invalid'
+                : 'is-valid'
+              : null
+          "
           type="text"
           required
           class="form-control"
@@ -15,9 +22,36 @@
           formControlName="firstName"
         />
         <label for="floatingFirstName">First name*</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('firstName').invalid &&
+            form.get('firstName').touched &&
+            form.get('firstName').errors['required']
+          "
+        >
+          FirstName is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('firstName').invalid &&
+            form.get('firstName').touched &&
+            form.get('firstName').errors['minlength']
+          "
+        >
+          FirstName is not valid</span
+        >
       </div>
       <div class="form-floating inp">
         <input
+          [ngClass]="
+            testInput1('lastName')
+              ? testInput2('lastName')
+                ? 'is-invalid'
+                : 'is-valid'
+              : null
+          "
           type="text"
           required
           class="form-control"
@@ -27,9 +61,36 @@
           formControlName="lastName"
         />
         <label for="floatinglastName">last name*</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('lastName').invalid &&
+            form.get('lastName').touched &&
+            form.get('lastName').errors['required']
+          "
+        >
+          LastName is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('lastName').invalid &&
+            form.get('lastName').touched &&
+            form.get('lastName').errors['minlength']
+          "
+        >
+          LastName is not valid</span
+        >
       </div>
       <div class="form-floating inp">
         <input
+          [ngClass]="
+            testInput1('mobileNumber')
+              ? testInput2('mobileNumber')
+                ? 'is-invalid'
+                : 'is-valid'
+              : null
+          "
           type="text"
           required
           class="form-control"
@@ -39,9 +100,36 @@
           formControlName="mobileNumber"
         />
         <label for="floatingmobileNumber">mobile Number*</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('mobileNumber').invalid &&
+            form.get('mobileNumber').touched &&
+            form.get('mobileNumber').errors['required']
+          "
+        >
+          MobileNumber is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('mobileNumber').invalid &&
+            form.get('mobileNumber').touched &&
+            form.get('mobileNumber').errors['minlength']
+          "
+        >
+          MobileNumber is not valid</span
+        >
       </div>
       <div class="form-floating inp">
         <input
+          [ngClass]="
+            testInput1('email')
+              ? testInput2('email')
+                ? 'is-invalid'
+                : 'is-valid'
+              : null
+          "
           type="email"
           required
           class="form-control"
@@ -51,9 +139,36 @@
           formControlName="email"
         />
         <label for="floatingInput">Email address*</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('email').invalid &&
+            form.get('email').touched &&
+            form.get('email').errors['required']
+          "
+        >
+          Email address is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('email').invalid &&
+            form.get('email').touched &&
+            form.get('email').errors['email']
+          "
+        >
+          Email address not valid email</span
+        >
       </div>
       <div class="form-floating inp">
         <input
+          [ngClass]="
+            testInput1('password')
+              ? testInput2('password')
+                ? 'is-invalid'
+                : 'is-valid'
+              : null
+          "
           type="password"
           required
           class="form-control"
@@ -63,6 +178,26 @@
           formControlName="password"
         />
         <label for="floatingPassword">Password*</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('password').invalid &&
+            form.get('password').touched &&
+            form.get('password').errors['required']
+          "
+        >
+          Password is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('password').invalid &&
+            form.get('password').touched &&
+            form.get('password').errors['minlength']
+          "
+        >
+          password has atleast 8 characters</span
+        >
       </div>
       <div class="form-floating inp">
         <input
@@ -76,16 +211,7 @@
         />
         <label for="floatingCPassword">Confirm password*</label>
       </div>
-      <div class="inp">
-        <p>Select profile Image</p>
-        <input
-          type="file"
-          class="form-control"
-          id="floatingFile"
-          autocomplete="off"
-          placeholder="Confirm Password"
-        />
-      </div>
+      
       <button (click)="onRegister()">REGISTER</button>
     </form>
   </div>

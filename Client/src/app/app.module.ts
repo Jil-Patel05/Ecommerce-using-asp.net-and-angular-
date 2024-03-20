@@ -12,6 +12,7 @@ import { errorInterceptors } from './interceptors/error.interceptors';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+
 @NgModule({
   declarations: [AppComponent, ContactComponent, AboutComponent],
   imports: [
@@ -27,7 +28,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     }),
     NgxSpinnerModule.forRoot({ type: 'timer' }),
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

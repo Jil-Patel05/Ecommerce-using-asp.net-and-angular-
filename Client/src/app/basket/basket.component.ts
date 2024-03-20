@@ -13,15 +13,16 @@ export class BasketComponent {
   basket$: Observable<Basket>;
   basketCost$: Observable<Cost>;
   basket: Basket;
-  totalItems: Item[];
 
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
     this.basket$.subscribe((res: Basket) => {
       this.basket = res;
-      this.totalItems = res.items;
     });
     this.basketCost$ = this.basketService.basketCost$;
+  }
+  removeItem(item: Item) {
+    this.basketService.rmv(item);
   }
   decreaseQuantity(item:Item) {
     this.basketService.Dcs(item);

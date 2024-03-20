@@ -1,0 +1,40 @@
+<div class="orders">
+  <div class="orderDetails">
+    <div class="heading">
+      <div class="headingTitle">
+        <p>OrderID</p>
+      </div>
+      <div class="headingTitle">
+        <p>Status</p>
+      </div>
+      <div class="headingTitle">
+        <p>Total</p>
+      </div>
+      <div class="headingTitle">
+        <p>Action</p>
+      </div>
+    </div>
+    <div class="orderList" *ngFor="let od of userOrders; let i = index">
+      <div class="ordersInfo">
+        <p>Order#{{ od.orderID }}</p>
+      </div>
+      <div class="ordersInfo">
+        <p>
+          {{ od.orderStatus }}
+        </p>
+      </div>
+      <div class="ordersInfo">
+        <p>
+          {{ od.subTotal }}
+        </p>
+      </div>
+      <div class="ordersInfo">
+        <p>
+          <a routerLink="/orders/{{ od.orderID }}">
+            <i class="bi bi-arrow-up-right-square icon"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

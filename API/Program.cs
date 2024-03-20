@@ -5,6 +5,7 @@ using API.Middleware;
 using API.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using StackExchange.Redis;
@@ -35,6 +36,7 @@ builder.Services.AddTransient(x =>
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IBasketRepository,BasketRepository>();
 builder.Services.AddSingleton<IUserRepository,UserRepository>();
+builder.Services.AddSingleton<IOrderRepository,orderRepository>();
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
   var config = builder.Configuration.GetConnectionString("Redis");
@@ -66,6 +68,13 @@ if (app.Environment.IsDevelopment())
   app.UseSwagger();
   app.UseSwaggerUI();
 }
+
+app.UseFileServer(new FileServerOptions
+{
+    FileProvider = new PhysicalFileProvider("D:\\DatingApp\\API\\Resources\\images"),
+    RequestPath = "/uploads",
+    EnableDirectoryBrowsing = true
+});
 
 // learning thing
 app.UseStatusCodePagesWithRedirects("/errors/{0}");

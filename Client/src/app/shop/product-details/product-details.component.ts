@@ -19,6 +19,9 @@ export class ProductDetailsComponent implements OnInit {
   product: Product;
   cnt: number = 0;
   numberOfProduct: number = 0;
+  clicked: boolean = false;
+  value: number = 0;
+  r: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   constructor() {
     this.bService.set('@productDetails', '');
@@ -52,5 +55,9 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.cnt++;
     }
+  }
+  reviewInputCard() {
+    this.clicked = !this.clicked;
+    console.log(this.clicked);
   }
 }

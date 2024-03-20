@@ -29,11 +29,11 @@ export class BasketService {
     );
   }
 
-  setBasket(basket: Basket) {
+  setBasket(basket: Basket,shippingCost?:number) {
     return this.http.post(this.basketUrl, basket).subscribe({
       next: (res: Basket) => {
         this.basketSource.next(res);
-        this.calculateCost();
+        this.calculateCost(shippingCost);
       },
       error: (err) => {
         console.log(err.error);
@@ -87,9 +87,10 @@ export class BasketService {
     }})
   }
 
-  calculateCost() {
+  calculateCost(shippingCost?:number) {
     const basket = this.getBasketCurrentValue();
-    const shipping = 0;
+    if (shippingCost === null || shippingCost===undefined) shippingCost = 0;
+    const shipping = shippingCost;
     const subTotal = basket.items.reduce(
       (a, b) => b.price * b.numberOfProduct + a,
       0
@@ -99,11 +100,8 @@ export class BasketService {
   }
 
   AddItemToBasket(item: Product, quantity = 1) {
-    console.log(item);
     const itemToAdd: Item = this.mapProduct(item, quantity);
     const it = { ...itemToAdd, totalProducts: item.numberOfProduct };
-    console.log(itemToAdd);
-    console.log(it);
 
     const basket = this.getBasketCurrentValue() ?? this.createBasket();
     basket.items = this.addOrUpdateItem(basket.items, quantity, itemToAdd);

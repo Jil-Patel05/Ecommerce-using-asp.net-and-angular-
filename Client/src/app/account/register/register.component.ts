@@ -48,5 +48,21 @@ export class RegisterComponent implements OnInit {
       }
     })
   }
+  testInput1(inpName: string): boolean {
+    if (
+      this.form &&
+      this.form.get(inpName) &&
+      this.form.get(inpName).touched
+    ) {
+      return true;
+    }
+    return false;
+  }
+  testInput2(inpName: string): boolean {
+    if (!this.form.get(inpName).valid) {
+      return true;
+    }
+    return false;
+  }
   
 }

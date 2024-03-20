@@ -4,6 +4,7 @@ import { BasketService } from 'src/app/basket/basket.service';
 import { Basket } from 'src/app/shared/Models/basket';
 import { isJwtExpired } from 'jwt-check-expiration';
 import { AccountService } from 'src/app/account/account.service';
+import { Login } from 'src/app/shared/Models/login';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,21 +13,20 @@ import { AccountService } from 'src/app/account/account.service';
 })
 export class NavBarComponent implements OnInit {
   basket$: Observable<Basket>;
+  currentUser$: Observable<Login>;
   basketService: BasketService = inject(BasketService);
   account: AccountService = inject(AccountService);
   userData: any;
   firstName: string;
+  displayLoginSign: boolean = true;
 
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
-    this.userData = JSON.parse(localStorage.getItem('loginData'));
-    console.log(this.userData)
-    console.log(this.account.isAuthenticated(this.userData.token))
-    if (this.userData && !this.account.isAuthenticated(this.userData.token)) {
-      const fullName: string[] = this.userData.displayName.split(' ');
-      this.firstName = fullName[0];
-    } else {
-      localStorage.removeItem("loginData");
-    }
+    this.currentUser$ = this.account.currentUser$;
+  }
+
+  logout() {
+    this.account.logout();
+    this.displayLoginSign = true;
   }
 }

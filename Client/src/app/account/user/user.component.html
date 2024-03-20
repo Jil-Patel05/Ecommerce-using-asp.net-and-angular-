@@ -1,0 +1,32 @@
+<div class="profileContainer">
+    <div class="profile_1" >
+        <h1>My Profile</h1>
+        <img src="assets/Images/unknownuser.jpg" alt="user.name" *ngIf="file===undefined"/>
+        <img src="{{file.dbPath}}" alt="user.name" *ngIf="file!==undefined"/>
+        <div class="inp">
+            <p>Select profile Image</p>
+            <input
+              type="file"
+              class="form-control"
+              id="floatingFile"
+              autocomplete="off"
+              placeholder="Confirm Password"
+              (change)="OnProfileEdit($event)"
+            />
+          </div>
+    </div>
+    <div>
+        <div>
+            <h4>Full Name</h4>
+            <p>{{fullName}}</p>
+        </div>
+        <div>
+            <h4>Email</h4>
+            <p>{{email}}</p>
+        </div>
+        <div>
+            <a routerLink="/orders">My Orders</a>
+            <a routerLink="/account/user/change-password">Change Password</a>
+        </div>
+    </div>
+</div>

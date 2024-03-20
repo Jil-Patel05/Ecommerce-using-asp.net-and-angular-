@@ -2,7 +2,6 @@
   <img src="{{basket.items[ind].productUrl}}" alt="ssa" />
   <div>
     <a routerLink="/shop/{{basket.items[ind].productID}}">{{basket.items[ind].productName}}</a>
-    <span>Price: {{basket.items[ind].price | currency:"INR"}}</span>
     <p (click)="removeItem(basket.items[ind])">Remove</p>
   </div>
 </div>

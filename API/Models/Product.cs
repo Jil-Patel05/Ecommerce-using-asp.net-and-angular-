@@ -29,6 +29,11 @@ namespace API.Models
         public string brandName { get; set; }
         [Required]
         public int productBrandID{ get; set; }
+        [Required]
+        public int noOfReviews { get; set; }
+        [Required]
+        public decimal productRating { get; set; }
+
 
     }
     

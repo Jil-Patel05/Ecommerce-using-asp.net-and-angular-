@@ -1,0 +1,53 @@
+.success {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  .successMsg {
+    width: 70%;
+
+    .image {
+      img {
+        width: 5.2vmax;
+        height: 5.2vmax;
+      }
+    }
+    .successInfo {
+      .greetingMsg {
+        p {
+          font-size: 2.2vmax;
+          margin-bottom: 0rem;
+        }
+      }
+      .info {
+        p {
+          font-size: 1.2vmax;
+        }
+      }
+      .btn {
+        padding: 0rem;
+        a {
+          text-decoration: none;
+          padding: 0rem;
+          border-radius: 0.4vmax;
+          border: 1px solid green;
+          background-color: white;
+          outline: none;
+          color: green;
+          width: 8.2vmax;
+          height: 2.7vmax;
+          font-size: 1.4vmax;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        a:hover {
+          transform: scale3d(1.02, 1.02, 1.02);
+          background-color: green;
+          color: white;
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+}

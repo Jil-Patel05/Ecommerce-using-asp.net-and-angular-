@@ -15,10 +15,7 @@
       [routerLinkActiveOptions]="{ exact: true }"
       >HOME</a
     >
-    <a
-      class="p-2 links"
-      [routerLink]="['/shop']"
-      routerLinkActive="linkActive"
+    <a class="p-2 links" [routerLink]="['/shop']" routerLinkActive="linkActive"
       >SHOP</a
     >
     <a
@@ -37,29 +34,89 @@
     >
   </nav>
   <div class="loginSign">
-    <a  routerLink="/basket" class="position-relative cartBtn">
+    <a routerLink="/basket" class="position-relative cartBtn">
       <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"> </i>
-      <div class="cartNumber" *ngIf="(basket$ | async) as basket">{{basket.items.length}}</div>
+      <div class="cartNumber" *ngIf="basket$ | async as basket">
+        {{ basket.items.length }}
+      </div>
     </a>
-    <div *ngIf="userData===undefined || userData===null">
-      <a class="btn btn-outline-secondary lsBtn" routerLink='/account/login'>Log in</a>
-      <a class="btn btn-outline-secondary lsBtn" routerLink='/account/register'>Sign up</a>
-  </div>
-  <div *ngIf="userData!==undefined && userData!==null">
-    <div class="btn-group" dropdown placement="bottom right">
-      <button id="button-alignment" dropdownToggle type="button"  style="font-weight: bold;"
-              class="dropdown-toggle headerName" aria-controls="dropdown-alignment">
-              Welcome {{firstName}} <span class="caret"></span>
-      </button>
-      <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right"
-          role="menu" aria-labelledby="button-alignment">
-          <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">My orderes</a></li>
+    <div *ngIf="(currentUser$ | async) === null">
+      <a class="btn btn-outline-secondary lsBtn" routerLink="/account/login"
+        >Log in</a
+      >
+      <a class="btn btn-outline-secondary lsBtn" routerLink="/account/register"
+        >Sign up</a
+      >
+    </div>
+    <div *ngIf="currentUser$ | async as user">
+      <div class="btn-group" dropdown placement="bottom right">
+        <button
+          id="button-alignment"
+          dropdownToggle
+          type="button"
+          style="font-weight: bold"
+          class="dropdown-toggle headerName"
+          aria-controls="dropdown-alignment"
+        >
+          Welcome {{ user.displayName.split(" ")[0] }}
+          <span class="caret"></span>
+        </button>
+        <ul
+          id="dropdown-alignment"
+          *dropdownMenu
+          class="dropdown-menu dropdown-menu-right"
+          role="menu"
+          aria-labelledby="button-alignment"
+        >
+          <li role="menuitem" style="cursor: pointer">
+            <a class="dropdown-item" routerLink="/account/user">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+              <span class="material-symbols-outlined">
+                person
+                </span>&nbsp;
+                Account
+              </div></a
+            >
+          </li>
+          <li role="menuitem" style="cursor: pointer">
+            <a class="dropdown-item" routerLink="/orders">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+              <span class="material-symbols-outlined">
+                reorder
+                </span>&nbsp;
+                Orders
+              </div></a
+            >
+          </li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Log out</a>
-      </ul>
+          <li role="menuitem" style="cursor: pointer">
+            <a class="dropdown-item" (click)="logout()">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+                <span class="material-symbols-outlined">Logout</span>&nbsp;
+                Logout
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-  </div>
 </div>
-

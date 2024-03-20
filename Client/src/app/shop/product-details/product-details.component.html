@@ -1,54 +1,108 @@
 <div class="detailsMain">
-<div class="ProductDetails"  *ngIf="product!==undefined">
-  <div class="imgTab">
-    <!-- <img
-      class="CarouselImage carProduct"
-      src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGUlMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D"
-    /> -->
-    <carousel>
-      <slide class="CarouselImage" *ngFor="let imgSrc of product.productUrl">
-        <img src="{{imgSrc}}" alt="f" style="display: block">
-      </slide>
-    </carousel>
-  </div>
-  <div class="detailsTab">
-    <div class="detailsBlock-1">
-      <h2>{{ product.productName }}</h2>
-      <p>{{ product.brandName }}</p>
-      <p class="price">{{ product.price | currency:"INR" }}</p>
-    </div>
-    <div class="detailsBlock-2">
-      <span class="detailsBlock-2-span"> (2 Reviews) </span>
-    </div>
-    <div class="detailsBlock-3">
-      <h1></h1>
-      <div class="detailsBlock-3-1">
-        <div class="detailsBlock-3-1-1">
-          <button (click)="decreaseQuantity()">-</button>
-          {{ cnt }}
-          <button (click)="increaseQuantity()">+</button>
-        </div>
-        <button (click)="addItem()">Add to Cart</button>
+  <div
+    [ngClass]="clicked === true ? 'reviews' : ''"
+    *ngIf="clicked === true"
+  ></div>
+  <div
+    [ngClass]="clicked === true ? 'reviewMain' : ''"
+    *ngIf="clicked === true"
+  >
+    <div class="reviewInput">
+      <div class="title">
+        <p>Submit Review</p>
       </div>
-      <p>
-        Number of peices available:
-        <b>{{numberOfProduct}}</b>
-      </p>
-      <p>
-        Status:
-        <b *ngIf="numberOfProduct>0" style="color: green;" >available</b>
-        <b *ngIf="numberOfProduct<=0" style="color: red;" >available</b>
-      </p>
+      <div class="ratings">
+        <rating [max]="5" [(ngModel)]="value"> </rating>
+      </div>
+      <div class="textInput">
+        <textarea
+          name=""
+          id=""
+          rows="6"
+          placeholder="Write Your review"
+        ></textarea>
+      </div>
+      <div class="btn">
+        <div class="cancelBtn">
+          <button (click)="reviewInputCard()">CANCEL</button>
+        </div>
+        <div class="submitBtn">
+          <button (click)="reviewInputCard()">SUBMIT</button>
+        </div>
+      </div>
     </div>
-    <div class="detailsBlock-4">
-      Description :
-      <p>
-        {{ product.productDescription }}
-      </p>
-    </div>
-    <!-- <button  class="submitReview">
-      Submit Review
-    </button> -->
   </div>
-</div>
+
+  <div class="ProductDetails" *ngIf="product !== undefined">
+    <div class="imgTab">
+      <carousel>
+        <slide class="CarouselImage" *ngFor="let imgSrc of product.productUrl">
+          <img src="{{ imgSrc }}" alt="f" style="display: block" />
+        </slide>
+      </carousel>
+    </div>
+    <div class="detailsTab">
+      <div class="detailsBlock-1">
+        <h2>{{ product.productName }}</h2>
+        <p>{{ product.brandName }}</p>
+        <p class="price">{{ product.price | currency : "INR" }}</p>
+      </div>
+      <div class="detailsBlock-2">
+        <span class="detailsBlock-2-span"> (2 Reviews) </span>
+      </div>
+      <div class="detailsBlock-3">
+        <h1></h1>
+        <div class="detailsBlock-3-1">
+          <div class="detailsBlock-3-1-1">
+            <button (click)="decreaseQuantity()">-</button>
+            {{ cnt }}
+            <button (click)="increaseQuantity()">+</button>
+          </div>
+          <button (click)="addItem()">Add to Cart</button>
+        </div>
+        <p>
+          Number of peices available:
+          <b>{{ numberOfProduct }}</b>
+        </p>
+        <p>
+          Status:
+          <b *ngIf="numberOfProduct > 0" style="color: green">available</b>
+          <b *ngIf="numberOfProduct <= 0" style="color: red">available</b>
+        </p>
+      </div>
+      <div class="detailsBlock-4">
+        Description :
+        <p>
+          {{ product.productDescription }}
+        </p>
+      </div>
+      <button class="submitReview" (click)="reviewInputCard()">
+        Submit Review
+      </button>
+    </div>
+  </div>
+  <div class="rev">
+    <div class="revMain">
+      <div class="title">
+        <p>REVIEWS</p>
+      </div>
+      <div class="rivContent">
+        <div class="content" *ngFor="let i of r">
+          <div class="img">
+            <img src="https://cdn.icon-icons.com/icons2/1369/PNG/512/-account-circle_89831.png" alt="" />
+          </div>
+          <div class="fullname">
+            <p>Full name</p>
+          </div>
+          <div class="rating">
+             <rating class="revRating" [readonly]="true" [(ngModel)]="value">
+             </rating>
+          </div>
+          <div class="revMsg">
+            <p>Nice product</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

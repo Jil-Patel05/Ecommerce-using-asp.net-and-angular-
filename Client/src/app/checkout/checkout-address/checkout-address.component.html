@@ -1,0 +1,92 @@
+<div class="checkoutAddress">
+  <div class="title">
+    <p>Address</p>
+  </div>
+  <div class="userAddress">
+    <div class="user">
+      <p>Shipping Address</p>
+    </div>
+    <div class="defaultAddress">
+      <button (click)="saveAddress()">Save as Default Address</button>
+    </div>
+  </div>
+  <form action="" [formGroup]="form">
+  <div class="addressContent" formGroupName="orderAddress">
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingInput"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="firstName"
+        />
+        <label for="floatingInput">first Name*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingInput"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="lastName"
+        />
+        <label for="floatingInput">last Name*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingStreet"
+          autocomplete="off"
+          placeholder="Abc"
+          formControlName="street"
+        />
+        <label for="floatingStreet">Area*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingCity"
+          autocomplete="off"
+          placeholder="Ahmedabad"
+          formControlName="city"
+        />
+        <label for="floatingCity">city*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingState"
+          autocomplete="off"
+          placeholder="Gujarat"
+          formControlName="state"
+        />
+        <label for="floatingState">state*</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="email"
+          required
+          class="form-control"
+          id="floatingZip"
+          autocomplete="off"
+          placeholder="xxxxxx"
+          formControlName="zipCode"
+        />
+        <label for="floatingZip">zip code*</label>
+      </div>
+  </div>
+</form>
+  <div class="checkOut">
+    <button (click)="proceedAddress()">Proceed Address</button>
+  </div>
+</div>

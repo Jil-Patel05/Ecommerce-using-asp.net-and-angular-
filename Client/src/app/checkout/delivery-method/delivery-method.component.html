@@ -1,0 +1,22 @@
+<div class="deliver">
+  <div class="title">
+    <p>Deilvery Method</p>
+  </div>
+  <div class="deliveryMsg">
+    <div class="user">
+      <p>Choose your delivery method</p>
+    </div>
+  </div>
+  <form class="deliverContent" [formGroup]="form">
+    <div class="inp" *ngFor="let dm of delivery;let i=index">
+      <div class="radioInp">
+        <input type="radio" name="deliveryID" [value]="i+1" formControlName="deliveryID" (click)="func(i)"  />&nbsp;{{dm.shortName}}-{{dm.price | currency:"INR"}}
+      </div>
+      <p>{{dm.description}}</p>
+    </div>
+  </form>
+  <div class="checkOut">
+    <button class="back" (click)="back()">Back to Address</button>
+    <button class="proceed" (click)="proccedOrder()">Proceed Order</button>
+  </div>
+</div>

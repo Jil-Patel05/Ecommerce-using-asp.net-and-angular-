@@ -1,0 +1,76 @@
+<div *ngIf="orderDetails !== undefined" class="mainCart">
+  <div class="cartPage">
+    <div class="content">
+      <div class="cartHeader">
+        <div class="headingTitle">
+          <p>Product</p>
+        </div>
+        <div class="headingTitle">
+          <p>Price</p>
+        </div>
+        <div class="headingTitle">
+          <p>Quantity</p>
+        </div>
+        <div class="headingTitle">
+          <p>Subtotal</p>
+        </div>
+      </div>
+
+      <div
+        class="cartContainer"
+        *ngFor="let item of orderDetails; let i = index"
+      >
+        <div class="cartItems">
+          <img
+            src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwbGUlMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D"
+            alt="ssa"
+          />
+          <a routerLink="/shop/{{ item.productID }}">{{ item.productName }}</a>
+        </div>
+        <div class="cartItems">
+          <p>
+            {{ item.price }}
+          </p>
+        </div>
+        <div class="cartItems">
+          <p>
+            {{ item.numberOfProduct }}
+          </p>
+        </div>
+        <div class="cartItems">
+          <p>
+            {{ item.numberOfProduct * item.price | currency : "INR" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="cost">
+      <div class="costDetails">
+        <div class="summary">
+          <p>Order Summary</p>
+        </div>
+        <div class="shippingInfo">
+          <p>shipping costs will be added depending upon Address</p>
+        </div>
+        <div class="charges">
+          <div class="ChargesDetail"><p>Total Subtotal</p></div>
+          <div class="charge">
+            <p>{{ orderDetails[0].subTotal | currency : "INR" }}</p>
+          </div>
+        </div>
+        <div class="charges">
+          <div class="ChargesDetail"><p>Shipping and handling</p></div>
+          <div class="charge">
+            <p>{{ orderDetails[0].shippingCost | currency : "INR" }}</p>
+          </div>
+        </div>
+        <div class="charges">
+          <div class="ChargesDetail"><p>Total</p></div>
+          <div class="charge">
+            <p>{{ orderDetails[0].total | currency : "INR" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

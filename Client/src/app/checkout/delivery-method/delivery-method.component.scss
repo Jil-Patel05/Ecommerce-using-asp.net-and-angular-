@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap");
+.deliver {
+  width: 95%;
+  .title {
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: tomato;
+    height: 3rem;
+    p {
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-family: "Quicksand", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      margin-bottom: 0rem;
+      margin-top: 0rem;
+      color: white;
+    }
+  }
+  .deliveryMsg {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    .user {
+      p {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0rem;
+      }
+    }
+  }
+  .deliverContent {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .inp {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      .radioInp {
+        display: flex;
+        align-items: center;
+        color: black;
+        input {
+          accent-color: green;
+        }
+      }
+
+      p {
+        margin-left: 1rem;
+      }
+    }
+  }
+  .checkOut {
+    display: flex;
+    margin-top: 2rem;
+    button {
+      font-size: 1.1rem;
+      border: none;
+      outline: none;
+      border-radius: 0.5rem;
+      width: 10rem;
+      height: 2.5rem;
+      cursor: pointer;
+    }
+    .proceed {
+        margin-left: auto;
+        background-color: tomato;
+        color: white;
+       }
+       .proceed:hover {
+          background-color:#e25b43;
+          transition: all 0.2s;
+       }
+      .back{
+          background-color: white;
+          color: tomato;
+          border: 1px solid tomato;
+      }
+  }
+}
+@media screen and (max-width: 850px) {
+  .cartPage {
+    display: flex;
+    flex-direction: column;
+    .content {
+      width: 100%;
+    }
+    .cost {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .costDetails {
+        width: 50%;
+      }
+    }
+  }
+  .costDetails {
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .deliver {
+    width: 98%;
+    .deliverContent {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .inp {
+        width: 45%;
+      }
+    }
+  }
+  .checkOut {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cartPage {
+    display: flex;
+    flex-direction: column;
+    .content {
+      width: 100%;
+    }
+    .cost {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .costDetails {
+        width: 80%;
+      }
+    }
+  }
+  .deliver {
+    .title {
+      p {
+        font-size: 1rem;
+      }
+    }
+    .deliveryMsg {
+      .user {
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+    .deliverContent {
+      margin-top: 1rem;
+      .inp {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        .radioInp {
+          display: flex;
+          align-items: center;
+          color: black;
+          font-size: 0.8rem;
+          input {
+            accent-color: green;
+          }
+        }
+        p {
+          margin-left: 1rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+    .checkOut {
+      display: flex;
+      margin-top: 2rem;
+      button {
+        font-size: 0.8rem;
+        width: 7rem;
+        height: 2.1rem;
+      }
+    }
+  }
+}

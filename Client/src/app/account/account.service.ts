@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
@@ -18,6 +18,8 @@ export class AccountService {
   private RegisterUrl = this.baseUrl + '/register';
   private addressUrl = this.baseUrl + '/address';
   private addressUpdateUrl = this.baseUrl + '/addOrUpdateAddress';
+  private resetUrl = this.baseUrl + '/resetPassword';
+  private profileUrl = this.baseUrl + '/uploads';
 
   private currentUserSource: BehaviorSubject<Login> =
     new BehaviorSubject<Login>(null);
@@ -37,7 +39,9 @@ export class AccountService {
       })
     );
   }
-
+  setUser() {
+    this.currentUserSource.next(JSON.parse(localStorage.getItem('loginData')));
+  }
   isAuthenticated(token: string) {
     const match = isJwtExpired(token);
     return match;
@@ -54,7 +58,7 @@ export class AccountService {
   }
 
   getAddressByUserId(id: number) {
-    return this.http.get(this.loginUrl + '/' + id).pipe(
+    return this.http.get(this.addressUrl + '/' + id).pipe(
       map((res: Address) => {
         if (res) {
           this.addressSource.next(res);
@@ -64,12 +68,26 @@ export class AccountService {
   }
 
   updateAdressById(value: any, id: number) {
-    return this.http.post(this.loginUrl + '/' + id, value).pipe(
+    return this.http.post(this.addressUpdateUrl + '/' + id, value).pipe(
       map((res: Address) => {
         if (res) {
           this.addressSource.next(res);
         }
       })
     );
+  }
+
+  resetPassword(value: any) {
+    return this.http.post(this.resetUrl, value);
+  }
+
+  changeProfilePhoto(value: any, userID: number) {
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryExampleBoundary',
+    //   })
+    // }
+    console.log(value, userID);
+    return this.http.post(this.profileUrl, FormData);
   }
 }

@@ -2,57 +2,83 @@
   <h3>There is <strong>0</strong> items found</h3>
 </div>
 
-<div *ngIf="(basket$ | async) as basket" class="mainCart">
+<div *ngIf="basket$ | async as basket" class="mainCart">
   <div class="cartPage">
     <div class="content">
       <div class="cartHeader">
-        <p>Product</p>
-        <p>Quantity</p>
-        <p>Subtotal</p>
+        <div class="headingTitle">
+          <p>Product</p>
+        </div>
+        <div class="headingTitle">
+          <p>Price</p>
+        </div>
+        <div class="headingTitle">
+          <p>Quantity</p>
+        </div>
+        <div class="headingTitle">
+          <p>Subtotal</p>
+        </div>
       </div>
 
-      <div class="cartContainer" *ngFor="let item of basket.items;let i=index">
-        <app-basket-item [basket]="basket$" [ind]="i">
-
-        </app-basket-item>
-        <div class="cartInput">
-          <button (click)="decreaseQuantity(item)">-</button>
-          {{item.numberOfProduct}}
-          <button (click)="increaseQuantity(item)">+</button>
+      <div
+        class="cartContainer"
+        *ngFor="let item of basket.items; let i = index"
+      >
+      <!-- <div class="cartItems">
+        <img src="{{item[i].productUrl}}" alt="ssa" />
+        <div>
+          <a routerLink="/shop/{{item[i].productID}}">{{item[i].productName}}</a>
+          <p (click)="removeItem(item[i])">Remove</p>
         </div>
-        <p class="cartSubtotal">{{item.numberOfProduct*item.price | currency:"INR"}}</p>
+      </div> -->
+        <app-basket-item [basket]="basket$" [ind]="i"> </app-basket-item>
+        <div class="cartItems">
+          <p>
+            {{ item.price | currency : "INR" }}
+          </p>
+        </div>
+        <div class="cartItems">
+          <p>
+            <button (click)="decreaseQuantity(item)">-</button>
+            {{ item.numberOfProduct }}
+            <button (click)="increaseQuantity(item)">+</button>
+          </p>
+        </div>
+        <div class="cartItems">
+          <p>
+            {{ item.numberOfProduct * item.price | currency : "INR" }}
+          </p>
+        </div>
       </div>
     </div>
-    <div class="cost" *ngIf="(basketCost$ | async) as basketCost">
+    <div class="cost" *ngIf="basketCost$ | async as basketCost">
       <div class="costDetails">
         <div class="summary">
           <p>Order Summary</p>
         </div>
         <div class="shippingInfo">
-         <p>
-         shipping costs will be added depending upon Address
-        </p> 
+          <p>shipping costs will be added depending upon Address</p>
         </div>
         <div class="charges">
           <div class="ChargesDetail"><p>Total Subtotal</p></div>
           <div class="charge">
-            <p>{{basketCost.subTotal | currency:"INR"}}</p>
+            <p>{{ basketCost.subTotal | currency : "INR" }}</p>
           </div>
         </div>
         <div class="charges">
           <div class="ChargesDetail"><p>Shipping and handling</p></div>
           <div class="charge">
-            <p>{{basketCost.shipping | currency:"INR"}}</p>
+            <p>{{ basketCost.shipping | currency : "INR" }}</p>
           </div>
         </div>
         <div class="charges">
           <div class="ChargesDetail"><p>Total</p></div>
           <div class="charge">
-            <p>{{basketCost.total | currency:"INR"}}</p>
+            <p>{{ basketCost.total | currency : "INR" }}</p>
           </div>
         </div>
         <div class="checkOut">
-            <button>Proceed Checkout</button>
+          <button><a routerLink="/checkout">Proceed checkout</a></button>
         </div>
       </div>
     </div>

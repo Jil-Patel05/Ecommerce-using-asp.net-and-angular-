@@ -1,35 +1,76 @@
 <div class="signUp">
-    <div class="signUpForm">
-      <div class="title">
-        <p>LOGIN</p>
-      </div>
-      <form action="" class="signUpFormcontent" [formGroup]="form">
-        <div class="form-floating inp">
-          <input
-            type="email"
-            required
-            class="form-control"
-            id="floatingInput"
-            autocomplete="off"
-            placeholder="name@example.com"
-            formControlName="email"
-          />
-          <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating inp">
-          <input
-            type="password"
-            required
-            class="form-control"
-            id="floatingPassword"
-            autocomplete="off"
-            placeholder="Password"
-            formControlName="password"
-          />
-          <label for="floatingPassword">Password</label>
-        </div>
-         <button (click)="onLogin()">LOGIN</button>
-      </form>
+  <div class="signUpForm">
+    <div class="title">
+      <p>LOGIN</p>
     </div>
+    <form action="" class="signUpFormcontent" [formGroup]="form">
+      <div class="form-floating inp">
+        <input
+         [ngClass]="(testInput1('email')) ? (testInput2('email') ? 'is-invalid' : 'is-valid') : null"
+          type="email"
+          required
+          class="form-control"
+          id="floatingInput"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="floatingInput">Email address</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('email').invalid &&
+            form.get('email').touched &&
+            form.get('email').errors['required']
+          "
+        >
+          Email address is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('email').invalid &&
+            form.get('email').touched &&
+            form.get('email').errors['email']
+          "
+        >
+          Email address not valid email</span
+        >
+      </div>
+      <div class="form-floating inp">
+        <input
+        [ngClass]="(testInput1('password')) ? testInput2('password') ? 'is-invalid' : 'is-valid' : null"
+          type="password"
+          required
+          class="form-control"
+          id="floatingPassword"
+          autocomplete="off"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="floatingPassword">Password</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('password').invalid &&
+            form.get('password').touched &&
+            form.get('password').errors['required']
+          "
+        >
+          Password is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            form.get('password').invalid &&
+            form.get('password').touched &&
+            form.get('password').errors['minlength']
+          "
+        >
+          password has atleast 8 characters</span
+        >
+      </div>
+      <button (click)="onLogin()">LOGIN</button>
+    </form>
   </div>
-  
+</div>

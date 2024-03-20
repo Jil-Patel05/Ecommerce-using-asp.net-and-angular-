@@ -1,0 +1,45 @@
+<div *ngIf="(basket$ | async) as basket" class="mainCart">
+    <div class="cartPage">
+      <div class="content" *ngIf="(view$ | async) as view">
+        <app-checkout-address [form]="form" *ngIf="view===1" >
+          
+        </app-checkout-address>
+        <app-delivery-method *ngIf="view===2" [form]="form" [delivery]="delivery">
+
+        </app-delivery-method>
+        <app-checkout-order *ngIf="view===3" [form]="form">
+
+        </app-checkout-order>
+      </div>
+      <div class="cost" *ngIf="(basketCost$ | async) as basketCost">
+        <div class="costDetails">
+          <div class="summary">
+            <p>Order Summary</p>
+          </div>
+          <div class="shippingInfo">
+           <p>
+           shipping costs will be added depending upon Address
+          </p> 
+          </div>
+          <div class="charges">
+            <div class="ChargesDetail"><p>Total Subtotal</p></div>
+            <div class="charge">
+              <p>{{basketCost.subTotal | currency:"INR"}}</p>
+            </div>
+          </div>
+          <div class="charges">
+            <div class="ChargesDetail"><p>Shipping and handling</p></div>
+            <div class="charge">
+              <p>{{basketCost.shipping | currency:"INR"}}</p>
+            </div>
+          </div>
+          <div class="charges">
+            <div class="ChargesDetail"><p>Total</p></div>
+            <div class="charge">
+              <p>{{basketCost.total | currency:"INR"}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

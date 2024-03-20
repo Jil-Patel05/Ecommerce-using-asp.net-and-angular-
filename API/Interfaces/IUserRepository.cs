@@ -15,5 +15,6 @@ namespace API.Interfaces
         public Task updateOrAddAddressAsync(adressDTO ad, int id);
         public Task<bool> reserPassword(reset rs);
 
+        public Task<bool> fileUplaod(int userID, string dpPath);
     }
 }

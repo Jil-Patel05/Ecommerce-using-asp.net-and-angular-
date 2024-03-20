@@ -95,17 +95,17 @@ namespace API.Repository
 
         public async Task<bool> reserPassword(reset rs)
         {
-            string s = "select password from user where userID=@id";
+            string s = "select password from user where email=@email";
 
-            var res = await _conn.QueryAsync<dynamic>(s, new { id = rs.userID, pass = rs.password }) as List<dynamic>;
+            var res = await _conn.QueryAsync<dynamic>(s, new { email = rs.email, pass = rs.password }) as List<dynamic>;
             bool match = HashPassword.DecryptPassword(rs.password, res[0].password);
             if (!match)
             {
                 return true;
             }
             string password = HashPassword.EncryptPassword(rs.nwPassword);
-            string upAddress = "UPDATE user SET password=@password WHERE userID=@id";
-            var af1 = await _conn.ExecuteAsync(upAddress, new { password = password, id = rs.userID });
+            string upAddress = "UPDATE user SET password=@password WHERE email=@email";
+            var af1 = await _conn.ExecuteAsync(upAddress, new { password = password, email = rs.email });
             return false;
         }
 
@@ -129,7 +129,6 @@ namespace API.Repository
                 city = res[0].city,
                 state = res[0].state,
                 zipCode = res[0].zipCode
-
             };
         }
 
@@ -148,6 +147,18 @@ namespace API.Repository
             }
             string upAddress = "UPDATE address SET street=@street,city=@city,state=@state,zipCode=@zipCode WHERE userID=@id";
             var af1 = await _conn.ExecuteAsync(upAddress, new { street = ad.street, city = ad.city, state = ad.state, zipCode = ad.zipCode, id = id });
+        }
+
+        
+        public async Task<bool> fileUplaod(int userID,string dbPath)
+        {
+
+            string s = "update user SET userProfileUrl=@dbPath where userID=@userID";
+
+            var res = await _conn.QueryAsync<dynamic>(s, new {dbPath=dbPath, userID = userID });
+             
+            return true;
+
         }
 
 

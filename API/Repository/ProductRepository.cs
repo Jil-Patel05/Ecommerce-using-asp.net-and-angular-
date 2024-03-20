@@ -42,10 +42,8 @@ namespace API.Repository
         public async Task<productWithPageDTO> GetProductsAsync(string? sort, int? brandID, int? typeID,string? search, int pageNumber, int pageSize)
         {
             
-            // Console.WriteLine( sort);
-            // Console.WriteLine( brandID);
-            // Console.WriteLine( typeID);
-            string products = "select p.productID,p.productName,p.productDescription,p.price,p.numberOfProduct,et.typeName,p.productTypeID,eb.brandName,p.productBrandID from productinfo as p inner join enumproductbrand as eb on p.productBrandID=eb.productBrandID inner join enumproducttype as et on p.productTypeID=et.productTypeID";
+        
+            string products = "select p.productID,p.productName,p.productDescription,p.price,p.numberOfProduct,et.typeName,p.productTypeID,eb.brandName,p.productBrandID,p.noOfReviews,p.productRating from productinfo as p inner join enumproductbrand as eb on p.productBrandID=eb.productBrandID inner join enumproducttype as et on p.productTypeID=et.productTypeID";
 
             bool isBrandOrTypePresent = false;
             if (brandID != null && typeID != null)
@@ -82,7 +80,7 @@ namespace API.Repository
                 products += " order by p.productName";
             }
             string searchKey = "%" + search + "%";
-            // Console.WriteLine(products);
+            
             List<Product> pr = await _conn.QueryAsync<Product>(products, new { brandID = brandID, typeID = typeID, take = pageSize, skip = (pageNumber-1)*pageSize,search=searchKey }) as List<Product>;
             List<Product> productsToReturn = new List<Product>();
             

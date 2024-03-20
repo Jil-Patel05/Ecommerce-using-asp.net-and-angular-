@@ -9,7 +9,7 @@ namespace API.DTO
     public class reset
     {
         [Required]
-        public int userID { get; set; }
+        public string email { get; set; }
         [Required]
         [MinLength(8)]
         public string password { get; set; }

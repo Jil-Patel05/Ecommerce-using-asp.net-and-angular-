@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="cartHeader">
+    <p>Product</p>
+    <p>Quantity</p>
+    <p>Subtotal</p>
+  </div>
+  <div class="cartContainer" *ngFor="let item of basket.items; let i = index">
+    <div class="CartItemCard" *ngIf="basket$ | async as basket">
+      <img src="{{ basket.items[i].productUrl }}" alt="ssa" />
+      <div>
+        <a routerLink="/shop/{{ basket.items[i].productID }}">{{
+          basket.items[i].productName
+        }}</a>
+        <span>Price: {{ basket.items[i].price | currency : "INR" }}</span>
+      </div>
+    </div>
+    <div class="cartInput">
+        <button>-</button>
+        {{item.numberOfProduct}}
+        <button>+</button>
+    </div>
+    <p class="cartSubtotal">
+      {{ item.numberOfProduct * item.price | currency : "INR" }}
+    </p>
+  </div>
+  <div class="checkOut">
+    <button class="back" (click)="back()">Back to Delivery</button>
+    <button class="proceed" (click)="proceedPayment()">Proceed Payment</button>
+  </div>
+</div>
