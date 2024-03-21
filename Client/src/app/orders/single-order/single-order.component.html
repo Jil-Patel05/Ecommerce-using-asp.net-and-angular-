@@ -29,17 +29,17 @@
         </div>
         <div class="cartItems">
           <p>
-            {{ item.price }}
+            {{ item.price | currency }}
           </p>
         </div>
         <div class="cartItems">
           <p>
-            {{ item.numberOfProduct }}
+            {{ item.numberOfProducts }}
           </p>
         </div>
         <div class="cartItems">
           <p>
-            {{ item.numberOfProduct * item.price | currency : "INR" }}
+            {{ item.numberOfProducts * item.price | currency}}
           </p>
         </div>
       </div>

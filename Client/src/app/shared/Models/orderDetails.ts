@@ -6,7 +6,7 @@ export interface Detail {
   productUrl: string;
   productName: string;
   price: number;
-  numberOfProduct: number;
+  numberOfProducts: number;
   orderStatus: string;
   shippingCost: number;
   total: number;

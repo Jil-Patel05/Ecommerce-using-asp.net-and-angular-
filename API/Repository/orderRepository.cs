@@ -61,6 +61,10 @@ namespace API.Repository
 
             List<UserOrderDTO> uo = await _conn.QueryAsync<UserOrderDTO>(userOrder, new { Oid = orderID }) as List<UserOrderDTO>;
 
+            // foreach(var a in uo){
+            //     Console.WriteLine(a.numberOfProducts);
+            // }
+
             return uo;
         }
 

@@ -10,7 +10,6 @@
     margin-top: 1.5rem;
     display: flex;
     width: 100vw;
-    height: 30rem;
     max-width: 100%;
     flex-direction: column;
     align-items: center;
@@ -39,6 +38,15 @@
   
   .profileContainer > div:first-child > img:hover {
     transform: scale(1.05);
+  }
+  .inp{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    input{
+      width: 100%;
+    }
   }
   
   .profileContainer > div:first-child > a {
@@ -168,8 +176,19 @@
       font: 400 1.7vmax "Roboto";
       padding: 1vmax;
     }
+    .inp{
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      input{
+        width: 60%;
+      }
+    }
   
     .profileContainer > div:last-child {
+      margin-top: 0rem;
       text-align: center;
       align-items: center;
     }
@@ -198,11 +217,36 @@
     .profileContainer > div:first-child > img {
       width: 60%;
     }
+    .inp{
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      input{
+        width: 80%;
+      }
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .profileContainer > div:first-child > img {
+      width: 80%;
+   }
   }
 
   @media screen and (max-width: 350px) {
 
     .profileContainer > div:first-child > img {
-      width: 70%;
+       width: 90%;
+    }
+    .inp{
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      input{
+        width: 100%;
+      }
     }
   }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap");
 .checkoutAddress {
   width: 95%;
   .title {
@@ -42,28 +42,28 @@
         color: green;
         min-height: 2.5rem;
       }
-      button:hover{
-        background-color:green;
+      button:hover {
+        background-color: green;
         color: white;
         transition: all 0.3s;
       }
     }
   }
-  .addressContent{
+  .addressContent {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    .inp{
+    .inp {
       width: 45%;
       margin-right: 1.5rem;
-    margin-top:1rem;
-      input{
+      margin-top: 1rem;
+      input {
         width: 100%;
       }
     }
-}
-.checkOut {
+  }
+  .checkOut {
     display: flex;
     justify-content: flex-end;
     margin-top: 2rem;
@@ -77,89 +77,160 @@
       width: 10rem;
       height: 2.5rem;
       cursor: pointer;
-        color: white;
+      color: white;
     }
     button:hover {
       background-color: #f5f5f5;
-        color: tomato;
+      color: tomato;
       transition: all 0.2s;
     }
   }
 }
 @media screen and (max-width: 850px) {
-    .cartPage {
+  .checkoutAddress {
+    width: 100%;
+  }
+  .cartPage {
+    display: flex;
+    flex-direction: column;
+    .content {
+      width: 100%;
+    }
+    .cost {
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      .content {
-        width: 100%
+      justify-content: center;
+      .costDetails {
+        width: 50%;
       }
-      .cost {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        .costDetails{
-          width: 50%;
-        }
-      }
-    }
-    .costDetails {
-      margin-top: 2rem;
     }
   }
-  @media screen and (max-width: 700px) {
-    .checkoutAddress {
-        width: 98%;
-        .addressContent{
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          flex-wrap:wrap;
-          .inp{
-            width: 90%;
-          }
+  .costDetails {
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .checkoutAddress {
+    width: 100%;
+    .addressContent {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      .inp {
+        width: 90%;
       }
     }
-    .checkOut {
-        display: flex;
-        justify-content: center;
-    }
   }
-  @media screen and (max-width: 600px) {
-    .checkoutAddress {
-      width: 95%;
-      .title {
+  .checkOut {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .checkoutAddress {
+    width: 100%;
+    .title {
+      p {
+        font-size: 1rem;
+      }
+    }
+    .userAddress {
+      .user {
         p {
           font-size: 1rem;
         }
       }
-      .userAddress {
-        .user {
-          p {
-            font-size: 1rem;
-          }
-        }
-        .defaultAddress {
-          button {
-            font-size: 1rem;
-          }
+      .defaultAddress {
+        button {
+          font-size: 1rem;
         }
       }
     }
-    .cartPage {
+  }
+  .cartPage {
+    display: flex;
+    flex-direction: column;
+    .content {
+      width: 100%;
+    }
+    .cost {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .costDetails {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .checkoutAddress {
+    width: 100%;
+    .title {
+      height: 2.7rem;
+      p {
+        font-size: 1.1rem;
+      }
+    }
+    .userAddress {
+      margin-left: 0rem;
+      .user {
+        p {
+          font-size: 1rem;
+        }
+      }
+      .defaultAddress {
+        margin-right: 0rem;
+        button {
+          font-size: 0.8rem;
+          border-radius: 0.4rem;
+          min-height: 2rem;
+        }
+      }
+    }
+    .addressContent {
+      width: 100%;
+      .inp {
+        margin-right: 0rem;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+    }
+    .checkOut {
+      button {
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        width: 9rem;
+        height: 2.3rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .checkoutAddress {
+    .userAddress {
       display: flex;
       flex-direction: column;
-      .content {
-        width: 100%
+      align-items: flex-start;
+      .user {
+        margin-left: 0rem;
+        p {
+          font-size: 1rem;
+        }
       }
-      .cost {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        .costDetails{
-          width: 80%;
+      .defaultAddress {
+        margin-left: 0rem;
+        margin-top: 0.5rem;
+        button {
+          font-size: 0.8rem;
+          border-radius: 0.4rem;
+          min-height: 2rem;
         }
       }
     }
-    
   }
-  
+}

@@ -103,7 +103,7 @@
               aria-labelledby="button-alignment"
             >
               <li role="menuitem" style="cursor: pointer">
-                <a class="dropdown-item" routerLink="/account/user">
+                <a class="dropdown-item" routerLink="/account/user"  (click)="onBurgerMenu()">
                   <div
                     style="
                       display: flex;
@@ -117,7 +117,7 @@
                 >
               </li>
               <li role="menuitem" class="cartMenu" style="cursor: pointer">
-                <a class="dropdown-item" routerLink="/orders">
+                <a class="dropdown-item" routerLink="/basket"  (click)="onBurgerMenu()">
                   <div
                     style="
                       display: flex;
@@ -133,7 +133,7 @@
                 >
               </li>
               <li role="menuitem" style="cursor: pointer">
-                <a class="dropdown-item" routerLink="/orders">
+                <a class="dropdown-item" routerLink="/orders"  (click)="onBurgerMenu()">
                   <div
                     style="
                       display: flex;
@@ -148,7 +148,7 @@
               </li>
               <li class="divider dropdown-divider"></li>
               <li role="menuitem" style="cursor: pointer">
-                <a class="dropdown-item" (click)="logout()">
+                <a class="dropdown-item" (click)="logout()"  (click)="onBurgerMenu()">
                   <div
                     style="
                       display: flex;

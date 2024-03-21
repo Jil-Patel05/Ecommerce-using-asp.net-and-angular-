@@ -12,10 +12,10 @@ namespace API.DTO
         public string productUrl { get; set; }
         public string productName { get; set; }
         public decimal price { get; set; }
-        public int numberOfProduct { get; set; }
+        public int numberOfProducts { get; set; }
         public string orderStatus { get; set; }
-         public decimal subTotal { get; set; }
-         public decimal shippingCost { get; set; }
+        public decimal subTotal { get; set; }
+        public decimal shippingCost { get; set; }
         public decimal total { get; set; }
 
     }
