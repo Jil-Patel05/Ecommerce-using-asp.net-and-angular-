@@ -5,7 +5,7 @@ import { ProductItemsComponent } from './product-items/product-items.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ShopRoutingModule } from './shop-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { RatingModule, RatingConfig } from 'ngx-bootstrap/rating';
 
@@ -26,6 +26,7 @@ import { RatingModule, RatingConfig } from 'ngx-bootstrap/rating';
     FormsModule,
     CarouselModule.forRoot(),
     RatingModule,
+    ReactiveFormsModule
   ],
 })
 export class ShopModule { }

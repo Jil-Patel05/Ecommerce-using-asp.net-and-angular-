@@ -1,25 +1,50 @@
-<div class="caro" style="margin-top: 5rem;width:100vw;">
+<div class="caro" style="margin-top: 4.5rem; width: 100vw">
   <div class="carImage">
-  <carousel style="width:80% ; height: 26rem;">
-    <slide class="image">
-      <img
-        src="assets/Images/item1.jpg"
-        alt="f"
-        style="display: block"
-      />
-    </slide>
-    <slide class="image">
-      <img
-        src="assets/Images/item2.jpg"
-        alt="f"
-        style="display: block"
-      />
-    </slide>
-  </carousel>
-</div>
+    <carousel class="carousel">
+      <slide class="image">
+        <img src="assets/Images/item1.jpg" alt="f" style="display: block" />
+      </slide>
+      <slide class="image">
+        <img src="assets/Images/item2.jpg" alt="f" style="display: block" />
+      </slide>
+    </carousel>
+  </div>
 </div>
 <section class="featured">
-  <div class="d-flex justify-content-center pt-4">
+  <div class="shopHeading">
     <h1>Welcome to Shop!</h1>
+  </div>
+  <div class="features">
+    <p>LATEST PRODUCTS</p>
+  </div>
+  <div class="products">
+    <div class="product" *ngFor="let item of products">
+      <div class="img">
+        <img
+          src="{{item.productUrl}}"
+          alt=""
+        />
+      </div>
+      <div class="content">
+        <div class="title">
+          <a routerLink="/shop/{{item.productID}}">
+            {{item.productName}}
+          </a>
+        </div>
+        <div class="stars">
+          <p>
+            <rating [readonly]="true" [(ngModel)]="item.productRating"></rating>
+          </p>
+        </div>
+        <div class="reviews">
+          <p>
+            {{item.noOfReviews}} Reviews
+          </p>
+        </div>
+        <div class="price">
+          <p>{{item.price| currency}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

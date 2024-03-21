@@ -9,13 +9,14 @@ import { map } from 'rxjs';
 })
 export class ShopService {
   http: HttpClient = inject(HttpClient);
+  private baseUrl = 'https://localhost:7067/api';
 
-  private getAllProduct: string =
-    'https://localhost:7067/api/Product/getAllProducts';
-  private getProductEnum: string =
-    'https://localhost:7067/api/Product/getProductEnumData';
-    private getProduct: string =
-    'https://localhost:7067/api/Product/getProduct/';
+  private getAllProduct: string = this.baseUrl + '/Product/getAllProducts';
+  private getProductEnum: string = this.baseUrl + '/Product/getProductEnumData';
+  private getProduct: string = this.baseUrl + '/Product/getProduct/';
+  private addReviewUrl: string = this.baseUrl + '/Product/addreviews';
+  private getIntialProduct: string = this.baseUrl + '/Product/getinitialproduct';
+
 
   getProducts(
     sort?: string,
@@ -58,5 +59,12 @@ export class ShopService {
   }
   getProductEnums() {
     return this.http.get<Enum>(this.getProductEnum);
+  }
+  addReviews(val: any) {
+    return this.http.post(this.addReviewUrl, val);
+  }
+
+  getHomeProduct() {
+    return this.http.get(this.getIntialProduct);
   }
 }

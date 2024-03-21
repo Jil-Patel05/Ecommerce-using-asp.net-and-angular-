@@ -1,0 +1,249 @@
+.caro {
+  height: 24rem;
+}
+.caro .carImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.caro .carImage .carousel {
+  width: 84%;
+  height: 24rem;
+}
+
+.image img {
+  border-radius: 0.4rem;
+  width: 100%;
+  height: 24rem;
+}
+
+.featured {
+  width: 100vw;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.featured .shopHeading {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.featured .shopHeading p {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.featured .features {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.featured .features p {
+  width: 18rem;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.082);
+}
+.featured .products {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.featured .products .product {
+  width: 18rem;
+  border: 1px solid #cacaca;
+  border-radius: 0.2rem;
+  padding: 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1.6rem;
+}
+.featured .products .product .img {
+  width: 100%;
+}
+.featured .products .product .img img {
+  width: 100%;
+  height: 11rem;
+}
+.featured .products .product .content {
+  width: 100%;
+  padding: 0.2rem;
+}
+.featured .products .product .content .title {
+  width: 100%;
+  margin-top: 1rem;
+}
+.featured .products .product .content .title a {
+  width: 100%;
+  color: #565656;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+}
+.featured .products .product .content .price {
+  margin-top: 1rem;
+}
+.featured .products .product .content .price p {
+  font-size: 1.3rem;
+  letter-spacing: 1.2px;
+  color: #565656;
+}
+.featured .products .product .content .reviews p {
+  color: #565656;
+}
+.featured .products .product .content rating {
+  font-size: 1.8rem;
+  color: #ffc107;
+}
+.featured .products .product:hover {
+  transform: scale3d(1.02, 1.02, 1.02);
+  transition: all 0.3s;
+}
+
+@media screen and (min-width: 1600px) and (max-width: 2400px) {
+  .caro {
+    height: 34rem;
+  }
+  .caro .carImage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .caro .carImage .carousel {
+    width: 84%;
+    height: 34rem;
+  }
+  .image img {
+    border-radius: 0.4rem;
+    width: 100%;
+    height: 34rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .featured .shopHeading h1 {
+    font-size: 2rem;
+  }
+  .featured .features p {
+    font-size: 1.4rem;
+  }
+  .featured .products {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .featured .products .product:hover {
+    transform: scale3d(1.02, 1.02, 1.02);
+    transition: all 0.3s;
+  }
+  .featured .products .product {
+    width: 18rem;
+    border: 1px solid #cacaca;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1.6rem;
+  }
+  .featured .products .product .img {
+    width: 100%;
+  }
+  .featured .products .product .img img {
+    width: 100%;
+    height: 11rem;
+  }
+  .featured .products .product .content {
+    padding: 0.2rem;
+  }
+  .featured .products .product .content p {
+    margin-bottom: 0rem;
+  }
+  .featured .products .product .content .title {
+    margin-top: 1rem;
+  }
+  .featured .products .product .content .title a {
+    color: #565656;
+    font-size: 1.2rem;
+  }
+  .featured .products .product .content .price {
+    margin-top: 1rem;
+  }
+  .featured .products .product .content .price p {
+    font-size: 1.3rem;
+    letter-spacing: 1.2px;
+    color: #565656;
+  }
+  .featured .products .product .content .reviews p {
+    color: #565656;
+  }
+  .featured .products .product .content rating {
+    font-size: 1.8rem;
+    color: #ffc107;
+  }
+}
+@media screen and (max-width: 500px) {
+  .caro {
+    height: 18rem;
+    margin-top: 3.6rem !important;
+  }
+  .caro .carImage {
+    width: 100%;
+  }
+  .caro .carImage .carousel {
+    width: 84%;
+    height: 28rem;
+  }
+  .image img {
+    border-radius: 0.4rem;
+    width: 100%;
+    height: 18rem;
+  }
+  .featured .shopHeading p {
+    font-size: 24rem;
+  }
+  .featured .features p {
+    font-size: 1.4rem;
+  }
+  .featured .products {
+    width: 85%;
+  }
+  .featured .products .product {
+    width: 18rem;
+  }
+  .featured .products .product .img img {
+    width: 100%;
+    height: 11rem;
+  }
+}
+@media screen and (max-width: 325px) {
+  .caro {
+    height: 18rem;
+    margin-top: 3rem !important;
+  }
+  .caro .carImage {
+    width: 100%;
+  }
+  .caro .carImage .carousel {
+    width: 94%;
+    height: 25rem;
+  }
+  .products {
+    width: 98%;
+  }
+  .products .product {
+    width: 18rem;
+  }
+}
+/*# sourceMappingURL=home.component.css.map */

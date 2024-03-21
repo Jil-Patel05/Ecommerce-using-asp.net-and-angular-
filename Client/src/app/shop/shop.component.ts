@@ -40,6 +40,7 @@ export class ShopComponent implements OnInit {
         this.count = this.products.count;
         this.pageNumber = this.products.pageNumber;
         this.getEnums();
+        console.log(res);
       },
       error: (err) => {
         console.log(err.error);

@@ -1,54 +1,246 @@
-.navLogo {
-  margin-right: auto;
-  height: 2.8rem;
-  width: 10rem;
-}
-.navItems {
-  a {
-    text-decoration: none;
-    font-size: 1.1rem;
-  }
-}
-.loginSign {
-  margin-left: auto;
+.navbar {
+  width: 100vw;
+  padding: 0rem 3rem 0rem 1.5rem;
+  min-height: 4rem;
   display: flex;
   align-items: center;
-  a {
-    text-decoration: none;
-  }
-  .cartBtn {
+  position: fixed;
+  background-color: white;
+  z-index: 999;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+.navbarItem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 43% 57%;
+  .img {
     display: flex;
     align-items: center;
-    margin-right: 1.5rem;
-    .cartNumber {
-      position: absolute;
-      min-width: 18px;
-      max-height: 18px;
-      border-radius: 50%;
-      color: white;
-      background-color: orangered;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: -6px;
-      right: -6px;
+    img {
+      width: 8rem;
+      height: 2.5rem;
     }
   }
-  .lsBtn {
-    margin-right: 1rem;
+  .mainMenu {
+    display: flex;
+    align-items: center;
+    .items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      li {
+        list-style: none;
+        margin-right: 1.5rem;
+        .links {
+          text-decoration: none;
+          color: black;
+        }
+        .linkActive {
+          color: orange;
+        }
+      }
+    }
+    .basket {
+      margin-left: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .cart {
+        .cartBtn {
+          display: flex;
+          align-items: center;
+          margin-right: 1.5rem;
+          .cartNumber {
+            position: absolute;
+            min-width: 18px;
+            max-height: 18px;
+            border-radius: 50%;
+            color: white;
+            background-color: orangered;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -6px;
+            right: -6px;
+          }
+        }
+      }
+      .logSign {
+        .lsBtn {
+          margin-right: 1rem;
+        }
+        .logSignLink {
+          color: orange;
+        }
+      }
+    }
+    transition: all 0.3s ease-in-out;
   }
 }
-.links{
-  color: black;
-}
-.linkActive {
-  color: orange;
-}
 
-.headerName{
+.hamburger {
+  display: none;
+}
+.headerName {
   background-color: white;
   color: black;
   border: none;
   outline: none;
 }
+@media screen and (max-width: 900px) {
+  .navbarItem {
+    grid-template-columns: 39% 61%;
+    .mainMenu {
+      .basket {
+        .cart {
+          .cartBtn {
+            margin-right: 0.8rem !important;
+          }
+        }
+      }
+    }
+  }
+}
 
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0rem 0.8rem 0rem 0.8rem;
+  }
+  .navbarItem {
+    grid-template-columns: 38% 62%;
+  }
+  .navbarItem .mainMenu .items li .links {
+    font-size: 0.94rem;
+  }
+  .headerName[_ngcontent-ng-c709816308] {
+    font-size: 0.94rem;
+  }
+  .hamburger {
+    display: block;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 0.2rem;
+    z-index: 1000;
+  }
+  .navbarItem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .img {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      .compImg {
+        img {
+          width: 8rem;
+          height: 2.5rem;
+        }
+      }
+    }
+    .closeMenu {
+      width: 0rem;
+      .items {
+        display: none;
+      }
+      .basket {
+        width: 0rem;
+        .cart {
+          display: none !important;
+        }
+        .logSign {
+          display: none;
+        }
+        .wlcUser {
+          display: none;
+        }
+      }
+      transition: all 0.3s ease-in;
+    }
+    .showMenu {
+      width: 40vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      .items {
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        li {
+          margin-top: 1rem;
+          margin-right: 0rem;
+        }
+      }
+      .basket {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .cart {
+          display: none !important;
+        }
+        .logSign {
+          display: flex;
+          flex-direction: column;
+          .lsBtn {
+            padding: 0rem;
+            margin-top: 1rem;
+            border: none;
+            color: black;
+            text-transform: uppercase;
+            font-size: 0.94rem;
+            margin-right: 0rem;
+          }
+          .lsBtn:hover {
+            background-color: white !important;
+            color: black !important;
+          }
+        }
+        .wlcUser {
+          margin-top: 1rem;
+          display: block;
+        }
+      }
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .navbarItem {
+    .showMenu {
+      width: 50vw;
+      .basket {
+        .wlcUser {
+          .dropdown-menu.show {
+            margin-left: 1rem !important;
+          }
+          ul {
+            li {
+              a {
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 410px) {
+  .navbarItem {
+    .showMenu {
+      width: 70vw;
+    }
+  }
+}

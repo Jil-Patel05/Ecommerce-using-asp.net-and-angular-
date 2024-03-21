@@ -28,8 +28,8 @@
       {{ product.price | currency : "INR" }}
     </p>
     <p>
-      <!-- <p-rating [(ngModel)]="value"  [readonly]="true" [cancel]="false"></p-rating> -->
+      <rating [readonly]="true" [(ngModel)]="product.productRating"></rating>
     </p>
-    <p>(2 reviews)</p>
+    <p>{{product.noOfReviews}} Reviews</p>
   </div>
 </div>

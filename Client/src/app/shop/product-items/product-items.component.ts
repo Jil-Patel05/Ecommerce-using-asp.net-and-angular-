@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { BasketService } from 'src/app/basket/basket.service';
 import { Product } from 'src/app/shared/Models/product';
 
@@ -9,9 +9,12 @@ import { Product } from 'src/app/shared/Models/product';
 })
 export class ProductItemsComponent implements OnInit {
   @Input() product: Product;
+  ratingValue: number;
   basketService: BasketService = inject(BasketService);
   
   ngOnInit(): void {
+    this.ratingValue = 2;
+    console.log(this.ratingValue);
   }
 
   addItem() {

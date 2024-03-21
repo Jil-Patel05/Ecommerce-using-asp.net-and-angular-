@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Models;
 
 namespace API.DTO
 {
@@ -23,6 +24,9 @@ namespace API.DTO
         public List<string>? productUrl { get; set; }
         public string typeName { get; set; }
         public string brandName { get; set; }
+        public int noOfReviews { get; set; }
+        public decimal productRating { get; set; }
+        public List<Reviews> reviewInfo { get; set; }
     }
 
    

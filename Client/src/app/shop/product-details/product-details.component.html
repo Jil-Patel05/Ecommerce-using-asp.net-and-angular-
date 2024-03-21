@@ -14,12 +14,13 @@
       <div class="ratings">
         <rating [max]="5" [(ngModel)]="value"> </rating>
       </div>
-      <div class="textInput">
+      <div class="textInput" [formGroup]="form">
         <textarea
           name=""
           id=""
           rows="6"
           placeholder="Write Your review"
+          formControlName="userReview"
         ></textarea>
       </div>
       <div class="btn">
@@ -27,7 +28,7 @@
           <button (click)="reviewInputCard()">CANCEL</button>
         </div>
         <div class="submitBtn">
-          <button (click)="reviewInputCard()">SUBMIT</button>
+          <button (click)="onSubmit()">SUBMIT</button>
         </div>
       </div>
     </div>
@@ -48,7 +49,8 @@
         <p class="price">{{ product.price | currency : "INR" }}</p>
       </div>
       <div class="detailsBlock-2">
-        <span class="detailsBlock-2-span"> (2 Reviews) </span>
+        <span class="detailsBlock-2-span"> <rating [readonly]="true" [(ngModel)]="product.productRating"></rating>
+        </span>
       </div>
       <div class="detailsBlock-3">
         <h1></h1>
@@ -86,20 +88,25 @@
       <div class="title">
         <p>REVIEWS</p>
       </div>
-      <div class="rivContent">
-        <div class="content" *ngFor="let i of r">
+      <div class="rivContent" *ngIf="product!==undefined">
+        <div class="noReview" *ngIf="product.reviewInfo.length===0">
+          <p>
+            <strong>0</strong> reviews available 
+          </p>
+       </div>
+        <div class="content" *ngFor="let r of product.reviewInfo">
           <div class="img">
             <img src="https://cdn.icon-icons.com/icons2/1369/PNG/512/-account-circle_89831.png" alt="" />
           </div>
           <div class="fullname">
-            <p>Full name</p>
+            <p>{{r.userFullName}}</p>
           </div>
           <div class="rating">
-             <rating class="revRating" [readonly]="true" [(ngModel)]="value">
+             <rating class="revRating" [readonly]="true" [(ngModel)]="r.userRating">
              </rating>
           </div>
           <div class="revMsg">
-            <p>Nice product</p>
+            <p>{{r.userReview}}</p>
           </div>
         </div>
       </div>

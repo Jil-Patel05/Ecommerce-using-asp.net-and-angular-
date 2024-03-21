@@ -156,6 +156,10 @@
 .submitReview:hover {
   background-color: rgb(197, 68, 45);
 }
+rating {
+  font-size: 2rem;
+  color: #ffc107;
+}
 .reviews {
   width: 100vw;
   min-height: 100%;
@@ -297,6 +301,7 @@
         width: 15rem;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
         border: 1px solid rgba(56, 56, 56, 0.116);
+        min-height: auto;
         .img {
           display: flex;
           justify-content: center;

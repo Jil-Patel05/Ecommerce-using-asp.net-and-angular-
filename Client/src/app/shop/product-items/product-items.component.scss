@@ -41,8 +41,8 @@
     border-radius: 0.2rem;
   }
   button:hover {
-    background-color:white;
-    color: #ff6347de
+    background-color: white;
+    color: #ff6347de;
   }
   opacity: 0;
   top: 50%;
@@ -57,11 +57,15 @@
     color: #ac420a;
     font-size: 1.1rem;
   }
-  .price{
+  .price {
     margin-top: 0.7rem;
   }
   p {
     margin-bottom: 0rem;
     font-size: 0.9rem;
+  }
+  rating {
+    font-size: 1.3rem;
+    color: #ffc107;
   }
 }

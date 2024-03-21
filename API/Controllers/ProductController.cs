@@ -14,6 +14,13 @@ namespace API.Controllers
         {
             this._product = product;
         }
+        [HttpGet("getinitialproduct")]
+        public async Task<ActionResult<List<HomeProduct>>> getInitialProduct(){
+            List<HomeProduct> lp = await _product.getInitialProduct();
+
+            return lp;
+        }
+
 
         [HttpGet("getAllProducts")]
         public async Task<ActionResult<productWithPageDTO>> GetProducts(string? sort, int? brandID, int? typeID,string? search, int pageNumber = 1, int pageSize = 1)
@@ -68,8 +75,18 @@ namespace API.Controllers
                 numberOfProduct=pr.numberOfProduct,
                 productUrl = pr.productUrl,
                 typeName = pr.typeName,
-                brandName = pr.brandName
+                brandName = pr.brandName,
+                noOfReviews=pr.noOfReviews,
+                productRating=pr.productRating,
+                reviewInfo=pr.reviewsInfo
             };
+        }
+        [HttpPost("addreviews")]
+        public async Task<ActionResult<bool>> addProductReview(UserReview ur)
+        {
+            bool res = await _product.addProductReviewAsync(ur);
+
+            return res;
         }
         [HttpGet("getProductEnumData")]
         public async Task<ActionResult<enumProductDataDTO>> enumProduct()
@@ -77,5 +94,6 @@ namespace API.Controllers
             enumProductDataDTO e = await _product.GetProductEnumData();
             return e;
         }
+
     }
 }

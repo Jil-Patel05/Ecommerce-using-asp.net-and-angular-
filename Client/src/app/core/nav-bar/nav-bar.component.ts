@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
   userData: any;
   firstName: string;
   displayLoginSign: boolean = true;
+  show: boolean = false;
 
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
@@ -28,5 +29,8 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.account.logout();
     this.displayLoginSign = true;
+  }
+  onBurgerMenu(){
+    this.show = !this.show;
   }
 }

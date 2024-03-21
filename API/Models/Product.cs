@@ -33,8 +33,8 @@ namespace API.Models
         public int noOfReviews { get; set; }
         [Required]
         public decimal productRating { get; set; }
-
+        public List<Reviews>? reviewsInfo { get; set; }
 
     }
-    
+
 }
