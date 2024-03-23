@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -16,15 +16,15 @@ export class CheckoutService {
   }
 
   createOrder(value:any) {
-    return this.http.post(this.baseUrl + '/createOrder',value);
+    return this.http.post(this.baseUrl + '/createOrder',value,this.getHeaders());
   }
 
   getOrderByOrderID(id: number) {
-    return this.http.get(this.baseUrl + 'OrdereByOrderID?orderID=' + id);
+    return this.http.get(this.baseUrl + 'OrdereByOrderID?orderID=' + id,this.getHeaders());
   }
 
   getDeliveryMethods() {
-    return this.http.get(this.baseUrl + '/DeliveryMethod');
+    return this.http.get(this.baseUrl + '/DeliveryMethod',this.getHeaders());
   }
 
   setOrderID(orderID:number) {
@@ -32,5 +32,16 @@ export class CheckoutService {
   }
   getorderID() :number{
     return this.orderID;
+  }
+  getToken() {
+    const data: any = JSON.parse(localStorage.getItem('loginData')).token;
+    return data;
+  }
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.getToken()
+      })
+    };
   }
 }

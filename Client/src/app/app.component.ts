@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { BasketService } from './basket/basket.service';
 import { Basket } from './shared/Models/basket';
 import { AccountService } from './account/account.service';
@@ -8,7 +8,7 @@ import { Login } from './shared/Models/login';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,OnDestroy {
   title = 'Client';
   basketService: BasketService = inject(BasketService);
   account: AccountService = inject(AccountService);
@@ -33,5 +33,9 @@ export class AppComponent implements OnInit {
     else if (this.userData) {
       this.account.setUser();
     }
+  }
+  ngOnDestroy(): void {
+    localStorage.removeItem("formData");
+    localStorage.removeItem("setView");
   }
 }

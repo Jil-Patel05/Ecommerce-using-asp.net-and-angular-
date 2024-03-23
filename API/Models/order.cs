@@ -35,6 +35,8 @@ namespace API.DTO
 
         [Required]
         public int deliveryID { get; set; }
+        [Required]
+        public string paymentID { get; set; }
         public orderAddress orderAddress { get; set; }
         public List<orderProduct> orderProduct { get; set; }
 

@@ -1,7 +1,6 @@
 using API.DTO;
 using API.Models;
 using Dapper;
-using Microsoft.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace API.Repository
@@ -133,6 +132,7 @@ namespace API.Repository
                     productsToReturn[indexMapping[item.productID]].productUrl.Add(item.productUrl);
                 }
             }
+            
             productWithPageDTO prp = new productWithPageDTO()
             {
                 pageNumber = pageNumber,

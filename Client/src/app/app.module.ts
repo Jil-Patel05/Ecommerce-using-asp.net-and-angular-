@@ -7,14 +7,16 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { ContactComponent } from './contact/contact.component';
-import { AboutComponent } from './about/about.component';
 import { errorInterceptors } from './interceptors/error.interceptors';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FooterComponent } from './footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent, AboutComponent],
+  declarations: [AppComponent, ContactComponent, FooterComponent, NotfoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +29,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       preventDuplicates: true,
     }),
     NgxSpinnerModule.forRoot({ type: 'timer' }),
+    ReactiveFormsModule,
+    FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

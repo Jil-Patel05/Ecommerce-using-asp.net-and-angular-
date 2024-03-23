@@ -25,8 +25,8 @@ namespace API.Repository
         public async Task<UserOrder> createOrderAsync(order order)
         {
             int orderId;
-            string orderQuery = "insert into userorder(userID,email,subTotal,shippingCost,total,orderStatus,deliveryID)  values(@u,@e,@s,@sh,@t,@o,@d);select last_insert_id();";
-            List<int> id = await _conn.QueryAsync<int>(orderQuery, new { u = order.userID, e = order.email, s = order.subTotal,sh=order.shippingCost,t=order.total,o = order.orderStatus, d = order.deliveryID }) as List<int>;
+            string orderQuery = "insert into userorder(userID,email,subTotal,shippingCost,total,orderStatus,deliveryID,paymentID)  values(@u,@e,@s,@sh,@t,@o,@d,@p);select last_insert_id();";
+            List<int> id = await _conn.QueryAsync<int>(orderQuery, new { u = order.userID, e = order.email, s = order.subTotal,sh=order.shippingCost,t=order.total,o = order.orderStatus, d = order.deliveryID,p=order.paymentID }) as List<int>;
             orderId = id[0];
 
             string orderAddress = "insert into orderaddress(orderID,firstName,lastName,street,city,state,zipCode)  values(@a,@f,@l,@s,@c,@state,@z)";

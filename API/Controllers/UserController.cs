@@ -3,6 +3,7 @@ using API.DTO;
 using API.Errors;
 using API.Interfaces;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace API.Controllers
 {
     
+    [Authorize]
     public class UserController : BaseController
     {
         private readonly IUserRepository _user;
@@ -20,6 +22,7 @@ namespace API.Controllers
 
         [HttpPost("/register")]
         [ProducesResponseType(400)]
+        [AllowAnonymous]
         public async Task<ActionResult<RegisterDTO>> registerUser(user user)
         {
             RegisterDTO rg = await _user.registerUserAsync(user);
@@ -34,6 +37,7 @@ namespace API.Controllers
         [HttpPost("/login")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
+        [AllowAnonymous]
         public async Task<ActionResult<loginDTO>> loginUser(login user)
         {
             loginDTO lg = await _user.loginUserAsync(user);

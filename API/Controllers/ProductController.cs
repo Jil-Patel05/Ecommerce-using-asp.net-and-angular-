@@ -2,11 +2,13 @@ using API.DTO;
 using API.Errors;
 using API.Models;
 using API.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
 
+    [Authorize]
     public class ProductController : BaseController
     {
         private readonly IProductRepository _product;
@@ -15,7 +17,9 @@ namespace API.Controllers
             this._product = product;
         }
         [HttpGet("getinitialproduct")]
-        public async Task<ActionResult<List<HomeProduct>>> getInitialProduct(){
+        [AllowAnonymous]
+        public async Task<ActionResult<List<HomeProduct>>> getInitialProduct()
+        {
             List<HomeProduct> lp = await _product.getInitialProduct();
 
             return lp;
@@ -23,9 +27,10 @@ namespace API.Controllers
 
 
         [HttpGet("getAllProducts")]
-        public async Task<ActionResult<productWithPageDTO>> GetProducts(string? sort, int? brandID, int? typeID,string? search, int pageNumber = 1, int pageSize = 1)
+        [AllowAnonymous]
+        public async Task<ActionResult<productWithPageDTO>> GetProducts(string? sort, int? brandID, int? typeID, string? search, int pageNumber = 1, int pageSize = 1)
         {
-            productWithPageDTO pr = await _product.GetProductsAsync(sort, brandID, typeID,search, pageNumber, pageSize);
+            productWithPageDTO pr = await _product.GetProductsAsync(sort, brandID, typeID, search, pageNumber, pageSize);
 
 
             // you can store images in your server than use this images to send it to frontend
@@ -53,6 +58,7 @@ namespace API.Controllers
 
         }
         [HttpGet("getProduct/{id}")]
+        [AllowAnonymous]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(ApiResponses), 400)]
         [ProducesResponseType(typeof(ApiResponses), 404)]
@@ -72,13 +78,13 @@ namespace API.Controllers
                 productName = pr.ProductName,
                 productDescription = pr.productDescription,
                 price = pr.price,
-                numberOfProduct=pr.numberOfProduct,
+                numberOfProduct = pr.numberOfProduct,
                 productUrl = pr.productUrl,
                 typeName = pr.typeName,
                 brandName = pr.brandName,
-                noOfReviews=pr.noOfReviews,
-                productRating=pr.productRating,
-                reviewInfo=pr.reviewsInfo
+                noOfReviews = pr.noOfReviews,
+                productRating = pr.productRating,
+                reviewInfo = pr.reviewsInfo
             };
         }
         [HttpPost("addreviews")]
@@ -89,6 +95,7 @@ namespace API.Controllers
             return res;
         }
         [HttpGet("getProductEnumData")]
+        [AllowAnonymous]
         public async Task<ActionResult<enumProductDataDTO>> enumProduct()
         {
             enumProductDataDTO e = await _product.GetProductEnumData();

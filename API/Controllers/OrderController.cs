@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using API.DTO;
 using API.Interfaces;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class OrderController : BaseController
     {
         private readonly IOrderRepository _order;

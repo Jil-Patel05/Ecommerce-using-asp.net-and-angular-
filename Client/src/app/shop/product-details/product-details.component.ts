@@ -47,7 +47,6 @@ export class ProductDetailsComponent implements OnInit {
     .getSingleProduct(this.productID)
     .subscribe((res: Product) => {
       this.product = res;
-      console.log(this.product);
       this.numberOfProduct = this.product.numberOfProduct;
       this.bService.set('@productDetails', this.product.productName);
     });

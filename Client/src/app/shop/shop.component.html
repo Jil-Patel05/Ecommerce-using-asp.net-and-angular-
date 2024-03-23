@@ -1,104 +1,161 @@
 <div class="contain">
-  <div class="row shopContent">
-    <section class="col-md-4 col-lg-3 mainFilter" *ngIf="enums">
-      <h5 class="ml-3" style="color: orange">Sort</h5>
-      <select
-        class="form-select"
-        style="margin-bottom: 1rem; cursor: pointer"
-        #sort
-        (change)="selectSort(+sort.value)"
-      >
-        <option value="1" selected>Alphabetically</option>
-        <option value="2">Price: High to Low</option>
-        <option value="3">Price: Low to High</option>
-      </select>
-      <h5 class="ml-3" style="color: orange">Brands</h5>
-      <ul
-        class="list-group my-3"
-        style="cursor: pointer"
-        *ngIf="enums !== undefined"
-      >
-        <li
-          class="listHover list-group-item"
-          *ngFor="let brand of enums.enumBrand"
-          [ngClass]="{ BackColor: brand.productBrandID === this.brandID }"
-          [ngClass]="{ DefaultColor: this.brandID === null && brand.productBrandID===0 }"
-
-          (click)="onSelectBrand(brand.productBrandID)"
-        >
-          {{ brand.brandName }}
-        </li>
-      </ul>
-      <h5 class="ml-3" style="color: orange">Types</h5>
-      <ul
-        class="list-group my-3"
-        style="cursor: pointer"
-        *ngIf="enums !== undefined"
-      >
-        <li
-          class="listHover list-group-item"
-          *ngFor="let type of enums.enumType"
-          [ngClass]="{ BackColor: type.productTypeID == this.typeID }"
-          [ngClass]="{ DefaultColor: this.typeID === null && type.productTypeID===0 }"
-
-          (click)="onSelectType(type.productTypeID)"
-        >
-          {{ type.typeName }}
-        </li>
-      </ul>
-    </section>
-    <section class="col-md-8 col-lg-9 mainContent" *ngIf="products">
-      <div class="searchAndResults">
+  <div class="shopContent">
+    <div class="mainFilter" [ngClass]="show === true ? 'showFilters' : ''">
+      <div class="filters">
+        <div class="crossmark">
+          <span class="material-symbols-outlined" (click)="filterProducts()"> close </span>
+        </div>
+        <div class="filterContent">
+          <h5 style="color: orange">Sort</h5>
+          <select
+            class="form-select"
+            style="margin-bottom: 1rem; cursor: pointer"
+            #sort
+            (change)="selectSort(+sort.value)"
+          >
+            <option value="1" selected>Alphabetically</option>
+            <option value="2">Price: High to Low</option>
+            <option value="3">Price: Low to High</option>
+          </select>
+          <h5 style="color: orange">Brands</h5>
+          <ul
+            class="list-group my-3"
+            style="cursor: pointer"
+            *ngIf="enums !== undefined"
+          >
+            <li
+              class="listHover list-group-item"
+              *ngFor="let brand of enums.enumBrand"
+              [ngClass]="{ BackColor: brand.productBrandID === this.brandID }"
+              [ngClass]="{
+                DefaultColor:
+                  this.brandID === null && brand.productBrandID === 0
+              }"
+              (click)="onSelectBrand(brand.productBrandID)"
+            >
+              {{ brand.brandName }}
+            </li>
+            
+          </ul>
+          <h5 style="color: orange">Types</h5>
+          <ul
+            class="list-group my-3"
+            style="cursor: pointer"
+            *ngIf="enums !== undefined"
+          >
+            <li
+              class="listHover list-group-item"
+              *ngFor="let type of enums.enumType"
+              [ngClass]="{ BackColor: type.productTypeID == this.typeID }"
+              [ngClass]="{
+                DefaultColor: this.typeID === null && type.productTypeID === 0
+              }"
+              (click)="onSelectType(type.productTypeID)"
+            >
+              {{ type.typeName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="searchAndProducts">
+      <div class="filterMenu">
+        <button (click)="filterProducts()">
+          <span class="material-symbols-outlined"> filter_list </span>
+          Filter
+        </button>
+      </div>
+      <div class="searchFacilty">
         <div class="search">
-          <input type="text" placeholder="Search" #search (keyup)="searchItem()" />
+          <input
+            type="text"
+            placeholder="Search"
+            #search
+            (keyup)="searchItem()"
+          />
           <button class="seachBtn" (click)="searchItem()">Search</button>
         </div>
-        <app-page-header  [count]="count" [pageNumber]="pageNumber" [pageSize]="pageSize" >
+        <app-page-header
+          [count]="count"
+          [pageNumber]="pageNumber"
+          [pageSize]="pageSize"
+        >
         </app-page-header>
       </div>
-      <div
-        class="row row-cols-sm-1 row-cols-md-3 row-cols-lg-4 g-3"
-        *ngIf="products !== undefined"
-      >
-        <div
-          class="col"
-          style="min-width: 13rem"
-          *ngFor="let item of products.products"
-        >
-          <app-product-items [product]="item"> </app-product-items>
+      <div class="products" *ngIf="products!==undefined">
+        <div class="product" *ngFor="let item of products.products">
+          <div class="img">
+            <img
+              src="{{item.productUrl[0]}}"
+              alt=""
+              style="cursor: pointer"
+              (click)="goToProductDetails(1)"
+            />
+          </div>
+          <div class="content">
+            <div class="title">
+              <a routerLink="/shop/{{item.productID}}"> {{item.productName}} </a>
+            </div>
+            <div class="stars">
+              <p>
+                <rating [readonly]="true" [(ngModel)]="item.productRating"></rating>
+              </p>
+            </div>
+            <div class="reviews">
+              <p>{{ item.noOfReviews }} Reviews</p>
+            </div>
+            <div class="price">
+              <p>{{ item.price| currency }}</p>
+            </div>
+          </div>
         </div>
       </div>
       <nav
         aria-label="Page navigation example"
-        *ngIf="products !== undefined && count>0"
+        *ngIf="products !== undefined && count > 0"
         style="
           margin-top: 2rem;
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-bottom: 2rem;
         "
         class="paginationWithcustomPages"
       >
         <ul class="pagination">
           <li class="page-item">
-            <a class="page-link" aria-label="Previous" style="cursor: pointer;">
-              <span aria-hidden="true" style="color: tomato" (click)="dscPage()">&laquo;</span>
+            <a class="page-link" aria-label="Previous" style="cursor: pointer">
+              <span aria-hidden="true" style="color: tomato" (click)="dscPage()"
+                >&laquo;</span
+              >
             </a>
           </li>
 
           <li
             class="page-item"
-            *ngFor="let it of counter(products.count / products.pageSize);let i=index"
+            *ngFor="
+              let it of counter(products.count / products.pageSize);
+              let i = index
+            "
           >
-            <a class="page-link" style="color: tomato;cursor: pointer;" [ngStyle]="{color: i+1===page ?'white':'tomato'}" [ngClass]="{ BackColor: i+1===page}"  (click)="setPage(i+1)">{{ i+1 }}</a>
+            <a
+              class="page-link"
+              style="color: tomato; cursor: pointer"
+              [ngStyle]="{ color: i + 1 === page ? 'white' : 'tomato' }"
+              [ngClass]="{ BackColor: i + 1 === page }"
+              (click)="setPage(i + 1)"
+              >{{ i + 1 }}</a
+            >
           </li>
           <li class="page-item">
-            <a class="page-link" aria-label="Next" style="cursor: pointer;">
-              <span aria-hidden="true" style="color: tomato" (click)="incPage()">&raquo;</span>
+            <a class="page-link" aria-label="Next" style="cursor: pointer">
+              <span aria-hidden="true" style="color: tomato" (click)="incPage()"
+                >&raquo;</span
+              >
             </a>
           </li>
         </ul>
       </nav>
-    </section>
+    </div>
   </div>
 </div>

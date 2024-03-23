@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HomeProduct } from '../shared/Models/homeProduct';
 import { ShopService } from '../shop/shop.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { ShopService } from '../shop/shop.service';
 })
 export class HomeComponent implements OnInit {
   shopService: ShopService = inject(ShopService);
+  route: Router = inject(Router);
   products: HomeProduct[];
   ratingValue: number;
 
@@ -21,5 +23,8 @@ export class HomeComponent implements OnInit {
         console.log(err.error);
       }
     })
+  }
+  goToProductDetails(id:number) {
+    this.route.navigateByUrl("/shop/" + id);
   }
 }

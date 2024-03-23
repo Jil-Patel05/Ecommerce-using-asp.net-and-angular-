@@ -1,8 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { PaginationProducts, Product } from '../shared/Models/product';
 import { Enum } from '../shared/Models/enums';
-import { map } from 'rxjs';
+import { map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,10 @@ export class ShopService {
   private getProductEnum: string = this.baseUrl + '/Product/getProductEnumData';
   private getProduct: string = this.baseUrl + '/Product/getProduct/';
   private addReviewUrl: string = this.baseUrl + '/Product/addreviews';
-  private getIntialProduct: string = this.baseUrl + '/Product/getinitialproduct';
+  private getIntialProduct: string =
+    this.baseUrl + '/Product/getinitialproduct';
 
+  // products: Product[];
 
   getProducts(
     sort?: string,
@@ -48,23 +50,39 @@ export class ShopService {
       })
       .pipe(
         map((res) => {
+          // this.products = res.body.products;
+          // console.log(res.body);
           return res.body;
         })
       );
   }
   getSingleProduct(id: number) {
+    // const product = this.products.find(x => x.productID === id);
+    // if (product) {
+    //   return of(product);
+    // }
     var item: string = this.getProduct + id;
-    console.log(item);
     return this.http.get<Product>(item);
   }
   getProductEnums() {
     return this.http.get<Enum>(this.getProductEnum);
   }
   addReviews(val: any) {
-    return this.http.post(this.addReviewUrl, val);
+    return this.http.post(this.addReviewUrl, val,this.getHeaders());
   }
 
   getHomeProduct() {
     return this.http.get(this.getIntialProduct);
+  }
+  getToken() {
+    const data: any = JSON.parse(localStorage.getItem('loginData')).token;
+    return data;
+  }
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.getToken()
+      })
+    };
   }
 }

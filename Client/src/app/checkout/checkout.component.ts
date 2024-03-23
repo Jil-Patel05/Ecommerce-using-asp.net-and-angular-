@@ -37,6 +37,11 @@ export class CheckoutComponent {
     this.address$ = this.acoount.address$;
     this.view$ = this.checkout.view$;
 
+    const view = JSON.parse(localStorage.getItem('setView'));
+    if (view) {
+      this.checkout.setView(view);
+    }
+
     this.userData = JSON.parse(localStorage.getItem('loginData'));
     this.account.getAddressByUserId(this.userData.userID).subscribe({
       next: () => {
@@ -61,7 +66,21 @@ export class CheckoutComponent {
 
     this.address$.subscribe((res: Address) => {
       this.adr = res;
-      if (this.adr !== null) {
+      const data = localStorage.getItem('formData');
+      if (data) {
+        const formValue: any = JSON.parse(data);
+        this.form.patchValue({
+          deliveryID: formValue.deliveryID,
+          orderAddress: {
+            firstName: formValue.orderAddress.firstName,
+            lastName: formValue.orderAddress.lastName,
+            street: formValue.orderAddress.street,
+            city: formValue.orderAddress.city,
+            state: formValue.orderAddress.state,
+            zipCode: formValue.orderAddress.zipCode,
+          },
+        });
+      } else if (this.adr !== null) {
         this.form.patchValue({
           orderAddress: {
             firstName: this.adr.firstName,
@@ -76,13 +95,12 @@ export class CheckoutComponent {
     });
 
     this.checkout.getDeliveryMethods().subscribe({
-      next: (res:Delivery[]) => {
+      next: (res: Delivery[]) => {
         this.delivery = res;
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err.error);
-      }
-    })
-
+      },
+    });
   }
 }

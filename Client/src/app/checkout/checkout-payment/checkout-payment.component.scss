@@ -1,0 +1,56 @@
+.payment {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.paymentInfo {
+  width: 90%;
+  .cost {
+    display: flex;
+    justify-content: center;
+    p {
+      font-size: 1rem;
+      color: grey;
+    }
+  }
+  .info {
+    display: flex;
+    justify-content: center;
+    p {
+      font-size: 1.3rem;
+      color: black;
+    }
+  }
+  .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .paypalPayment {
+      width: 60%;
+    }
+  }
+}
+@media screen and (min-width: 850px) {
+  .payment{
+    .btn {
+        .paypalPayment {
+          width: 30%;
+        }
+      }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .paymentInfo {
+    .info {
+      p {
+        font-size: 1.1rem;
+      }
+    }
+    .btn {
+      .paypalPayment {
+        width: 90%;
+      }
+    }
+  }
+}

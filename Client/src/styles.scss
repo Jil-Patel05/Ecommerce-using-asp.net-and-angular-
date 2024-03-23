@@ -7,21 +7,34 @@
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
 @import "ngx-toastr/toastr";
-              
+
 @import "node_modules/ngx-spinner/animations/timer.css";
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
-@import '~material-icons/iconfont/material-icons.css';
+@import "~material-icons/iconfont/material-icons.css";
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
+html {
   max-width: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
+body {
+  position: relative;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-bottom: 3rem;
+}
+
+// html, body {
+//   max-width: 100%;
+//   overflow-x: hidden;
+// }
 
 .xng-breadcrumb-root {
   display: inline;
@@ -29,5 +42,5 @@ html, body {
 }
 
 label.xng-breadcrumb-trail {
-color: orange;
+  color: orange;
 }

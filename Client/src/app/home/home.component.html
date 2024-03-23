@@ -23,6 +23,8 @@
         <img
           src="{{item.productUrl}}"
           alt=""
+          style="cursor: pointer;"
+        (click)="goToProductDetails(item.productID)"
         />
       </div>
       <div class="content">

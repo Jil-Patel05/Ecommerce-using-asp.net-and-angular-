@@ -27,6 +27,22 @@ export class CheckoutOrderComponent implements OnInit {
   obj: any;
 
   ngOnInit(): void {
+    const data:any = localStorage.getItem('formData');
+    if (data) {
+      const formValue: any = JSON.parse(data);
+      this.form.patchValue({
+        deliveryID: formValue.deliveryID,
+        orderAddress: {
+          firstName: formValue.orderAddress.firstName,
+          lastName: formValue.orderAddress.lastName,
+          street: formValue.orderAddress.street,
+          city: formValue.orderAddress.city,
+          state: formValue.orderAddress.state,
+          zipCode: formValue.orderAddress.zipCode,
+        },
+      });
+    }
+    
     this.basket$ = this.basketService.basket$;
     this.basket$.subscribe((res: Basket) => {
       this.basket = res;
@@ -35,36 +51,13 @@ export class CheckoutOrderComponent implements OnInit {
     this.basketCost$.subscribe((res: Cost) => {
       this.basketCost = res;
     });
-
-    const loginData: Login = JSON.parse(localStorage.getItem('loginData'));
-
-    this.basket.items.forEach((elm) => {
-      this.totalItems.push(elm);
-    });
-    this.obj = {
-      userID: loginData.userID,
-      email: loginData.email,
-      subTotal: this.basketCost.subTotal,
-      shippingCost: this.basketCost.shipping,
-      total: this.basketCost.total,
-      ...this.form.value,
-      orderProduct: this.totalItems,
-    };
-    console.log(this.obj);
   }
 
   back() {
+    localStorage.setItem('setView', JSON.stringify(2));
     this.checkout.setView(2);
   }
   proceedPayment() {
-    this.checkout.createOrder(this.obj).subscribe({
-      next: (res: any) => {
-        this.checkout.setOrderID(res.orderID);
-        this.route.navigateByUrl('checkout/success');
-      },
-      error: (err) => {
-        console.log(err.error);
-      },
-    });
+    this.route.navigateByUrl('checkout/payment');
   }
 }

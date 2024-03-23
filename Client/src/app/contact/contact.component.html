@@ -1,1 +1,75 @@
-<p>contact works!</p>
+<div class="contact">
+  <div class="contactContent">
+    <div class="contactMsg">
+      <p>Contact Us</p>
+      <p>
+        Need to contact with us?<br />Either fill out this form for your inquiry
+        or send email on our official account.
+      </p>
+    </div>
+    <div class="contactBox">
+      <div class="box" [formGroup]="form">
+        <div class="name">
+          <div class="form-floating inp">
+            <input
+              type="text"
+              required
+              class="form-control"
+              id="floatingFirstName"
+              autocomplete="off"
+              placeholder="FirstName"
+              formControlName="firstName"
+            />
+            <label for="floatingFirstName">First name*</label>
+          </div>
+          <div class="form-floating inp">
+            <input
+              type="text"
+              required
+              class="form-control"
+              id="floatingLastName"
+              autocomplete="off"
+              placeholder="LastName"
+              formControlName="lastName"
+            />
+            <label for="floatingLastName">Last name*</label>
+          </div>
+        </div>
+        <div class="other">
+          <div class="form-floating inp">
+            <input
+              type="email"
+              required
+              class="form-control"
+              id="floatingEmail"
+              autocomplete="off"
+              placeholder="Email"
+              formControlName="email"
+            />
+            <label for="floatingEmail">Email Address*</label>
+          </div>
+          <div class="textInp">
+            <div class="form-floating">
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                class="form-control"
+                id="floatingTextArea"
+                placeholder="Write..."
+                formControlName="query"
+              ></textarea>
+             <label for="floatingTextArea">Write Your query here*</label>
+            </div>
+          </div>
+          <div class="btn">
+            <button (click)="onSubmit()">
+                SUBMIT
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

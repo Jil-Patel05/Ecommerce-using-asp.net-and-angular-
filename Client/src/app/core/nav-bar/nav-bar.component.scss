@@ -1,7 +1,7 @@
 .navbar {
   width: 100vw;
   padding: 0rem 3rem 0rem 1.5rem;
-  min-height: 4rem;
+  min-height: 4.5rem;
   display: flex;
   align-items: center;
   position: fixed;
@@ -33,6 +33,7 @@
         list-style: none;
         margin-right: 1.5rem;
         .links {
+          font-size: 1.1rem;
           text-decoration: none;
           color: black;
         }
@@ -124,7 +125,7 @@
     align-items: center;
     border: 1px solid grey;
     border-radius: 0.2rem;
-    z-index: 1000;
+    z-index: 2001;
   }
   .navbarItem {
     width: 100%;
@@ -170,6 +171,7 @@
       right: 0;
       background-color: white;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      z-index: 2000;
       .items {
         margin-top: 6rem;
         display: flex;

@@ -2,11 +2,85 @@
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
+  .shopContent {
+    width: 90%;
+  }
 }
+
 .shopContent {
-  width: 90%;
+  display: flex;
+  .mainFilter {
+    width: 25%;
+  }
+  .searchAndProducts {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    .products {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      .product {
+        width: 14rem;
+        border: 1px solid #cacaca;
+        border-radius: 0.2rem;
+        padding: 1rem;
+        margin-right: 0.5rem;
+        margin-bottom: 1.6rem;
+        .img {
+          width: 100%;
+          img {
+            width: 100%;
+            height: 9rem;
+          }
+        }
+        .content {
+          width: 100%;
+          padding: 0.15rem;
+          p {
+            margin-bottom: 0.2rem;
+          }
+          .title {
+            width: 100%;
+            margin-top: 0.5rem;
+            a {
+              width: 100%;
+              color: #565656;
+              font-size: 1rem;
+              word-wrap: break-word;
+            }
+          }
+          .price {
+            margin-top: 0.5rem;
+            p {
+              font-size: 1rem;
+              letter-spacing: 1.2px;
+              color: #565656;
+            }
+          }
+          .reviews {
+            p {
+              color: #565656;
+            }
+          }
+          rating {
+            font-size: 1.4rem;
+            color: #ffc107;
+          }
+        }
+      }
+      .product:hover {
+        transform: scale3d(1.01, 1.01, 1.01);
+        transition: all 0.3s;
+      }
+    }
+  }
 }
-.searchAndResults {
+.searchFacilty {
+  margin-left: 1.5rem;
   margin-top: 1.8rem;
   margin-bottom: 0.5rem;
   width: 100%;
@@ -37,16 +111,12 @@
       height: 2.5rem;
     }
     button:hover {
-      background-color: rgb(55, 97, 214);
+      background-color: #d2462d;
     }
     margin-bottom: 1.5rem;
   }
 }
-.cardContent {
-  display: flex;
-  flex-wrap: wrap;
-}
-.DefaultColor{
+.DefaultColor {
   background-color: tomato;
   border: none;
   color: white;
@@ -61,20 +131,114 @@
   border: none;
   color: white;
 }
+.filterMenu {
+  display: none;
+}
+.crossmark{
+  display: none;
+}
 
-@media only screen and (max-width: 768px) {
-  .searchAndResults {
+@media screen and (max-width: 900px) {
+  .searchFacilty {
+    margin-left: 1.5rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.5rem;
     .search {
-      width: 100%;
       input {
-        height: 2rem;
+        font: 300 1.7vmax normal;
+        height: 2.2rem;
       }
       button {
-        height: 2rem;
+        font: 300 1.7vmax "Roboto";
+        height: 2.2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchFacilty {
+    margin-left: 0rem;
+    .search {
+      width: 90%;
+    }
+  }
+  .filterMenu {
+    display: block;
+    button {
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      outline: none;
+      border: 1px solid grey;
+      border-radius: 0.3rem;
+      span {
+        margin-right: 0.5rem;
       }
     }
   }
   .shopContent {
-    display: flex;
+    .mainFilter {
+      width: 0rem;
+      
+      .filters {
+        display: none;
+      }
+    }
+    .searchAndProducts {
+      width: 100%;
+    }
+  }
+  .shopContent {
+    .showFilters {
+      width: 60vw;
+      height: 100vh;
+      position: fixed;
+      top: 4.6rem;
+      left: 0rem;
+      background-color: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      z-index: 1001;
+      display: flex;
+      justify-content: center;
+      overflow-y: scroll;
+      .filters {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .crossmark {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          margin-right: 1rem;
+          margin-top: 1rem;
+        }
+        .filterContent {
+          margin-top: 1rem;
+          width: 80%;
+          select {
+            width: 100%;
+          }
+          ul {
+            width: 100%;
+          }
+        }
+      }
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .shopContent {
+    .showFilters {
+      width: 80vw;
+    }
+  }
+  .searchFacilty {
+    .search {
+      width: 100%;
+    }
   }
 }

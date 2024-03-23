@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ShopComponent } from './shop/shop.component';
-import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 import { ContactComponent } from './contact/contact.component';
-import { AboutComponent } from './about/about.component';
 import { ServerErrorComponent } from './core/server-error/server-error.component';
 import { NotFoundErrorComponent } from './core/not-found-error/not-found-error.component';
 import { authGuard } from './shared/Guards/authGuards';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -16,18 +14,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shop/shop.module').then((mod) => mod.ShopModule),
     data: { breadcrumb: 'Shop' },
+    pathMatch:'full'
   },
   {
     path: 'basket',
     loadChildren: () =>
       import('./basket/basket.module').then((mod) => mod.BasketModule),
     data: { breadcrumb: 'Basket' },
+    pathMatch:'full'
   },
   {
     path: 'orders',
     loadChildren: () =>
       import('./orders/orders.module').then((mod) => mod.OrdersModule),
     data: { breadcrumb: 'Orders' },
+    pathMatch:'full'
   },
   {
     path: 'checkout',
@@ -35,12 +36,14 @@ const routes: Routes = [
       import('./checkout/checkout.module').then((mod) => mod.CheckoutModule),
     data: { breadcrumb: 'Checkout' },
     canActivate: [authGuard],
+    pathMatch:'full'
   },
   {
     path: 'account',
     loadChildren: () =>
       import('./account/account.module').then((mod) => mod.AccountModule),
     data: { breadcrumb: { skip: true } },
+    pathMatch:'full'
   },
   {
     path: 'server-error',
@@ -61,14 +64,8 @@ const routes: Routes = [
     data: { breadcrumb: 'Contact' },
   },
   {
-    path: 'about',
-    component: AboutComponent,
-    pathMatch: 'full',
-    data: { breadcrumb: 'About' },
-  },
-  {
     path: '**',
-    component: HomeComponent,
+    component: NotfoundComponent,
     pathMatch: 'full',
     data: { breadcrumb: 'Page Not found' },
   },

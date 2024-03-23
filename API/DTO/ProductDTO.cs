@@ -26,7 +26,7 @@ namespace API.DTO
         public string brandName { get; set; }
         public int noOfReviews { get; set; }
         public decimal productRating { get; set; }
-        public List<Reviews> reviewInfo { get; set; }
+        public List<Reviews>? reviewInfo { get; set; }
     }
 
    

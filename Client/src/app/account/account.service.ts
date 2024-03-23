@@ -58,7 +58,7 @@ export class AccountService {
   }
 
   getAddressByUserId(id: number) {
-    return this.http.get(this.addressUrl + '/' + id).pipe(
+    return this.http.get(this.addressUrl + '/' + id,this.getHeaders()).pipe(
       map((res: Address) => {
         if (res) {
           this.addressSource.next(res);
@@ -68,7 +68,7 @@ export class AccountService {
   }
 
   updateAdressById(value: any, id: number) {
-    return this.http.post(this.addressUpdateUrl + '/' + id, value).pipe(
+    return this.http.post(this.addressUpdateUrl + '/' + id, value,this.getHeaders()).pipe(
       map((res: Address) => {
         if (res) {
           this.addressSource.next(res);
@@ -78,7 +78,7 @@ export class AccountService {
   }
 
   resetPassword(value: any) {
-    return this.http.post(this.resetUrl, value);
+    return this.http.post(this.resetUrl, value,this.getHeaders());
   }
 
   changeProfilePhoto(value: any, userID: number) {
@@ -89,5 +89,16 @@ export class AccountService {
     // }
     console.log(value, userID);
     return this.http.post(this.profileUrl, FormData);
+  }
+  getToken() {
+    const data: any = JSON.parse(localStorage.getItem('loginData')).token;
+    return data;
+  }
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.getToken()
+      })
+    };
   }
 }
