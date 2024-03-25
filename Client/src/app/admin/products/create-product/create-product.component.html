@@ -1,0 +1,137 @@
+<div class="edit">
+  <div class="editBox">
+    <div class="title">
+      <p>CREATE</p>
+    </div>
+    <form action="" class="signUpFormcontent" [formGroup]="form">
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatingFirstName"
+          autocomplete="off"
+          placeholder="First name"
+          formControlName="productName"
+        />
+        <label for="floatingFirstName">Product name</label>
+      </div>
+
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatingmobileNumber"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="price"
+        />
+        <label for="floatingmobileNumber">Product Price</label>
+      </div>
+      <div class="form-floating inp">
+        <p>Product Description</p>
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          class="form-control"
+          id="floatingTextArea"
+          placeholder="Write..."
+          formControlName="productDescription"
+        ></textarea>
+        <!-- <label for="floatingTextArea">Product description</label> -->
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatinglastName"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="numberOfProduct"
+        />
+        <label for="floatinglastName">Stock</label>
+      </div>
+      <div class="form-floating inp" *ngIf="enums !== undefined">
+        <select
+          class="form-select"
+          style="margin-bottom: 1rem; cursor: pointer"
+          id="floatingBrand"
+          formControlName="productBrandID"
+        >
+          <option
+            *ngFor="let item of enums.enumBrand; let i = index"
+            [value]="i + 1"
+          >
+            {{ item.brandName }}
+          </option>
+        </select>
+        <label for="floatingBrand">Select Brand</label>
+      </div>
+      <div class="form-floating inp" *ngIf="enums !== undefined">
+        <select
+          class="form-select"
+          style="margin-bottom: 1rem; cursor: pointer"
+          id="floatingBrand"
+          formControlName="productTypeID"
+        >
+          <option
+            *ngFor="let item of enums.enumType; let i = index"
+            [value]="i + 1"
+          >
+            {{ item.typeName }}
+          </option>
+        </select>
+        <label for="floatingBrand">Select Brand</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingUrl1"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="Url1"
+        />
+        <label for="floatingUrl1">Select First Url</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingUrl2"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="Url2"
+        />
+        <label for="floatingUrl2">Select second Url</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingUrl3"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="Url3"
+        />
+        <label for="floatingUrl3">Select third Url</label>
+      </div>
+      <div class="form-floating inp">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingUrl4"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="Url4"
+        />
+        <label for="floatingUrl4">Select fourth Url</label>
+      </div>
+      <button (click)="onCreate()">CREATE</button>
+    </form>
+  </div>
+</div>

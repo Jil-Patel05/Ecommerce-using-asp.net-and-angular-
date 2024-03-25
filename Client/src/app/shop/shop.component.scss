@@ -101,10 +101,11 @@
     }
     button {
       border-radius: 0%;
-      background-color: tomato;
+      background-color: #fe4c50;
       border: none;
       width: 20%;
       font: 300 1.4vmax "Roboto";
+      font-weight: 300 !important;
       cursor: pointer;
       color: white;
       transition: all 0.5s;
@@ -117,12 +118,12 @@
   }
 }
 .DefaultColor {
-  background-color: tomato;
+  background-color: #fe4c50;
   border: none;
   color: white;
 }
 .BackColor {
-  background-color: tomato;
+  background-color: #fe4c50;
   border: none;
   color: white;
 }

@@ -6,9 +6,9 @@ import { SuccessComponent } from './success/success.component';
 import { CheckoutPaymentComponent } from './checkout-payment/checkout-payment.component';
 
 const routes: Routes = [
-  { path: '', component: CheckoutComponent },
-  { path: 'success', component: SuccessComponent },
-  { path: 'payment', component: CheckoutPaymentComponent },
+  { path: '', component: CheckoutComponent,pathMatch:'full' },
+  { path: 'success', component: SuccessComponent,pathMatch:'full' },
+    { path: 'payment', component: CheckoutPaymentComponent,pathMatch:'full' },
 ]
 
 @NgModule({

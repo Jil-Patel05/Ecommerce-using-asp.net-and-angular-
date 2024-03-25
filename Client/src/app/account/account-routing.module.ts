@@ -5,13 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { authGuard } from '../shared/Guards/authGuards';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'user', component: UserComponent, data: { breadcrumb: 'User' },pathMatch:'full' },
-  {path:'user/change-password',component:ChangePasswordComponent,data: { breadcrumb: 'ChangePassword' },pathMatch:'full'},
+  { path: 'login', component: LoginComponent,pathMatch:'full' },
+  { path: 'register', component: RegisterComponent,pathMatch:'full' },
+  { path: 'user', component: UserComponent, data: { breadcrumb: 'User' },canActivate: [authGuard],pathMatch:'full'},
+  {path:'user/change-password',component:ChangePasswordComponent,data: { breadcrumb: 'ChangePassword' },canActivate: [authGuard],pathMatch:'full'},
   
 ]
 

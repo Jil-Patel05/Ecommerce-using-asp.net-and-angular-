@@ -1,3 +1,4 @@
+$fixColor:#fe4c50;
 .signUp {
     width: 100vw;
     display: flex;
@@ -43,7 +44,7 @@
           margin-top: 1.5rem;
           font-size: 1.2rem;
           height: 2.3rem;
-          background-color: tomato;
+          background-color: $fixColor;
           color: white;
           border-radius: 0.4rem;
           border: none;

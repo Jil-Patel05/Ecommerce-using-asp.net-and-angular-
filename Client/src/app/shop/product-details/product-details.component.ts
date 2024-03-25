@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fs.group({
       userReview: ['', Validators.required],
-    })
+    });
     this.active.paramMap.subscribe((res) => {
       this.productID = +res.get('id');
     });
@@ -44,15 +44,15 @@ export class ProductDetailsComponent implements OnInit {
   }
   getSingleProduct() {
     this.shopService
-    .getSingleProduct(this.productID)
-    .subscribe((res: Product) => {
-      this.product = res;
-      this.numberOfProduct = this.product.numberOfProduct;
-      this.bService.set('@productDetails', this.product.productName);
-    });
+      .getSingleProduct(this.productID)
+      .subscribe((res: Product) => {
+        this.product = res;
+        this.numberOfProduct = this.product.numberOfProduct;
+        this.bService.set('@productDetails', this.product.productName);
+      });
   }
   addItem() {
-    this.basketService.AddItemToBasket(this.product,this.cnt);
+    this.basketService.AddItemToBasket(this.product, this.cnt);
   }
   decreaseQuantity() {
     if (this.cnt <= 0) {
@@ -71,26 +71,34 @@ export class ProductDetailsComponent implements OnInit {
   reviewInputCard() {
     this.clicked = !this.clicked;
   }
-  onSubmit() {
-    const data: Login = JSON.parse(localStorage.getItem("loginData"));
+  onSubmitCheck() {
+    const data: Login = JSON.parse(localStorage.getItem('loginData'));
+    console.log(data);
     if (!data) {
-      this.route.navigate(["account/login"],{ queryParams: { returnUrl :this.route.url} });
+      this.route.navigate(['account/login'], {
+        queryParams: { returnUrl: this.route.url },
+      });
+    } else {
+      this.clicked = !this.clicked;
     }
+  }
+  onSubmit() {
+    const data: Login = JSON.parse(localStorage.getItem('loginData'));
     let obj = {
       ...this.form.value,
       userRating: this.value,
       userID: data.userID,
       productID: this.productID,
-      userFullName:data.displayName
-    }
+      userFullName: data.displayName,
+    };
     this.shopService.addReviews(obj).subscribe({
       next: (res: boolean) => {
         this.getSingleProduct();
-        this.toast.success("Review Added");
+        this.toast.success('Review Added');
       },
       error: (err) => {
         console.log(err.error);
-      }
-    })
+      },
+    });
   }
 }

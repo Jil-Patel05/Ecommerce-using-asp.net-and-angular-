@@ -37,6 +37,8 @@ builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IBasketRepository,BasketRepository>();
 builder.Services.AddSingleton<IUserRepository,UserRepository>();
 builder.Services.AddSingleton<IOrderRepository,orderRepository>();
+builder.Services.AddSingleton<IAdminRepository,AdminRepository>();
+
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
   var config = builder.Configuration.GetConnectionString("Redis");

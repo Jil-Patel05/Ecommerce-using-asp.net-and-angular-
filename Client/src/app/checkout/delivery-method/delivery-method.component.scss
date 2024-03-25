@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap");
+$fixColor:#fe4c50;
 .deliver {
   width: 95%;
   .title {
@@ -6,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: tomato;
+    background-color: $fixColor;
     height: 3rem;
     p {
       font-size: 1.4rem;
@@ -70,7 +71,7 @@
     }
     .proceed {
         margin-left: auto;
-        background-color: tomato;
+        background-color: $fixColor;
         color: white;
        }
        .proceed:hover {
@@ -79,8 +80,8 @@
        }
       .back{
           background-color: white;
-          color: tomato;
-          border: 1px solid tomato;
+          color: $fixColor;
+          border: 1px solid $fixColor;
       }
   }
 }

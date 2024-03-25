@@ -1,0 +1,36 @@
+<div class="allProducts">
+  <div class="products">
+    <div class="headingContainer">
+      <div class="heading">
+        <p>ProductID</p>
+      </div>
+      <div class="heading">
+        <p>Name</p>
+      </div>
+      <div class="heading">
+        <p>Price</p>
+      </div>
+      <div class="heading">
+        <p>Action</p>
+      </div>
+    </div>
+    <div class="productList" *ngFor="let item of products">
+      <div class="productInfo">
+        <p>{{item.productID}}</p>
+      </div>
+      <div class="productInfo">
+        <p>{{item.productName}}</p>
+      </div>
+      <div class="productInfo">
+        <p>{{item.price}}</p>
+      </div>
+      <div class="productInfo">
+        <p>
+          <a routerLink="/admin/products/edit-product/{{item.productID}}">
+            <i class="bi bi-arrow-up-right-square icon"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+$fixColor:#fe4c50;
 .mainCart {
   width: 90vw;
 }
@@ -19,7 +20,7 @@
   align-items: center;
   .cartHeader {
     width: 94%;
-    background-color: tomato;
+    background-color: $fixColor;
     height: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -166,7 +167,7 @@
       font-size: 1.1rem;
       border: none;
       outline: none;
-      background-color: tomato;
+      background-color: $fixColor;
       border-radius: 0.5rem;
       width: 10rem;
       height: 2.5rem;
@@ -180,7 +181,7 @@
       background-color: #f5f5f5;
       a {
         text-decoration: none;
-        color: tomato;
+        color: $fixColor;
       }
       transition: all 0.2s;
     }

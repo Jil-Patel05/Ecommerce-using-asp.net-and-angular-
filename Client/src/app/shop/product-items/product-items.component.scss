@@ -1,3 +1,4 @@
+$fixColor:#fe4c50;
 .cardDetails {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
   border-radius: 0.5rem;
@@ -37,7 +38,7 @@
     height: 2.2rem;
     background-color: #ff6347de;
     color: white;
-    border: 1px solid tomato;
+    border: 1px solid $fixColor;
     border-radius: 0.2rem;
   }
   button:hover {

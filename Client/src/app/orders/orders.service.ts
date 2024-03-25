@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
 @Injectable({
@@ -11,13 +11,23 @@ export class OrdersService {
   private orderUrl: string = 'https://localhost:7067/OrdereByOrderID';
 
   getOrdersByUserID(id: number) {
-    return this.http.get(this.userOrdersUrl + '?userID=' +id);
+    return this.http.get(this.userOrdersUrl + '?userID=' +id,this.getHeaders());
   }
 
   getorderByOrderID(id: number) {
     console.log(id);
-    return this.http.get(this.orderUrl + '?orderID=' +id);
+    return this.http.get(this.orderUrl + '?orderID=' +id,this.getHeaders());
   }
-  
+  getToken() {
+    const data: any = JSON.parse(localStorage.getItem('loginData')).token;
+    return data;
+  }
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.getToken()
+      })
+    };
+  }
 
 }

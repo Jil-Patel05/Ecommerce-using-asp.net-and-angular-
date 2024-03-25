@@ -6,7 +6,7 @@ import { OrdersComponent } from './orders.component';
 
 const routes: Routes = [
   { path: '', component: OrdersComponent },
-  { path: ':id', component: SingleOrderComponent,data: { breadcrumb:{alias:'orderDetails'} } },
+  { path: ':id', component: SingleOrderComponent,data: { breadcrumb:{alias:'orderDetails'} },pathMatch:'full' },
 ];
 
 @NgModule({

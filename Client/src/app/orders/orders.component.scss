@@ -1,3 +1,4 @@
+$fixColor: #fe4c50;
 .orders {
   width: 100vw;
   display: flex;
@@ -5,7 +6,7 @@
   .orderDetails {
     width: 80%;
     .heading {
-      background-color: tomato;
+      background-color: $fixColor;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       .headingTitle {
@@ -27,7 +28,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       border-bottom: 1px solid #ebe5e5;
-    //   border-bottom: 1px solid #d3d2d2;
+      //   border-bottom: 1px solid #d3d2d2;
       .ordersInfo {
         display: flex;
         justify-content: center;
@@ -44,7 +45,8 @@
           color: black;
         }
         .icon:hover {
-          color: tomato;
+          color: $fixColor;
+          cursor: pointer;
         }
       }
     }

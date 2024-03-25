@@ -1,3 +1,5 @@
+$fixColor:#fe4c50;
+
 .profileContainer {
   margin-top: 0rem;
     display: flex;
@@ -51,7 +53,7 @@
   
   .profileContainer > div:first-child > a {
     border: none;
-    background-color: tomato;
+    background-color:$fixColor;
     font: 400 1.1vmax "Roboto";
     color: white;
     text-decoration: none;

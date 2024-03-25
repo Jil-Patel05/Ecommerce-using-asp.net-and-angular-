@@ -1,3 +1,5 @@
+$fixColor:#fe4c50;
+
 .CartItemCard {
     display: flex;
     flex-direction: column;
@@ -27,7 +29,7 @@
   }
   
   .CartItemCard > div > p {
-    color: tomato;
+    color: $fixColor;
     font: 100 0.8vmax "Roboto";
     cursor: pointer;
   }
@@ -43,7 +45,7 @@
     }
     
     .CartItemCard > div > p {
-      color: tomato;
+      color: $fixColor;
       font: 100 1.3vmax "Roboto";
       cursor: pointer;
     }

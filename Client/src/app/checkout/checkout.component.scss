@@ -1,3 +1,4 @@
+$fixColor:#fe4c50;
 .mainCart {
     width: 90vw;
   }
@@ -14,7 +15,7 @@
   }
   
   .cartHeader {
-    background-color: tomato;
+    background-color: $fixColor;
     width: 90%;
     box-sizing: border-box;
     margin: auto;
@@ -132,7 +133,7 @@
         font-size: 1.1rem;
         border: none;
         outline: none;
-        background-color: tomato;
+        background-color: $fixColor;
         border-radius: 0.5rem;
         width: 10rem;
         height: 2.5rem;
@@ -146,7 +147,7 @@
         background-color: #f5f5f5;
         a{
           text-decoration: none;
-          color: tomato;
+          color: $fixColor;
         }
         transition: all 0.2s;
       }

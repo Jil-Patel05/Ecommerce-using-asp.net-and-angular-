@@ -1,0 +1,48 @@
+<div class="admin">
+  <div class="adminContent">
+    <div class="slider">
+      <div class="title">
+        <p>Admin Panel</p>
+      </div>
+      <div class="sliderContainer">
+        <div class="content">
+          <a
+            routerLink="/admin/dashboard"
+            routerLinkActive="linkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <span class="material-symbols-outlined"> grid_view </span> Dashboard
+          </a>
+        </div>
+        <div class="content">
+          <a
+            routerLink="/admin/products"
+            routerLinkActive="linkActive"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <span class="material-symbols-outlined"> inventory </span> Products
+          </a>
+        </div>
+        <div class="content">
+          <a
+            routerLink="/admin/orders"
+            routerLinkActive="linkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><span class="material-symbols-outlined"> reorder </span> Orders</a
+          >
+        </div>
+        <div class="content">
+          <a
+            routerLink="/admin/users"
+            routerLinkActive="linkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><span class="material-symbols-outlined"> person </span> Users</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="sliderContent">
+      <router-outlet> </router-outlet>
+    </div>
+  </div>
+</div>

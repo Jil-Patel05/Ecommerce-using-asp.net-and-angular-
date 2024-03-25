@@ -1,8 +1,11 @@
-<nav class="navbar">
+<nav class="navbar" [ngClass]="(currentUser$ | async) === null?'nvbar':''">
   <div class="navbarItem">
     <div class="img">
       <div class="compImg">
-        <img src="/assets/Images/logo6.png" alt="" />
+        <!-- <img src="/assets/Images/logo6.png" alt="" /> -->
+        <a routerLink="/">
+          COLO<span style="color: #fe4c50;">SHOP</span>
+        </a>
       </div>
       <div class="hamburger">
         <span
