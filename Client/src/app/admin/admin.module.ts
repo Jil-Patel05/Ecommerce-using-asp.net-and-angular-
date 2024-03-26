@@ -10,6 +10,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 
 
@@ -22,7 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     OrdersComponent,
     UsersComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    EditOrderComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,

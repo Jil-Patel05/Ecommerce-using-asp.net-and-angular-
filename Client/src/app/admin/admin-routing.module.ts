@@ -9,6 +9,8 @@ import { UsersComponent } from './users/users.component';
 import { CreateProductComponent } from './products/create-product/create-product.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 export const routes: Routes = [
   {
@@ -47,8 +49,18 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'edit-order/:id',
+        component: EditOrderComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'users',
         component: UsersComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'edit-user/:id',
+        component: EditUserComponent,
         pathMatch: 'full',
       },
     ],

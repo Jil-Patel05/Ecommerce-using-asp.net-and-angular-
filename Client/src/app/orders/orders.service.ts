@@ -8,14 +8,13 @@ export class OrdersService {
   private http: HttpClient = inject(HttpClient);
   private baseUrl = "https://localhost:7067";
   private userOrdersUrl: string = this.baseUrl + '/OrdereByUserID';
-  private orderUrl: string = 'https://localhost:7067/OrdereByOrderID';
+  private orderUrl: string = this.baseUrl+'/OrdereByOrderID';
 
   getOrdersByUserID(id: number) {
     return this.http.get(this.userOrdersUrl + '?userID=' +id,this.getHeaders());
   }
 
   getorderByOrderID(id: number) {
-    console.log(id);
     return this.http.get(this.orderUrl + '?orderID=' +id,this.getHeaders());
   }
   getToken() {

@@ -13,7 +13,12 @@ namespace API.Interfaces
         public Task<bool> editProductAsync(adminEditProduct ap);
         public Task<bool> createProductAsync(adminCreateProduct ap);
         public Task<bool> deleteProductAsync(int id);
+        public Task<IEnumerable<adminOrders>> getOrders();
+        public Task<bool> changeOrderStatus(updateOrder uo);
 
+        public Task<IEnumerable<allUsers>> getAllUsersAsync();
+        public Task<IEnumerable<singleUser>> getSingleUserAsync(int id);
+        public Task<bool> updateSingleUserAsync(updateUser uo);
         
     }
 }

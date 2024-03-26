@@ -1,1 +1,37 @@
-<p>users works!</p>
+<div class="allUsers">
+    <div class="users">
+      <div class="headingContainer">
+        <div class="heading">
+          <p>UserID</p>
+        </div>
+        <div class="heading">
+          <p>Name</p>
+        </div>
+        <div class="heading">
+          <p>Role</p>
+        </div>
+        <div class="heading">
+          <p>Action</p>
+        </div>
+      </div>
+      <div class="userList" *ngFor="let item of users">
+        <div class="userInfo">
+          <p>{{item.userID}}</p>
+        </div>
+        <div class="userInfo">
+          <p>{{item.fullname}}</p>
+        </div>
+        <div class="userInfo">
+          <p>{{item.role}}</p>
+        </div>
+        <div class="userInfo">
+          <p>
+            <a routerLink="/admin/edit-user/{{item.userID}}">
+              <i class="bi bi-arrow-up-right-square icon"></i>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

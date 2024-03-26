@@ -1,0 +1,47 @@
+<div class="edit">
+  <div class="editBox" *ngIf="user !== undefined">
+    <div class="title">
+      <p>Edit User Role</p>
+    </div>
+    <form action="" class="signUpFormcontent" [formGroup]="form">
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatingFirstName"
+          autocomplete="off"
+          placeholder="First name"
+          formControlName="userName"
+        />
+        <label for="floatingFirstName">User name</label>
+      </div>
+
+      <div class="form-floating inp">
+        <input
+          type="text"
+          required
+          class="form-control"
+          id="floatingmobileNumber"
+          autocomplete="off"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="floatingmobileNumber">User email</label>
+      </div>
+      <div class="form-floating inp">
+        <select
+          class="form-select"
+          style="margin-bottom: 1rem; cursor: pointer"
+          id="floatingBrand"
+          formControlName="role"
+        >
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+        <label for="floatingBrand">Select Role</label>
+      </div>
+      <button (click)="onEdit()">EDIT</button>
+    </form>
+  </div>
+</div>

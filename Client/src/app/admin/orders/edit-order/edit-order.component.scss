@@ -1,4 +1,4 @@
-$fixColor:#fe4c50;
+$fixColor: #fe4c50;
 .mainCart {
   width: 90vw;
 }
@@ -6,11 +6,12 @@ $fixColor:#fe4c50;
   width: 100%;
   padding: 1vmax;
   display: flex;
+  flex-direction: column;
   .content {
-    width: 70%;
+    width: 90%;
   }
-  .cost {
-    width: 30%;
+  .orderStatus {
+    width: 80%;
   }
 }
 
@@ -30,7 +31,6 @@ $fixColor:#fe4c50;
       justify-content: center;
       align-items: center;
       grid-row: 1;
-
       p {
         color: white;
         margin-bottom: 0rem;
@@ -86,6 +86,33 @@ $fixColor:#fe4c50;
   }
 }
 
+.orderStatus {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  .inp {
+    width: 100%;
+    select {
+      width: 30%;
+    }
+  }
+  .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    button {
+      width: 30%;
+      border: none;
+      outline: none;
+      border-radius: 0.2rem;
+      background-color: $fixColor;
+      color: white;
+      height: 2.5rem;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
   .content {
     .cartHeader {
@@ -110,6 +137,7 @@ $fixColor:#fe4c50;
     }
   }
 }
+
 @media only screen and (max-width: 768px) {
   .content {
     .cartHeader {
@@ -139,88 +167,6 @@ $fixColor:#fe4c50;
   }
 }
 
-.costDetails {
-  border-radius: 0.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .summary {
-    width: 100%;
-    background-color: #f5f5f5;
-    border-radius: 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 3rem;
-    p {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 0rem;
-    }
-  }
-  .shippingInfo {
-    padding: 1rem 0.4rem 0rem 0.4rem;
-    p {
-      font-family: cursive;
-    }
-    margin-bottom: 0.5rem;
-  }
-  .charges {
-    margin-top: 0.4rem;
-    width: 90%;
-    display: flex;
-    border-bottom: 1px solid #e2e2e2;
-    height: auto;
-    .charge {
-      margin-left: auto;
-    }
-    .ChargesDetail {
-      p {
-        color: gray;
-      }
-    }
-    p {
-      font-weight: 600;
-    }
-  }
-  .checkOut {
-    margin-top: 2rem;
-    button {
-      font-size: 1.1rem;
-      border: none;
-      outline: none;
-      background-color:$fixColor;
-      border-radius: 0.5rem;
-      width: 10rem;
-      height: 2.5rem;
-      margin-bottom: 1.5rem;
-      cursor: pointer;
-      a {
-        text-decoration: none;
-        color: white;
-      }
-    }
-    button:hover {
-      background-color: #f5f5f5;
-      a {
-        text-decoration: none;
-        color:$fixColor;
-      }
-      transition: all 0.2s;
-    }
-  }
-}
-
-@media screen and (max-width: 1048px) {
-  .costDetails {
-    .charges {
-      p {
-        font-size: 1.5vmax;
-      }
-    }
-  }
-}
 @media screen and (max-width: 850px) {
   .cartPage {
     display: flex;
@@ -228,17 +174,9 @@ $fixColor:#fe4c50;
     .content {
       width: 100%;
     }
-    .cost {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      .costDetails {
-        width: 50%;
-      }
+    .orderStatus {
+      width: 90%;
     }
-  }
-  .costDetails {
-    margin-top: 2rem;
   }
 }
 @media screen and (max-width: 600px) {
@@ -253,13 +191,8 @@ $fixColor:#fe4c50;
     .content {
       width: 100%;
     }
-    .cost {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      .costDetails {
-        width: 70%;
-      }
+    .orderStatus {
+      width: 90%;
     }
   }
 }
@@ -273,18 +206,11 @@ $fixColor:#fe4c50;
     .content {
       width: 100%;
     }
-    .cost {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      .costDetails {
-        width: 90%;
-      }
+    .orderStatus {
+      width: 90%;
     }
   }
-  .costDetails {
-    margin-top: 2rem;
-  }
+
   .content {
     .cartHeader {
       width: 98%;

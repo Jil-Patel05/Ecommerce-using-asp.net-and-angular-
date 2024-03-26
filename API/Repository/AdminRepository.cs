@@ -35,11 +35,12 @@ namespace API.Repository
 
             return res;
         }
-        public async Task<bool> editProductAsync(adminEditProduct ap){
+        public async Task<bool> editProductAsync(adminEditProduct ap)
+        {
 
             string q = "update productinfo SET productName=@pn,productDescription=@pd,price=@p,numberOfProduct=@nop,productBrandID=@pb,productTypeID=@pt where productID=@id";
-            
-            var res = await _conn.ExecuteAsync(q, new { pn = ap.productName, pd = ap.productDescription, p = ap.price, nop = ap.numberOfProduct, pb = ap.productBrandID, pt = ap.productTypeID,id=ap.productID });
+
+            var res = await _conn.ExecuteAsync(q, new { pn = ap.productName, pd = ap.productDescription, p = ap.price, nop = ap.numberOfProduct, pb = ap.productBrandID, pt = ap.productTypeID, id = ap.productID });
 
             return true;
         }
@@ -72,8 +73,50 @@ namespace API.Repository
 
             var af = await _conn.ExecuteAsync(q1, new { id = id });
 
+            return true;
+        }
+
+        public async Task<IEnumerable<adminOrders>> getOrders()
+        {
+            string q = "select orderID,total,orderStatus from userorder";
+
+            IEnumerable<adminOrders> res = await _conn.QueryAsync<adminOrders>(q);
+
+            return res;
+        }
+
+        public async Task<bool> changeOrderStatus(updateOrder uo)
+        {
+            string q = "update userorder SET orderStatus=@os where orderID=@id";
+
+            var af = await _conn.ExecuteAsync(q, new { os = uo.orderStatus, id = uo.orderID });
 
             return true;
         }
+        public async Task<IEnumerable<allUsers>> getAllUsersAsync()
+        {
+            string q = "select userID,CONCAT(firstName,' ',lastName) as fullname,role from user";
+
+            IEnumerable<allUsers> res = await _conn.QueryAsync<allUsers>(q);
+
+            return res;
+        }
+        public async Task<IEnumerable<singleUser>> getSingleUserAsync(int id)
+        {
+            string q = "select CONCAT(firstName,' ',lastName) as fullname,email,role from user where userID=@id";
+
+            IEnumerable<singleUser> res = await _conn.QueryAsync<singleUser>(q, new { id = id });
+
+            return res;
+        }
+        public async Task<bool> updateSingleUserAsync(updateUser uo)
+        {
+            string q = "update user SET role=@os where userID=@id";
+
+            var af = await _conn.ExecuteAsync(q, new { os = uo.role, id = uo.userID });
+
+            return true;
+        }
+
     }
 }

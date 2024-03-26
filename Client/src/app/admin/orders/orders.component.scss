@@ -1,0 +1,59 @@
+$fixColor: #fe4c50;
+.allOrders {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .orders {
+    width: 80%;
+  }
+}
+
+.headingContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: $fixColor;
+  .heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    p {
+      margin-bottom: 0rem;
+      color: white;
+      font-size: 1.3vmax;
+      letter-spacing: 1px;
+    }
+  }
+}
+.orderList {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #ebe5e5;
+  .orderInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.4rem;
+    p {
+      margin-bottom: 0rem;
+      font-size: 1.2vmax;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+    }
+    .icon {
+      color: black;
+    }
+    .icon:hover {
+      color: $fixColor;
+      cursor: pointer;
+    }
+  }
+}
+.orderList:hover {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ebe5e5;
+  transition: all 0.3s;
+}

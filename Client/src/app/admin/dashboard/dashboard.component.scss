@@ -1,0 +1,19 @@
+.dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .title {
+    width: 100%;
+    p:first-child {
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    p:last-child {
+      letter-spacing: 1px;
+      text-align: center;
+    }
+  }
+}
