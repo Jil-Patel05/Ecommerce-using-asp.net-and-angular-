@@ -1,7 +1,5 @@
 $fixColor: #fe4c50;
-.mainCart {
-  width: 90vw;
-}
+
 .cartPage {
   width: 100%;
   padding: 1vmax;
@@ -133,6 +131,9 @@ $fixColor: #fe4c50;
         p {
           font-size: 1.8vmax;
         }
+        a {
+          font-size: 1.8vmax;
+        }
       }
     }
   }
@@ -161,6 +162,9 @@ $fixColor: #fe4c50;
             height: 1.2rem;
             width: 1.3rem;
           }
+        }
+        a {
+          font-size: 1.6vmax;
         }
       }
     }
@@ -193,6 +197,36 @@ $fixColor: #fe4c50;
     }
     .orderStatus {
       width: 90%;
+    }
+  }
+  .orderStatus {
+    .inp {
+      width: 100%;
+      select {
+        width: 60%;
+      }
+    }
+    .btn {
+      button {
+        width: 40%;
+        height: 2.5rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .orderStatus {
+    .inp {
+      width: 100%;
+      select {
+        width: 70%;
+      }
+    }
+    .btn {
+      button {
+        width: 60%;
+        height: 2.5rem;
+      }
     }
   }
 }
@@ -231,6 +265,22 @@ $fixColor: #fe4c50;
             margin: 0.2rem;
           }
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .orderStatus {
+    .inp {
+      width: 100%;
+      select {
+        width: 80%;
+      }
+    }
+    .btn {
+      button {
+        width: 80%;
+        height: 2.5rem;
       }
     }
   }

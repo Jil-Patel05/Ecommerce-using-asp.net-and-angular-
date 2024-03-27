@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { authGuard } from './shared/Guards/authGuards';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { adminAuthGuard } from './shared/Guards/adminAuthGuard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -25,7 +26,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((mod) => mod.AdminModule),
     data: { breadcrumb: 'Admin' },
-    // canActivate: [authGuard],
+    canActivate: [adminAuthGuard],
   },
   {
     path: 'orders',

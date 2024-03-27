@@ -57,3 +57,25 @@ $fixColor: #fe4c50;
   border-bottom: 1px solid #ebe5e5;
   transition: all 0.3s;
 }
+@media screen and (max-width:768px) {
+  .allOrders {
+    .orders {
+      width: 95%;
+    }
+  }
+  .headingContainer {
+    .heading {
+      p {
+        font-size: 1.8vmax;
+        letter-spacing: 1px;
+      }
+    }
+  }
+  .orderList {
+    .orderInfo {
+      p {
+        font-size: 1.5vmax;
+      }
+    }
+  }
+}

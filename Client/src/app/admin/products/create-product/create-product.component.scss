@@ -6,7 +6,7 @@ $fixColor: #fe4c50;
   justify-content: center;
   align-items: center;
   .editBox {
-    width: 30rem;
+    width: 40%;
     border-radius: 0.4rem;
     .title {
       width: 100%;
@@ -54,6 +54,30 @@ $fixColor: #fe4c50;
         outline: none;
         margin-bottom: 1rem;
       }
+    }
+  }
+}
+@media screen and (max-width: 1050px) {
+  .edit {
+    width: 100%;
+    .editBox {
+      width: 70%;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .edit {
+    width: 100%;
+    .editBox {
+      width: 90%;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .edit {
+    width: 100%;
+    .editBox {
+      width: 100%;
     }
   }
 }

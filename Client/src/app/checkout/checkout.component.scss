@@ -233,6 +233,10 @@ $fixColor:#fe4c50;
         }
       }
     }
-    
+  }
+  @media screen and (max-width: 500px) {
+    .costDetails .charges p {
+      font-size: 2vmax;
+    }
   }
   

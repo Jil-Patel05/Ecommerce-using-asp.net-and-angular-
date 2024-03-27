@@ -17,3 +17,17 @@
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  .dashboard {
+    .title {
+      width: 100%;
+      p:first-child {
+        font-size: 1.5rem;
+      }
+      p:last-child {
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

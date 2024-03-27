@@ -4,16 +4,16 @@ $fixColor: #fe4c50;
   .adminContent {
     width: 100vw;
     display: flex;
-    align-items: center;
   }
 }
 .slider {
   width: 18%;
-  height: 100vh;
+  min-width: 16rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   .title {
     width: 100%;
     p:first-child {
@@ -51,6 +51,99 @@ $fixColor: #fe4c50;
 
 .sliderContent {
   width: 82%;
-  min-height: 100vh;
+  min-height: 50vh;
   border-left: 1px solid grey;
+}
+.adminOptions {
+  display: none;
+}
+.crossmark{
+  display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .slider {
+    width: 18%;
+    min-width: 13rem;
+    overflow: hidden;
+    .title {
+      width: 100%;
+      p:first-child {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+      }
+    }
+    .sliderContainer {
+      .content {
+        margin-bottom: 2rem;
+        a {
+          font-size: 0.9rem;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .crossmark{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin:1rem 1rem 1rem 0rem;
+  }
+  .adminOptions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    border: 1px solid grey;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+  }
+  .slider {
+    width: 0rem;
+    min-width: 0rem;
+    .title {
+      display: none;
+    }
+    .sliderContainer {
+      display: none;
+    }
+  }
+  .openMenu{
+    width: 40vw;
+    height: 100vh;
+    position: fixed;
+    top: 4.6rem;
+    left: 0rem;
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    z-index: 1005;
+    display: flex;
+    .title {
+      display: block;
+    }
+    .sliderContainer {
+      display: block;
+    }
+    transition: all 0.3s ease-in-out;
+  }
+  .sliderContent {
+    width: 98%;
+    min-height: 50vh;
+    border: none;
+  }
+}
+@media screen and (max-width: 550px) {
+  .openMenu{
+    width: 60vw;
+  }
+}
+@media screen and (max-width: 350px) {
+  .openMenu{
+    width: 80vw;
+  }
 }

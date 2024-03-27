@@ -1,6 +1,11 @@
 <div class="admin">
   <div class="adminContent">
-    <div class="slider">
+    <div class="slider" [ngClass]="menu === true ? 'openMenu' : ''">
+      <div class="crossmark">
+        <span class="material-symbols-outlined" (click)="openMenu()">
+          close
+        </span>
+      </div>
       <div class="title">
         <p>Admin Panel</p>
       </div>
@@ -10,6 +15,7 @@
             routerLink="/admin/dashboard"
             routerLinkActive="linkActive"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="openMenu()"
           >
             <span class="material-symbols-outlined"> grid_view </span> Dashboard
           </a>
@@ -19,6 +25,7 @@
             routerLink="/admin/products"
             routerLinkActive="linkActive"
             [routerLinkActiveOptions]="{ exact: false }"
+            (click)="openMenu()"
           >
             <span class="material-symbols-outlined"> inventory </span> Products
           </a>
@@ -28,6 +35,7 @@
             routerLink="/admin/orders"
             routerLinkActive="linkActive"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="openMenu()"
             ><span class="material-symbols-outlined"> reorder </span> Orders</a
           >
         </div>
@@ -36,12 +44,17 @@
             routerLink="/admin/users"
             routerLinkActive="linkActive"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="openMenu()"
             ><span class="material-symbols-outlined"> person </span> Users</a
           >
         </div>
       </div>
     </div>
     <div class="sliderContent">
+      <div class="adminOptions" (click)="openMenu()">
+        <span class="material-symbols-outlined"> menu_open </span>
+        Admin Menu
+      </div>
       <router-outlet> </router-outlet>
     </div>
   </div>

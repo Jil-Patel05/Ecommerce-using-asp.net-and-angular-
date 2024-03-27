@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap");
-$fixColor:#fe4c50;
+$fixColor: #fe4c50;
 .checkoutAddress {
   width: 95%;
   .title {
@@ -126,6 +126,22 @@ $fixColor:#fe4c50;
   .checkOut {
     display: flex;
     justify-content: center;
+  }
+  .checkoutAddress {
+    .addressContent {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      .inp {
+        width: 70%;
+        margin-right: 1.5rem;
+        margin-top: 1rem;
+        input {
+          width: 100%;
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 600px) {

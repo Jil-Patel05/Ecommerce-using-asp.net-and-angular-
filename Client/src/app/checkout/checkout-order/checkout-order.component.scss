@@ -261,8 +261,8 @@ $fixColor:#fe4c50;
     display: flex;
     margin-top: 2rem;
     button {
-      font-size: 0.8rem;
-      width: 7rem;
+      font-size: 0.9rem;
+      width: 9rem;
       height: 2.1rem;
     }
   }
@@ -313,6 +313,15 @@ $fixColor:#fe4c50;
           }
         }
       }
+    }
+  }
+  .checkOut {
+    display: flex;
+    margin-top: 2rem;
+    button {
+      font-size: 0.8rem;
+      width: 8rem;
+      height: 1.9rem;
     }
   }
   

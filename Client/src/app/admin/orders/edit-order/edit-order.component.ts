@@ -33,6 +33,7 @@ export class EditOrderComponent implements OnInit {
     this.admin.getorderByOrderID(this.orderID).subscribe({
       next: (res: OrderDetails) => {
         this.order = res;
+        console.log(this.order);
       },
       error: (err) => {
         console.log(err.error);

@@ -1,64 +1,60 @@
-<div class="mainCart">
-  <div class="cartPage">
-    <div class="content">
-      <div class="cartHeader">
-        <div class="headingTitle">
-          <p>Product</p>
-        </div>
-        <div class="headingTitle">
-          <p>Price</p>
-        </div>
-        <div class="headingTitle">
-          <p>Quantity</p>
-        </div>
-        <div class="headingTitle">
-          <p>Subtotal</p>
-        </div>
+<div class="cartPage">
+  <div class="content">
+    <div class="cartHeader">
+      <div class="headingTitle">
+        <p>Product</p>
       </div>
-
-      <div class="cartContainer" *ngFor="let item of order">
-        <div class="cartItems">
-          <img src="{{ item.productUrl }}" alt="ssa" />
-          <div>
-            <a routerLink="/shop/{{ item.productID }}">{{
-              item.productName
-            }}</a>
-          </div>
-        </div>
-        <div class="cartItems">
-          <p>
-            {{ item.price | currency }}
-          </p>
-        </div>
-        <div class="cartItems">
-          <p>
-            {{ item.numberOfProducts }}
-          </p>
-        </div>
-        <div class="cartItems">
-          <p>
-            {{ item.numberOfProducts * item.price | currency }}
-          </p>
-        </div>
+      <div class="headingTitle">
+        <p>Price</p>
+      </div>
+      <div class="headingTitle">
+        <p>Quantity</p>
+      </div>
+      <div class="headingTitle">
+        <p>Subtotal</p>
       </div>
     </div>
-    <div class="orderStatus">
-      <div class="form-floating inp" [formGroup]="form">
-        <select
-          class="form-select"
-          style="margin-bottom: 1rem; cursor: pointer"
-          id="floatingBrand"
-          formControlName="orderStatus"
-        >
-          <option value="Pending">Pending</option>
-          <option value="Shipped">Shipped</option>
-          <option value="Delivered">Delivered</option>
-        </select>
-        <label for="floatingBrand">Order Status</label>
+
+    <div class="cartContainer" *ngFor="let item of order">
+      <div class="cartItems">
+        <img src="{{ item.productUrl }}" alt="ssa" />
+        <div>
+          <a routerLink="/shop/{{ item.productID }}">{{ item.productName }}</a>
+        </div>
       </div>
-      <div class="btn">
-        <button (click)="onSubmit()">SUBMIT CHANGES</button>
+      <div class="cartItems">
+        <p>
+          {{ item.price | currency }}
+        </p>
       </div>
+      <div class="cartItems">
+        <p>
+          {{ item.numberOfProducts }}
+        </p>
+      </div>
+      <div class="cartItems">
+        <p>
+          {{ item.numberOfProducts * item.price | currency }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="orderStatus">
+    <div class="form-floating inp" [formGroup]="form">
+      <select
+        class="form-select"
+        style="margin-bottom: 1rem; cursor: pointer"
+        id="floatingBrand"
+        formControlName="orderStatus"
+      >
+        <option value="Pending">Pending</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+      <label for="floatingBrand">Order Status</label>
+    </div>
+    <div class="btn">
+      <button (click)="onSubmit()">SUBMIT CHANGES</button>
     </div>
   </div>
 </div>

@@ -106,6 +106,7 @@
       width: 20%;
       font: 300 1.4vmax "Roboto";
       font-weight: 300 !important;
+      font-size: calc(0.7rem + 0.7vmax);
       cursor: pointer;
       color: white;
       transition: all 0.5s;
@@ -135,7 +136,7 @@
 .filterMenu {
   display: none;
 }
-.crossmark{
+.crossmark {
   display: none;
 }
 
@@ -150,7 +151,8 @@
         height: 2.2rem;
       }
       button {
-        font: 300 1.7vmax "Roboto";
+        // font: 300 1.7vmax "Roboto";
+        font-weight: 300 !important;
         height: 2.2rem;
       }
     }
@@ -181,7 +183,7 @@
   .shopContent {
     .mainFilter {
       width: 0rem;
-      
+
       .filters {
         display: none;
       }

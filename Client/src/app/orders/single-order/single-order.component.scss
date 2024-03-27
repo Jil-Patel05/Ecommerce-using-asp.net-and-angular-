@@ -1,4 +1,4 @@
-$fixColor:#fe4c50;
+$fixColor: #fe4c50;
 .mainCart {
   width: 90vw;
 }
@@ -87,33 +87,39 @@ $fixColor:#fe4c50;
         p {
           font-size: 1.8vmax;
         }
+        a {
+          font-size: 1.8vmax;
+        }
       }
     }
   }
 }
 @media only screen and (max-width: 768px) {
-    .content {
-        .cartHeader {
-          width: 98%;
-          .headingTitle {
-            p {
-              font-size: 1.8vmax;
-            }
-          }
-        }
-        .cartContainer {
-          width: 98%;
-          .cartItems {
-            img {
-              height: 4.5vmax;
-              width: 4.5vmax;
-            }
-            p {
-              font-size: 1.8vmax;
-            }
-          }
+  .content {
+    .cartHeader {
+      width: 98%;
+      .headingTitle {
+        p {
+          font-size: 1.8vmax;
         }
       }
+    }
+    .cartContainer {
+      width: 98%;
+      .cartItems {
+        img {
+          height: 4.5vmax;
+          width: 4.5vmax;
+        }
+        p {
+          font-size: 1.8vmax;
+        }
+        a {
+          font-size: 1.6vmax;
+        }
+      }
+    }
+  }
 }
 
 .costDetails {

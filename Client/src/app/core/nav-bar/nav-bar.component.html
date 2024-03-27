@@ -1,11 +1,9 @@
-<nav class="navbar" [ngClass]="(currentUser$ | async) === null?'nvbar':''">
+<nav class="navbar" [ngClass]="(currentUser$ | async) === null ? 'nvbar' : ''">
   <div class="navbarItem">
     <div class="img">
       <div class="compImg">
         <!-- <img src="/assets/Images/logo6.png" alt="" /> -->
-        <a routerLink="/">
-          COLO<span style="color: #fe4c50;">SHOP</span>
-        </a>
+        <a routerLink="/"> COLO<span style="color: #fe4c50">SHOP</span> </a>
       </div>
       <div class="hamburger">
         <span
@@ -105,8 +103,35 @@
               role="menu"
               aria-labelledby="button-alignment"
             >
+              <li
+                role="menuitem"
+                style="cursor: pointer"
+                *ngIf="user.role === 'admin'"
+              >
+                <a
+                  class="dropdown-item"
+                  routerLink="/admin/dashboard"
+                  (click)="onBurgerMenu()"
+                >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: flex-start;
+                    "
+                  >
+                    <span class="material-symbols-outlined">
+                      admin_panel_settings </span
+                    >&nbsp; Admin
+                  </div></a
+                >
+              </li>
               <li role="menuitem" style="cursor: pointer">
-                <a class="dropdown-item" routerLink="/account/user"  (click)="onBurgerMenu()">
+                <a
+                  class="dropdown-item"
+                  routerLink="/account/user"
+                  (click)="onBurgerMenu()"
+                >
                   <div
                     style="
                       display: flex;
@@ -120,7 +145,11 @@
                 >
               </li>
               <li role="menuitem" class="cartMenu" style="cursor: pointer">
-                <a class="dropdown-item" routerLink="/basket"  (click)="onBurgerMenu()">
+                <a
+                  class="dropdown-item"
+                  routerLink="/basket"
+                  (click)="onBurgerMenu()"
+                >
                   <div
                     style="
                       display: flex;
@@ -136,7 +165,11 @@
                 >
               </li>
               <li role="menuitem" style="cursor: pointer">
-                <a class="dropdown-item" routerLink="/orders"  (click)="onBurgerMenu()">
+                <a
+                  class="dropdown-item"
+                  routerLink="/orders"
+                  (click)="onBurgerMenu()"
+                >
                   <div
                     style="
                       display: flex;
@@ -151,7 +184,11 @@
               </li>
               <li class="divider dropdown-divider"></li>
               <li role="menuitem" style="cursor: pointer">
-                <a class="dropdown-item" (click)="logout()"  (click)="onBurgerMenu()">
+                <a
+                  class="dropdown-item"
+                  (click)="logout()"
+                  (click)="onBurgerMenu()"
+                >
                   <div
                     style="
                       display: flex;

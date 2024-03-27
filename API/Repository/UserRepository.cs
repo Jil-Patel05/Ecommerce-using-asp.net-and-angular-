@@ -61,10 +61,11 @@ namespace API.Repository
 
         public async Task<loginDTO> loginUserAsync(login user)
         {
-            string findUser = "select userID,firstName,lastName,email,password from user where email=@email";
+            string findUser = "select userID,firstName,lastName,email,password,role from user where email=@email";
 
             List<dynamic>? res = await _conn.QueryAsync<dynamic>(findUser, new { email = user.email }) as List<dynamic>;
             bool match = HashPassword.DecryptPassword(user.password, res[0].password);
+            
             if (!match)
             {
                 return null;
@@ -88,6 +89,7 @@ namespace API.Repository
                 userID = res[0].userID,
                 DisplayName = res[0].firstName + " " + res[0].lastName,
                 email = res[0].email,
+                role=res[0].role,
                 token = tokenHandler.WriteToken(token)
             };
             return lg;

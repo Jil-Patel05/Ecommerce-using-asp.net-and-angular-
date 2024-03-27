@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-
+  menu: boolean = false;
+  openMenu() {
+    this.menu = !this.menu;
+  }
 }
