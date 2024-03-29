@@ -1,9 +1,11 @@
+using System.Text.Json;
 using API.DTO;
 using API.Errors;
 using API.Models;
 using API.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 
 namespace API.Controllers
 {
@@ -12,15 +14,30 @@ namespace API.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductRepository _product;
-        public ProductController(IProductRepository product)
+        private readonly IDatabase _database;
+
+        public ProductController(IProductRepository product, IConnectionMultiplexer redis)
         {
             this._product = product;
+            _database = redis.GetDatabase();
+
         }
         [HttpGet("getinitialproduct")]
         [AllowAnonymous]
         public async Task<ActionResult<List<HomeProduct>>> getInitialProduct()
         {
-            List<HomeProduct> lp = await _product.getInitialProduct();
+            string masterKey = "master$master$";
+            var res = await _database.StringGetAsync(masterKey);
+            List<HomeProduct> lp = new List<HomeProduct>();
+            if (res.IsNullOrEmpty)
+            {
+                lp = await _product.getInitialProduct();
+                var data = await _database.StringSetAsync(masterKey, JsonSerializer.Serialize(lp), TimeSpan.FromDays(30));
+            }
+            else
+            {
+                lp = JsonSerializer.Deserialize<List<HomeProduct>>(res);
+            }
 
             return lp;
         }
@@ -28,7 +45,7 @@ namespace API.Controllers
 
         [HttpGet("getAllProducts")]
         [AllowAnonymous]
-        public async Task<ActionResult<productWithPageDTO>> GetProducts(string? sort, int? brandID, int? typeID, string? search, int pageNumber = 1, int pageSize = 1)
+        public async Task<ActionResult<productWithPageDTO>> GetProducts(string? sort, int? brandID, int? typeID, string? search, int pageNumber = 1, int pageSize = 6)
         {
             productWithPageDTO pr = await _product.GetProductsAsync(sort, brandID, typeID, search, pageNumber, pageSize);
 
@@ -88,8 +105,11 @@ namespace API.Controllers
             };
         }
         [HttpPost("addreviews")]
+        [AllowAnonymous]
         public async Task<ActionResult<bool>> addProductReview(UserReview ur)
         {
+            string masterKey = "master$master$";
+            await _database.KeyDeleteAsync(masterKey);
             bool res = await _product.addProductReviewAsync(ur);
 
             return res;
@@ -98,7 +118,19 @@ namespace API.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<enumProductDataDTO>> enumProduct()
         {
-            enumProductDataDTO e = await _product.GetProductEnumData();
+            string masterKey = "enumMaterKey$";
+            var res = await _database.StringGetAsync(masterKey);
+            enumProductDataDTO e = new enumProductDataDTO();
+            if (res.IsNullOrEmpty)
+            {
+                e = await _product.GetProductEnumData();
+                var data = await _database.StringSetAsync(masterKey, JsonSerializer.Serialize(e), TimeSpan.FromDays(30));
+            }
+            else
+            {
+                e = JsonSerializer.Deserialize<enumProductDataDTO>(res);
+            }
+
             return e;
         }
 

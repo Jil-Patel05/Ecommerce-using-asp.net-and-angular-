@@ -1,5 +1,5 @@
 $fixColor: #fe4c50;
-
+$hoverColor:#fe4c50cf;
 .cartPage {
   width: 100%;
   padding: 1vmax;
@@ -107,6 +107,10 @@ $fixColor: #fe4c50;
       background-color: $fixColor;
       color: white;
       height: 2.5rem;
+    }
+    button:hover{
+      background-color: $hoverColor;
+      transition: all 0.3s;
     }
   }
 }

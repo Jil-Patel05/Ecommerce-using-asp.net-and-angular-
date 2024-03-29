@@ -1,4 +1,5 @@
 $fixColor: #fe4c50;
+$hoverColor:#fe4c50cf;
 .edit {
   margin-top: 2rem;
   width: 100%;
@@ -55,7 +56,7 @@ $fixColor: #fe4c50;
         margin-bottom: 1rem;
       }
       button:hover {
-        background-color: #fe4c50cf;
+        background-color:$hoverColor;
         transition: all 0.3s;
       }
     }

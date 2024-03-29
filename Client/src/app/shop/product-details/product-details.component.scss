@@ -1,4 +1,5 @@
 $fixColor: #fe4c50;
+$hoverColor:#fe4c50cf;
 .detailsMain {
   min-height: 100vh;
 }
@@ -121,7 +122,7 @@ $fixColor: #fe4c50;
 }
 
 .detailsBlock-3-1 > button:last-child:hover {
-  background-color: rgb(214, 84, 61);
+  background-color: $hoverColor;
 }
 
 .detailsBlock-3 > p {
@@ -138,6 +139,7 @@ $fixColor: #fe4c50;
   font: 500 1.2vmax sans-serif;
   font-size: calc(0.6rem + 0.6vmax);
   line-height: 30px;
+  padding-right: 0.5rem;
 }
 
 .detailsBlock-4 > p {
@@ -160,7 +162,7 @@ $fixColor: #fe4c50;
   outline: none;
 }
 .submitReview:hover {
-  background-color: rgb(197, 68, 45);
+  background-color:$hoverColor;
 }
 rating {
   font-size: 2rem;
@@ -424,9 +426,10 @@ rating {
     font: 400 2vmax "Roboto";
   }
 
-  // .detailsBlock-4 {
-  //   font: 500 2.3vmax sans-serif;
-  // }
+  .detailsBlock-4 {
+    font: 500 2.3vmax sans-serif;
+    text-align: center;
+  }
 
   // .detailsBlock-4 > p {
   //   font: 300 2vmax sans-serif;
@@ -495,9 +498,11 @@ rating {
     font: 400 2vmax "Roboto";
   }
 
-  // .detailsBlock-4 {
-  //   font: 500 2.5vmax sans-serif;
-  // }
+  .detailsBlock-4 {
+    font: 500 2.5vmax sans-serif;
+    padding: 0rem 1rem 1rem 1rem;
+    text-align: center;
+  }
 
   // .detailsBlock-4 > p {
   //   font: 300 1.8vmax sans-serif;
@@ -611,9 +616,11 @@ rating {
     font: 400 2vmax "Roboto";
   }
 
-  // .detailsBlock-4 {
-  //   font: 500 2.5vmax sans-serif;
-  // }
+  .detailsBlock-4 {
+    font: 500 2.5vmax sans-serif;
+    padding: 0rem 1rem 1rem 1rem;
+    text-align: center;
+  }
 
   // .detailsBlock-4 > p {
   //   font: 300 1.8vmax sans-serif;
@@ -719,9 +726,11 @@ rating {
     font: 400 2vmax "Roboto";
   }
 
-  // .detailsBlock-4 {
-  //   font: 500 2.5vmax sans-serif;
-  // }
+  .detailsBlock-4 {
+    font: 500 2.5vmax sans-serif;
+    padding: 0rem 1rem 1rem 1rem;
+    text-align: center;
+  }
 
   // .detailsBlock-4 > p {
   //   font: 300 1.8vmax sans-serif;
@@ -737,6 +746,7 @@ rating {
   }
   .detailsBlock-1 > p {
     text-align: center;
+    padding: 0rem 1rem 1rem 1rem;
     font-size: 1.4vmax;
   }
   .ProductDetails {

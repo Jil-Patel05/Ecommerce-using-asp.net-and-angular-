@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@500&display=swap");
 $fixColor: #fe4c50;
+$hoverColor:#fe4c50cf;
+
 .checkoutAddress {
   width: 95%;
   .title {
@@ -81,8 +83,7 @@ $fixColor: #fe4c50;
       color: white;
     }
     button:hover {
-      background-color: #f5f5f5;
-      color: $fixColor;
+      background-color: $hoverColor;
       transition: all 0.2s;
     }
   }

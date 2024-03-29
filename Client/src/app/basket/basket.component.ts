@@ -23,9 +23,7 @@ export class BasketComponent {
     });
     this.basketCost$ = this.basketService.basketCost$;
   }
-  removeItem(item: Item) {
-    this.basketService.rmv(item);
-  }
+ 
   decreaseQuantity(item:Item) {
     this.basketService.Dcs(item);
   }

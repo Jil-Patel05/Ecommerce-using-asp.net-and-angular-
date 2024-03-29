@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BasketService } from '../basket/basket.service';
 import { Observable } from 'rxjs';
 import { Basket, Cost, Item } from '../shared/Models/basket';
@@ -13,6 +13,7 @@ import { Delivery } from '../shared/Models/delivery';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CheckoutComponent {
   basketService: BasketService = inject(BasketService);

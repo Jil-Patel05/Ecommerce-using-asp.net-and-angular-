@@ -31,6 +31,7 @@ export class ShopComponent implements OnInit {
   pageNumber: number;
   page: number = 1;
   searchVal: string;
+  arr: boolean[] = [];
 
   ngOnInit(): void {
     this.getProduct();
@@ -44,7 +45,13 @@ export class ShopComponent implements OnInit {
         this.count = this.products.count;
         this.pageNumber = this.products.pageNumber;
         this.getEnums();
-        console.log(res);
+        const pagination: number = this.count / this.pageSize;
+        while (this.arr.length > 0) {
+          this.arr.pop();
+        }
+        for (let i = 0; i < pagination; i++) {
+          this.arr.push(true);
+        }
       },
       error: (err) => {
         console.log(err.error);
@@ -70,8 +77,8 @@ export class ShopComponent implements OnInit {
   filterProducts() {
     this.show = !this.show;
   }
-  goToProductDetails(id:number) {
-    this.route.navigateByUrl("/shop/" + id);
+  goToProductDetails(id: number) {
+    this.route.navigateByUrl('/shop/' + id);
   }
   getProductsWithConditions() {
     this.shopService
@@ -88,7 +95,13 @@ export class ShopComponent implements OnInit {
           this.pageSize = this.products.pageSize;
           this.count = this.products.count;
           this.pageNumber = this.products.pageNumber;
-          console.log(res);
+          const pagination: number = this.count / this.pageSize;
+          while (this.arr.length > 0) {
+            this.arr.pop();
+          }
+          for (let i = 0; i < pagination; i++) {
+            this.arr.push(true);
+          }
         },
         error: (err) => {
           console.log(err.error);

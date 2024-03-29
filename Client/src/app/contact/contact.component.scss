@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto+Mono:ital@0;1&display=swap");
 $fixColor:#fe4c50;
+$hoverColor:#fe4c50cf;
+
 .contact {
   width: 100vw;
   display: flex;
@@ -83,7 +85,7 @@ $fixColor:#fe4c50;
             height: 2.2rem;
           }
           button:hover {
-            background-color: #d8553e;
+            background-color: $hoverColor;
             transition: all 0.3s;
           }
         }

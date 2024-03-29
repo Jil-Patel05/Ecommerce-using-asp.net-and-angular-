@@ -33,6 +33,8 @@ export class BasketService {
     return this.http.post(this.basketUrl, basket).subscribe({
       next: (res: Basket) => {
         this.basketSource.next(res);
+        // this.basketSource.next(null);
+        // this.dlt(basket);
         this.calculateCost(shippingCost);
       },
       error: (err) => {
@@ -64,15 +66,16 @@ export class BasketService {
   rmv(item: Item) {
     const basket = this.getBasketCurrentValue();
     const idx = basket.items.findIndex((x) => x.productID === item.productID);
-    if (idx) {
+    if (idx>=0) {
       basket.items = basket.items.filter((i) => i.productID !== item.productID);
       if (basket.items.length > 0) {
         this.setBasket(basket);
       } else {
         this.dlt(basket);
       }
-    } else {
-      this.rmv(item);
+    }
+    else {
+      // this.rmv(item);
     }
   }
   dlt(basket: Basket) {

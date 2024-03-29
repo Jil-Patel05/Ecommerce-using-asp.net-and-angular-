@@ -132,7 +132,7 @@ namespace API.Repository
                     productsToReturn[indexMapping[item.productID]].productUrl.Add(item.productUrl);
                 }
             }
-            
+
             productWithPageDTO prp = new productWithPageDTO()
             {
                 pageNumber = pageNumber,
@@ -165,7 +165,7 @@ namespace API.Repository
 
             string productsUrl = "select productID,productUrl from producturls";
             List<ProductsUrls> url = await _conn.QueryAsync<ProductsUrls>(productsUrl) as List<ProductsUrls>;
-            
+
 
             Dictionary<int, int> indexMapping = new Dictionary<int, int>();
             int ind = 0;
@@ -199,7 +199,7 @@ namespace API.Repository
 
             string updateReviewAndRating = "update productinfo SET noOfReviews=@nr,productRating=@pr where productID=@pid";
 
-            decimal productRating = (res[0].productRating + ur.userRating) / (res[0].noOfReviews + 1);
+            decimal productRating = (res[0].productRating * res[0].noOfReviews + ur.userRating) / (res[0].noOfReviews + 1);
             var af2 = await _conn.ExecuteAsync(updateReviewAndRating, new { nr = res[0].noOfReviews + 1, pr = productRating, pid = ur.productID });
 
             return true;

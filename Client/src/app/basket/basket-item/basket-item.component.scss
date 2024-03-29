@@ -32,6 +32,7 @@ $fixColor:#fe4c50;
     color: $fixColor;
     font: 100 0.8vmax "Roboto";
     cursor: pointer;
+    text-align: center;
   }
   @media screen and (max-width: 1000px) {
     .CartItemCard > img {

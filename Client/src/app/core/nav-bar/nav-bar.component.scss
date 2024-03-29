@@ -1,8 +1,8 @@
-$fixColor:#fe4c50;
+$fixColor: #fe4c50;
 
 .navbar {
   width: 100vw;
-  padding: 0rem 3rem 0rem 1.5rem;
+  padding: 0rem 2rem 0rem 1.5rem;
   min-height: 4.5rem;
   display: flex;
   align-items: center;
@@ -22,11 +22,19 @@ $fixColor:#fe4c50;
   .img {
     display: flex;
     align-items: center;
-    a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold !important;
-      font-size: 1.5rem;
+    .compImg {
+      display: flex;
+      align-items: center;
+      img {
+        width: 2.5rem;
+        height: 4rem;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold !important;
+        font-size: 1.5rem;
+      }
     }
   }
   .mainMenu {
@@ -185,8 +193,11 @@ $fixColor:#fe4c50;
       align-items: center;
       .compImg {
         img {
-          width: 8rem;
-          height: 2.5rem;
+          width: 2.5rem;
+          height: 4rem;
+        }
+        a{
+          font-size: 1.4rem;
         }
       }
     }

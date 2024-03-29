@@ -46,7 +46,7 @@
       <div class="detailsBlock-1">
         <h2>{{ product.productName }}</h2>
         <p>{{ product.brandName }}</p>
-        <p class="price">{{ product.price | currency : "INR" }}</p>
+        <p class="price">{{ product.price | currency }}</p>
       </div>
       <div class="detailsBlock-2">
         <span class="detailsBlock-2-span"> <rating [readonly]="true" [(ngModel)]="product.productRating"></rating>

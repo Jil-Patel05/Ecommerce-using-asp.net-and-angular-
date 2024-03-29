@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../account.service';
@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+  styleUrls: ['./change-password.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ChangePasswordComponent implements OnInit {
   fs: FormBuilder = inject(FormBuilder);

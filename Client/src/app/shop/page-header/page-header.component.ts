@@ -10,4 +10,10 @@ export class PageHeaderComponent {
   @Input() pageNumber: number;
   @Input() pageSize: number;
 
+
+  remain: number;
+
+  countRemain() {
+    
+  }
 }

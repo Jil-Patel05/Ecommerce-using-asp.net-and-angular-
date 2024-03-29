@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../account.service';
@@ -9,6 +9,7 @@ import { Login } from 'src/app/shared/Models/login';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
   fs: FormBuilder = inject(FormBuilder);
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     if (this.form.invalid) {
-      this.toast.error('please fill credentials properly');
+      this.toast.error('Please fill credentials properly');
       return;
     }
     const obj = this.form.value;
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.route.navigateByUrl(this.url);
       },
       error: (err) => {
-        this.toast.error('please fill credentials properly');
+        this.toast.error('Please fill credentials properly');
       },
     });
   }

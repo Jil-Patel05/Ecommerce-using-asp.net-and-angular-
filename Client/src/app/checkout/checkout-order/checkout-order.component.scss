@@ -1,4 +1,6 @@
 $fixColor:#fe4c50;
+$hoverColor:#fe4c50cf;
+
 .mainCart {
   width: 90vw;
 }
@@ -59,7 +61,7 @@ $fixColor:#fe4c50;
       a {
         text-decoration: none;
         color: black;
-        font-size: 1.2vmax;
+        font-size: 1vmax;
       }
       p {
         margin-bottom: 0rem;
@@ -106,7 +108,7 @@ $fixColor:#fe4c50;
     margin-right: 1rem;
   }
   .proceed:hover {
-    background-color: #e25b43;
+    background-color: $hoverColor;
     transition: all 0.2s;
   }
   .back {

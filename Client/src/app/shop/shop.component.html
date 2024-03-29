@@ -6,7 +6,7 @@
           <span class="material-symbols-outlined" (click)="filterProducts()"> close </span>
         </div>
         <div class="filterContent">
-          <h5 style="color: tomato;font-weight: bold;">Sort</h5>
+          <h5 style="color:#fe4c50;font-weight: bold;">Sort</h5>
           <select
             class="form-select"
             style="margin-bottom: 1rem; cursor: pointer"
@@ -17,7 +17,7 @@
             <option value="2">Price: High to Low</option>
             <option value="3">Price: Low to High</option>
           </select>
-          <h5 style="color: tomato;font-weight: bold;">Brands</h5>
+          <h5 style="color:#fe4c50;font-weight: bold;">Brands</h5>
           <ul
             class="list-group my-3"
             style="cursor: pointer"
@@ -37,7 +37,7 @@
             </li>
             
           </ul>
-          <h5 style="color: tomato;font-weight: bold;">Types</h5>
+          <h5 style="color:#fe4c50;font-weight: bold;">Types</h5>
           <ul
             class="list-group my-3"
             style="cursor: pointer"
@@ -112,7 +112,7 @@
       </div>
       <nav
         aria-label="Page navigation example"
-        *ngIf="products !== undefined && count > 0"
+        *ngIf="products !== undefined && count!==undefined && count > 0"
         style="
           margin-top: 2rem;
           display: flex;
@@ -130,11 +130,10 @@
               >
             </a>
           </li>
-
           <li
             class="page-item"
             *ngFor="
-              let it of counter(products.count / products.pageSize);
+              let it of arr
               let i = index
             "
           >

@@ -1,4 +1,6 @@
 $fixColor:#fe4c50;
+$hoverColor:#fe4c50cf;
+
 .mainCart {
     width: 90vw;
   }
@@ -144,11 +146,7 @@ $fixColor:#fe4c50;
         }
       }
       button:hover {
-        background-color: #f5f5f5;
-        a{
-          text-decoration: none;
-          color: $fixColor;
-        }
+        background-color: $hoverColor;
         transition: all 0.2s;
       }
     }

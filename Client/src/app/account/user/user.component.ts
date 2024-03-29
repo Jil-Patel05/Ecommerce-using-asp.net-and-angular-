@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../account.service';
 import { Login } from 'src/app/shared/Models/login';
@@ -7,7 +7,8 @@ import { ProfileFile } from 'src/app/shared/Models/profileFile';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UserComponent implements OnInit {
   toast: ToastrService = inject(ToastrService);

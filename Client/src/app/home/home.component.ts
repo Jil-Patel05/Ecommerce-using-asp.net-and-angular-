@@ -15,9 +15,11 @@ export class HomeComponent implements OnInit {
   ratingValue: number;
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.shopService.getHomeProduct().subscribe({
       next: (res: HomeProduct[]) => {
         this.products = res;
+        console.log(this.products);
       },
       error: (err) => {
         console.log(err.error);

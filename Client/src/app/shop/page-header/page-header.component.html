@@ -1,9 +1,16 @@
 <header class="results">
-    <span *ngIf="count!==undefined && count > 0"
-      >Showing <strong>{{ (pageNumber-1)*pageSize+1 }}-{{(pageNumber-1)*pageSize+pageSize}}</strong> of
-      <strong>{{ count }}</strong> results
-    </span>
-    <span *ngIf="count!==undefined && count === 0"
-      ><strong>0</strong> results found
-    </span>
- </header>
+  <span *ngIf="count !== undefined && count > 0"
+    >Showing
+    <strong
+      >{{ (pageNumber - 1) * pageSize + 1 }}-{{
+        (pageNumber - 1) * pageSize + pageSize > count
+          ? count
+          : (pageNumber - 1) * pageSize + pageSize
+      }}</strong
+    >
+    of <strong>{{ count }}</strong> results
+  </span>
+  <span *ngIf="count !== undefined && count === 0"
+    ><strong>0</strong> results found
+  </span>
+</header>

@@ -34,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.form = this.fs.group({
       userReview: ['', Validators.required],
     });
@@ -95,6 +96,7 @@ export class ProductDetailsComponent implements OnInit {
       next: (res: boolean) => {
         this.getSingleProduct();
         this.toast.success('Review Added');
+        this.clicked = !this.clicked;
       },
       error: (err) => {
         console.log(err.error);
